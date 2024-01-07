@@ -10,7 +10,7 @@ import Button from '../common/Button';
 const LoginFormBlock = styled.div`
   p {
     color: ${palette.pink[1]};
-    margin-top: 3rem;
+    margin-bottom: 3rem;
     font-size: 0.8rem;
     font-family: 'Jura';
     text-align: center;
@@ -54,7 +54,8 @@ const Footer = styled.div`
   }
 
   span {
-    padding-right: 300px;
+      padding-right: 300px;
+    }
   }
 `;
 const ButtonWithMarginTop = styled(Button)`
@@ -78,7 +79,6 @@ const LoginForm = () => {
 
         <Link to="/RegisterPage">회원가입</Link>
       </Footer>
-      <p>Product By C-Komachi</p>
     </LoginFormBlock>
   );
 };
