@@ -9,10 +9,11 @@ import Button from '../common/Button';
 
 const LoginFormBlock = styled.div`
   p {
-    margin: 0;
-    color: ${palette.gray[1]};
-    margin-bottom: 0.5rem;
+    color: ${palette.pink[1]};
+    margin-top: 3rem;
     font-size: 0.8rem;
+    font-family: 'Jura';
+    text-align: center;
   }
 `;
 
@@ -53,19 +54,7 @@ const Footer = styled.div`
   }
 
   span {
-    /* 모바일 세로화면*/
-    @media screen and (max-width: 576px) {
-      padding-right: 120px;
-    }
-    /* 모바일 가로화면*/
-    @media screen and (min-width: 577px && max-width:768) {
-      padding-right: 300px;
-    }
-
-    /* 데스크탑 화면*/
-    @media screen and (min-width: 769px) {
-      padding-right: 300px;
-    }
+    padding-right: 300px;
   }
 `;
 const ButtonWithMarginTop = styled(Button)`
@@ -89,6 +78,7 @@ const LoginForm = () => {
 
         <Link to="/RegisterPage">회원가입</Link>
       </Footer>
+      <p>Product By C-Komachi</p>
     </LoginFormBlock>
   );
 };
