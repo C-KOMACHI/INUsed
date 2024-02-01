@@ -75,7 +75,7 @@ const textMap = {
   register: '가입하기',
 };
 
-const AuthForm = ({ type, form, onChange, onClick, onSubmit }) => {
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
   const text = textMap[type];
   return (
     <AuthFormBlock>
@@ -90,11 +90,7 @@ const AuthForm = ({ type, form, onChange, onClick, onSubmit }) => {
             value={form.nickname}
           />
         )}
-        {type === 'register' && (
-          <Button small="true" onClick={onClick}>
-            중복확인
-          </Button>
-        )}
+        {type === 'register' && <Button small="true">중복확인</Button>}
 
         {type === 'login' ? (
           <StyledInput
@@ -115,11 +111,7 @@ const AuthForm = ({ type, form, onChange, onClick, onSubmit }) => {
           />
         )}
 
-        {type === 'register' && (
-          <Button small="true" onClick={onClick}>
-            인증하기
-          </Button>
-        )}
+        {type === 'register' && <Button small="true">인증하기</Button>}
         <StyledInput
           autoComplete="userpw"
           name="userpw"
@@ -139,7 +131,7 @@ const AuthForm = ({ type, form, onChange, onClick, onSubmit }) => {
           />
         )}
 
-        <ButtonWithMarginTop blue="true" fullwidth="true" onSubmit={onSubmit}>
+        <ButtonWithMarginTop blue="true" fullwidth="true">
           {text}
         </ButtonWithMarginTop>
       </form>
