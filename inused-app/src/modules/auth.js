@@ -1,52 +1,21 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-import { takeLatest } from 'redux-saga/effects';
-import createRequestSaga, {
-  createRequestActionTypes,
-} from '../lib/createRequestSaga';
-import * as authAPI from '../lib/api/auth';
-const CHANGE_FIELD = 'auth/CHANGE_FIELD';
-const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
-const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] =
-  createRequestActionTypes('auth/REGISTER');
-
-const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] =
-  createRequestActionTypes('auth/LOGIN');
+const CHANGE_FIELD = 'auth/CHANGE_FIELD'; //필드 변경 액션 정의
+const INITIALIZE_FORM = 'auth/INITIALIZE_FORM'; //폼 초기화 액션 정의
 
 export const changeField = createAction(
   CHANGE_FIELD,
   ({ form, key, value }) => ({
-    form, // register, login
-    key, // nickname, userid, userpw, userpwConfirm
+    form, //register, login
+    key, //userid, userpw, userpwConfirm, nickname
     value, //실제 바꾸려는 값
   })
 );
+export const initializeForm = createAction(INITIALIZE_FORM, (form) => form); //register/login
 
-export const initializeForm = createAction(INITIALIZE_FORM, ({ form }) => form); // register/login
-
-export const register = createAction(
-  REGISTER,
-  ({ nickname, userid, userpw }) => ({
-    nickname,
-    userid,
-    userpw,
-  })
-);
-
-export const login = createAction(LOGIN, ({ userid, userpw }) => ({
-  userid,
-  userpw,
-}));
-
-//사가 생성
-const registerSaga = createRequestSaga(REGISTER, authAPI, register);
-const loginSaga = createRequestSaga(LOGIN, authAPI, login);
-export function* authSaga() {
-  yield takeLatest(REGISTER, registerSaga);
-  yield takeLatest(LOGIN, loginSaga);
-}
-export const initialState = {
+const initialState = {
+  //초깃값 설정
   register: {
     nickname: '',
     userid: '',
@@ -57,38 +26,20 @@ export const initialState = {
     userid: '',
     userpw: '',
   },
-  auth: null,
-  authError: null,
 };
 
 const auth = handleActions(
+  //auth 리듀서 생성
   {
+    //CHANGE_FIELD, INITIALIZE_FORM 두 가지 액션 처리
     [CHANGE_FIELD]: (state, { payload: { form, key, value } }) =>
       produce(state, (draft) => {
-        draft[form][key] = value;
+        //immer의 produce를 사용하여 불변성 유지
+        draft[form][key] = value; //상태의 draft를 만들어 불변성을 유지하고, 지정된 form과 key의 필드를 새 값으로 업데이트
       }),
-    [INITIALIZE_FORM]: (state, { payload: { form } }) => ({
+    [INITIALIZE_FORM]: (state, { payload: form }) => ({
       ...state,
-      [form]: initialState[form],
-      authError: null,
-    }),
-    [REGISTER_SUCCESS]: (state, { payload: auth }) => ({
-      ...state,
-      authError: null,
-      auth,
-    }),
-    [REGISTER_FAILURE]: (state, { payload: error }) => ({
-      ...state,
-      authError: error,
-    }),
-    [LOGIN_SUCCESS]: (state, { payload: auth }) => ({
-      ...state,
-      authError: null,
-      auth,
-    }),
-    [LOGIN_FAILURE]: (state, { payload: error }) => ({
-      ...state,
-      authError: error,
+      [form]: initialState[form], //폼 초기화
     }),
   },
   initialState
