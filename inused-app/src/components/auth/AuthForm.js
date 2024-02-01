@@ -90,7 +90,11 @@ const AuthForm = ({ type, form, onChange, onClick, onSubmit }) => {
             value={form.nickname}
           />
         )}
-        {type === 'register' && <Button small="true">중복확인</Button>}
+        {type === 'register' && (
+          <Button small="true" onClick={onClick}>
+            중복확인
+          </Button>
+        )}
 
         {type === 'login' ? (
           <StyledInput
@@ -135,7 +139,7 @@ const AuthForm = ({ type, form, onChange, onClick, onSubmit }) => {
           />
         )}
 
-        <ButtonWithMarginTop blue="true" fullwidth="true">
+        <ButtonWithMarginTop blue="true" fullwidth="true" onSubmit={onSubmit}>
           {text}
         </ButtonWithMarginTop>
       </form>
