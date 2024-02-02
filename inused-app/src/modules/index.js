@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import auth from './auth';
+import auth, { authSaga } from './auth';
 import loading from './loading';
+import { all } from 'redux-saga/effects';
 
 const rootReducer = combineReducers({
   //루트 리듀서: 여러 리듀서를 합침
@@ -8,4 +9,7 @@ const rootReducer = combineReducers({
   loading, //로딩 리듀서
 });
 
+export function* rootSaga() {
+  yield all([authSaga()]);
+}
 export default rootReducer;
