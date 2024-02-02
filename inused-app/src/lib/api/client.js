@@ -8,7 +8,7 @@ const client = axios.create({
   },
 });
 
-// 요청 인터셉터(interceptor) 추가
+// 요청 인터셉터(interceptor)
 client.interceptors.request.use(
   (config) => {
     // 여기에 요청 전에 수행할 작업을 추가
@@ -20,7 +20,7 @@ client.interceptors.request.use(
   }
 );
 
-// 응답 인터셉터(interceptor) 추가
+// 응답 인터셉터(interceptor)
 client.interceptors.response.use(
   (response) => {
     // 여기에 응답을 받은 후 수행할 작업을 추가
