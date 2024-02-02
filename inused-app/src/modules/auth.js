@@ -1,8 +1,18 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
+import createRequestSaga from '../lib/createRequestSaga';
+import * as authAPI from '../lib/api/auth';
 
 const CHANGE_FIELD = 'auth/CHANGE_FIELD'; //필드 변경 액션 정의
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM'; //폼 초기화 액션 정의
+
+const REGISTER = 'auth/REGISTER'; //회원가입 요청 액션 정의
+const REGISTER_SUCCESS = 'auth/REGISTER_SUCCESS'; //회원가입 성공 액션 정의
+const REGISTER_FAILURE = 'auth/REGISTER_FAILURE'; //회원가입 실패 액션 정의
+
+const LOGIN = 'auth/LOGIN'; //로그인 요청 액션 정의
+const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS'; //로그인 성공 액션 정의
+const LOGIN_FAILURE = 'auth/LOGIN_FAILURE'; //로그인 실패 액션 정의
 
 export const changeField = createAction(
   CHANGE_FIELD,
@@ -13,6 +23,15 @@ export const changeField = createAction(
   })
 );
 export const initializeForm = createAction(INITIALIZE_FORM, (form) => form); //register/login
+
+export const register = createAction(
+  REGISTER,
+  ({ nickname, userid, userpw }) => ({
+    nickname,
+    userid,
+    userpw,
+  })
+);
 
 const initialState = {
   //초깃값 설정
