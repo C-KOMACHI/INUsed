@@ -7,36 +7,46 @@ const HeaderBlock = styled.div`
   width: 100%;
   background: ${palette.blue[0]};
 `;
+
 const Wrapper = styled.div`
-height: 4rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-.icon {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .icon {
     color: ${palette.gray[0]};
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    padding: 0.25rem 1rem;
-    margin-right: 0.5rem;
-    outline: none;
+    margin-right: 2rem;
     cursor: pointer;
-   
+
     &:hover {
-      background: ${palette.blue[0]};
+      color: ${palette.gray[1]};
     }
-    border-radius: 30px;
-    `;
+  }
+`;
+
+const LogoImage = styled.img`
+  width: 180px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  @media screen and (max-width: 426px) {
+    display: none;
+  }
+`;
 
 const SearchBar = styled.input`
   border: none;
   border-radius: 20px;
-  padding-bottom: 0.5rem;
+  padding-left: 2.5rem;
+  padding-top: 0.3rem;
   outline: none;
-  height: 30px;
-  margin: 1rem 1rem;
+  height: 40px;
   font-size: 0.9rem;
-  width: 50%;
+  margin-left: 5rem;
+  width: 20rem;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: 'Jua';
   background: url('https://api.iconify.design/ion/search.svg?color=%23aaa')
@@ -46,23 +56,52 @@ const SearchBar = styled.input`
   background-color: white;
 `;
 
+const Menu = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const MenuItem = styled.div`
+  margin-left: auto;
+  margin-right: 3rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: ${palette.gray[0]};
+
+  &:hover {
+    color: ${palette.gray[1]};
+  }
+`;
+
 const Spacer = styled.div`
   height: 4rem;
 `;
 
-const Header = () => {
-  return (
-    <>
-      <HeaderBlock>
-        <Wrapper>
-          <SearchBar autoComplete="search" name="search" />
-          <Icon className="icon" icon="streamline:notification-alarm-2" />
-        </Wrapper>
-      </HeaderBlock>
+const Header = () => (
+  <>
+    <HeaderBlock>
+      <Wrapper>
+        <LogoImage src="Logo.png" alt="logo" />
+        <Menu>
+          <MenuItem>카테고리</MenuItem>
+          <MenuItem>관심</MenuItem>
+          <MenuItem>채팅</MenuItem>
+          <MenuItem>내 프로필</MenuItem>
+        </Menu>
 
-      <Spacer />
-    </>
-  );
-};
+        <SearchBar
+          autoComplete="search"
+          name="search"
+          placeholder="물품을 검색해보세요"
+        />
+
+        <Icon className="icon" icon="streamline:notification-alarm-2" />
+      </Wrapper>
+    </HeaderBlock>
+
+    <Spacer />
+  </>
+);
 
 export default Header;
