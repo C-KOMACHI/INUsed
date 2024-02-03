@@ -75,7 +75,38 @@ const textMap = {
   register: '가입하기',
 };
 
-const AuthForm = ({ type, form, onChange, onSubmit }) => {
+/**
+ * 에러를 보여줌
+ */
+
+const ErrorMessage = styled.div`
+  color: ${palette.pink[1]};
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 0.8rem;
+
+  ${(props) =>
+    props.small &&
+    css`
+      margin: 0;
+      padding-bottom: 0.4rem;
+      font-size: 0.6rem;
+      text-align: left;
+      padding-left: 0.8rem;
+    `}
+`;
+
+const AuthForm = ({
+  type,
+  form,
+  onChange,
+  onSubmit,
+  checkNickname,
+  sendEmailVerification,
+  error,
+  emailError,
+  nicknameError,
+}) => {
   const text = textMap[type];
   return (
     <AuthFormBlock>
@@ -90,7 +121,13 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
             value={form.nickname}
           />
         )}
-        {type === 'register' && <Button small="true">중복확인</Button>}
+
+        {type === 'register' && (
+          <Button small="true" onClick={checkNickname}>
+            중복확인
+          </Button>
+        )}
+        {error && <ErrorMessage small="true">{nicknameError}</ErrorMessage>}
 
         {type === 'login' ? (
           <StyledInput
@@ -111,7 +148,13 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
           />
         )}
 
-        {type === 'register' && <Button small="true">인증하기</Button>}
+        {type === 'register' && (
+          <Button small="true" onClick={sendEmailVerification}>
+            인증하기
+          </Button>
+        )}
+        {error && <ErrorMessage small="true">{emailError}</ErrorMessage>}
+
         <StyledInput
           autoComplete="userpw"
           name="userpw"
@@ -130,6 +173,7 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
             value={form.userpwConfirm}
           />
         )}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <ButtonWithMarginTop blue="true" fullwidth="true">
           {text}
