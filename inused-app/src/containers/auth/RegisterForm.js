@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, register } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const [error, setError] = useState(null);
@@ -10,6 +11,7 @@ const RegisterForm = () => {
   const [nicknameConfirm, setnicknameConfirm] = useState(null);
   const [emailConfirm, setemailConfirm] = useState(null);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { form, auth, authError } = useSelector(({ auth }) => ({
     form: auth.register, // register form 선택
@@ -118,9 +120,9 @@ const RegisterForm = () => {
     if (auth) {
       console.log('회원가입 성공');
       console.log(auth);
-      // TODO: 성공 시 처리 로직 작성
+      navigate('/');
     }
-  }, [auth, authError]);
+  }, [auth, authError, navigate]);
 
   return (
     <AuthForm
