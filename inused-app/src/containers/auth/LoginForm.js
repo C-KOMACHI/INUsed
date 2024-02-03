@@ -35,6 +35,7 @@ const LoginForm = () => {
       setError('빈 칸을 모두 입력하세요.');
       return;
     }
+    navigate('/main'); //레이아웃 만들 때만 사용
     dispatch(login({ userid, userpw })); // login 액션 dispatch
   };
 
