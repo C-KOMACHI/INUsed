@@ -3,6 +3,7 @@ import axios from 'axios';
 //axios 설정
 const client = axios.create({
   baseURL: 'http://ec2-3-34-111-53.ap-northeast-2.compute.amazonaws.com:8080', // API의 기본 URL
+  timeout: 5000,
   headers: {
     'Content-Type': 'application/json', // 요청 시에 JSON 형식으로 데이터를 보내도록 설정
   },
