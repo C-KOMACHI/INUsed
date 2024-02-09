@@ -21,6 +21,24 @@ const Wrapper = styled(Responsive)`
     height: 25px;
     cursor: pointer;
     display: flex;
+    margin-left: 1rem;
+
+    &:hover {
+      color: ${palette.gray[1]};
+    }
+  }
+
+  .searchIcon {
+    display: none;
+    color: ${palette.gray[0]};
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+    margin-right: 2rem;
+    @media (max-width: 999px) {
+      display: block;
+    }
+    margin-right: 0;
 
     &:hover {
       color: ${palette.gray[1]};
@@ -30,7 +48,7 @@ const Wrapper = styled(Responsive)`
 
 const LogoImage = styled.img`
   width: 150px;
-  margin-right: 2rem;
+  margin-right: auto;
   display: flex;
 `;
 
@@ -39,7 +57,7 @@ const SearchBar = styled.input`
   border-radius: 20px;
   padding-left: 2.5rem;
   padding-top: 0.3rem;
-  margin-left: 10rem;
+
   outline: none;
   height: 35px;
   font-size: 0.8rem;
@@ -73,6 +91,7 @@ const Header = () => (
           name="search"
           placeholder="물품을 검색해보세요"
         />
+        <Icon className="searchIcon" icon="ion:search" />
 
         <Icon className="icon" icon="streamline:notification-alarm-2" />
       </Wrapper>
