@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 const HeaderBlock = styled.div`
   position: fixed;
   width: 100%;
+
   background: ${palette.blue[0]};
 `;
 
@@ -56,24 +57,6 @@ const SearchBar = styled.input`
   background-color: white;
 `;
 
-const Menu = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const MenuItem = styled.div`
-  margin-left: auto;
-  margin-right: 3rem;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: ${palette.gray[0]};
-
-  &:hover {
-    color: ${palette.gray[1]};
-  }
-`;
-
 const Spacer = styled.div`
   height: 4rem;
 `;
@@ -83,12 +66,6 @@ const Header = () => (
     <HeaderBlock>
       <Wrapper>
         <LogoImage src="Logo.png" alt="logo" />
-        <Menu>
-          <MenuItem>카테고리</MenuItem>
-          <MenuItem>관심</MenuItem>
-          <MenuItem>채팅</MenuItem>
-          <MenuItem>내 프로필</MenuItem>
-        </Menu>
 
         <SearchBar
           autoComplete="search"
