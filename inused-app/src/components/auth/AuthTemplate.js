@@ -17,7 +17,7 @@ const AuthTemplateBlock = styled.div`
   /* flex로 내부 내용 중앙 정렬 */
   display: flex;
   flex-direction: column;
-  fustify-content: center;
+  justify-content: center;
   align-items: center;
 `;
 

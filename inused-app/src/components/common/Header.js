@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { Icon } from '@iconify/react';
+import Responsive from './Responsive';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -8,7 +9,7 @@ const HeaderBlock = styled.div`
   background: ${palette.blue[0]};
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(Responsive)`
   height: 4rem;
   display: flex;
   align-items: center;
@@ -16,11 +17,28 @@ const Wrapper = styled.div`
 
   .icon {
     color: ${palette.gray[0]};
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    margin-left: 1rem;
+
+    &:hover {
+      color: ${palette.gray[1]};
+    }
+  }
+
+  .searchIcon {
+    display: none;
+    color: ${palette.gray[0]};
+    width: 27px;
+    height: 27px;
     cursor: pointer;
     margin-right: 2rem;
-    cursor: pointer;
+    @media (max-width: 999px) {
+      display: block;
+    }
+    margin-right: 0;
 
     &:hover {
       color: ${palette.gray[1]};
@@ -29,12 +47,9 @@ const Wrapper = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 180px;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  @media screen and (max-width: 426px) {
-    display: none;
-  }
+  width: 150px;
+  margin-right: auto;
+  display: flex;
 `;
 
 const SearchBar = styled.input`
@@ -42,36 +57,23 @@ const SearchBar = styled.input`
   border-radius: 20px;
   padding-left: 2.5rem;
   padding-top: 0.3rem;
+
   outline: none;
-  height: 40px;
-  font-size: 0.9rem;
-  margin-left: 5rem;
+  height: 35px;
+  font-size: 0.8rem;
   width: 20rem;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: 'Jua';
+  @media (max-width: 1000px) {
+    display: none;
+  }
+
+  //검색 아이콘
   background: url('https://api.iconify.design/ion/search.svg?color=%23aaa')
     no-repeat;
   background-size: 20px 20px;
   background-position: 13px center;
   background-color: white;
-`;
-
-const Menu = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const MenuItem = styled.div`
-  margin-left: auto;
-  margin-right: 3rem;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: ${palette.gray[0]};
-
-  &:hover {
-    color: ${palette.gray[1]};
-  }
 `;
 
 const Spacer = styled.div`
@@ -83,18 +85,13 @@ const Header = () => (
     <HeaderBlock>
       <Wrapper>
         <LogoImage src="Logo.png" alt="logo" />
-        <Menu>
-          <MenuItem>카테고리</MenuItem>
-          <MenuItem>관심</MenuItem>
-          <MenuItem>채팅</MenuItem>
-          <MenuItem>내 프로필</MenuItem>
-        </Menu>
 
         <SearchBar
           autoComplete="search"
           name="search"
           placeholder="물품을 검색해보세요"
         />
+        <Icon className="searchIcon" icon="ion:search" />
 
         <Icon className="icon" icon="streamline:notification-alarm-2" />
       </Wrapper>
