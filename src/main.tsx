@@ -4,7 +4,7 @@ import { Router } from './router';
 import 'normalize.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Router />
-  </StrictMode>
+    <StrictMode>
+        <Router />
+    </StrictMode>,
 );
