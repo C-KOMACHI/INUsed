@@ -1,10 +1,13 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import { Router } from './router';
-import 'normalize.css';
+import '@stackflow/plugin-basic-ui/index.css';
+import { Stack } from './stackflow';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <Router />
-    </StrictMode>,
-);
+const App: React.FC = () => {
+    return (
+        <div>
+            안뇽
+            <Stack />
+        </div>
+    );
+};
+
+export default App;
