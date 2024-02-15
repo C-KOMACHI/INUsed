@@ -1,3 +1,4 @@
 export * from './Input';
-export * from './Button';
+export * from './LoginButton';
 export * from './Logo';
+export * from './Footer';

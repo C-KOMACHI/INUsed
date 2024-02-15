@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import { Stack, Box } from '@mui/material';
-import { Input, Button, Logo } from '@/components/atoms';
+import { Input, LoginButton, Logo } from '@/components/atoms';
 
 const style = {
     width: '350px',
     alignItems: 'center',
-    padding: '2rem',
+    padding: '2rem 2rem 0 2rem',
 };
 export const FormBox: FC = () => {
     return (
@@ -14,7 +14,7 @@ export const FormBox: FC = () => {
                 <Logo src="Logo.png" alt="logo" />
                 <Input placeholder="이메일" />
                 <Input placeholder="비밀번호" />
-                <Button>로그인</Button>
+                <LoginButton>로그인</LoginButton>
             </Stack>
         </Box>
     );
