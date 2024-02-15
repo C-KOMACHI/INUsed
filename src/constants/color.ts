@@ -12,6 +12,7 @@ export const COLOR = {
     },
     gray: {
         main: 'rgba(0, 0, 0, 0.75)',
-        input: '#AAAAAA',
+        icon: '#AAAAAA',
+        dark: '#4d4d4d',
     },
 };
