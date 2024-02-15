@@ -1,16 +1,22 @@
 import type { FC } from 'react';
 import { Stack, Box, Button, Grid } from '@mui/material';
 import styled from '@emotion/styled';
+import { useFlow } from '@/stackflow';
 import { COLOR } from '@/constants';
 
 const style = {
-    containers: {
+    container1: {
         width: '350px',
         padding: '0.5rem 0 0 2.7rem',
         display: 'flex',
     },
+    container2: {
+        width: '350px',
+        padding: '0.5rem 0 0 15.5rem',
+        display: 'flex',
+    },
     button: {
-        color: `${COLOR.gray.main}`,
+        color: COLOR.gray.main,
         fontFamily: 'Jua',
     },
 };
@@ -25,26 +31,52 @@ const StyledFooter = styled.div`
     }
 `;
 
-export const Footer: FC = () => {
+interface Props {
+    login?: boolean;
+    register?: boolean;
+}
+
+export const Footer: FC<Props> = ({ login, register }) => {
+    const { push } = useFlow();
+
+    const handleClick = () => {
+        push('Register', {
+            title: '회원 가입',
+        });
+    };
     return (
         <StyledFooter>
-            <Box sx={style.containers}>
-                <Stack>
+            <Stack>
+                <Box sx={style.container1}>
                     <Stack direction="row" spacing={15}>
                         <Grid item xs={6}>
-                            <Button size="small" sx={style.button}>
-                                비밀번호 찾기
-                            </Button>
+                            {login && (
+                                <Button size="small" sx={style.button}>
+                                    비밀번호 찾기
+                                </Button>
+                            )}
                         </Grid>
                         <Grid item xs={6}>
-                            <Button size="small" sx={style.button}>
-                                회원 가입
-                            </Button>
+                            {login && (
+                                <Button size="small" sx={style.button} onClick={handleClick}>
+                                    회원 가입
+                                </Button>
+                            )}
                         </Grid>
                     </Stack>
-                    <p>Product By C-Komachi</p>
-                </Stack>
-            </Box>
+                </Box>
+                <Box sx={style.container2}>
+                    <Stack>
+                        {register && (
+                            <Button size="small" sx={style.button} onClick={handleClick}>
+                                로그인하기
+                            </Button>
+                        )}
+                    </Stack>
+                </Box>
+
+                <p>Product By C-Komachi</p>
+            </Stack>
         </StyledFooter>
     );
 };
