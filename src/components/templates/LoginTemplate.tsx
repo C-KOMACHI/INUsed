@@ -1,12 +1,6 @@
 import type { FC } from 'react';
-import { Input, Button } from '@/components/atoms';
+import { FormBox } from '@/components/organisms';
 
 export const LoginTemplate: FC = () => {
-    return (
-        <>
-            <Input />
-            <Input />
-            <Button />;
-        </>
-    );
+    return <FormBox />;
 };
