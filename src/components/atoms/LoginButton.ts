@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { COLOR } from '@/constants';
 
-export const Button = styled.button`
+export const LoginButton = styled.button`
+    border: none;
     border-radius: 4px;
     font-size: 1rem;
     padding: 0.25rem 1rem;
@@ -13,4 +14,6 @@ export const Button = styled.button`
     padding-bottom: 0.75rem;
     width: 100%;
     font-size: 1.125rem;
+    color: ${COLOR.white.main};
+    font-family: 'Jua';
 `;
