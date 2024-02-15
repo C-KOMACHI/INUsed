@@ -38,7 +38,6 @@ export const FormBox: FC<Props> = ({ login, register }) => {
                             </Button>
                         </Stack>
                         <Stack direction="row" spacing={2}>
-                            <Input placeholder="학교 이메일" small />
                             <Button size="small" sx={style.button} variant="contained" endIcon={<SendIcon />}>
                                 인증하기
                             </Button>
