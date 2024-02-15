@@ -1,6 +1,12 @@
 import type { FC } from 'react';
-import { Input } from '@/components/atoms';
+import { Input, Button } from '@/components/atoms';
 
-export const HomeTemplate: FC = () => {
-    return <Input />;
+export const LoginTemplate: FC = () => {
+    return (
+        <>
+            <Input />
+            <Input />
+            <Button />;
+        </>
+    );
 };
