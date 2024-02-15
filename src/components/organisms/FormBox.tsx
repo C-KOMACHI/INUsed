@@ -7,14 +7,21 @@ const style = {
     alignItems: 'center',
     padding: '2rem 2rem 0 2rem',
 };
-export const FormBox: FC = () => {
+
+interface Props {
+    login?: boolean;
+    register?: boolean;
+}
+export const FormBox: FC<Props> = ({ login, register }) => {
     return (
         <Box sx={style}>
             <Stack spacing={2}>
                 <Logo src="Logo.png" alt="logo" />
-                <Input placeholder="이메일" />
+                {register && <Input placeholder="닉네임" />}
+                <Input placeholder="학교 이메일" />
                 <Input placeholder="비밀번호" />
-                <LoginButton>로그인</LoginButton>
+                {register && <Input placeholder="비밀번호 확인" />}
+                {login ? <LoginButton>로그인</LoginButton> : <LoginButton>회원가입</LoginButton>}
             </Stack>
         </Box>
     );

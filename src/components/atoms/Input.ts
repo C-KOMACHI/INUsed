@@ -11,6 +11,9 @@ export const Input = styled.input`
     text-align: 10px center;
     padding-left: 1rem;
     font-family: 'Jua';
-    font-color: ${COLOR.gray.input};
     outline: none;
+
+    &::placeholder {
+        color: ${COLOR.gray.icon};
+    }
 `;
