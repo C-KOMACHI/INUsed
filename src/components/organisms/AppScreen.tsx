@@ -13,7 +13,7 @@ export const AppScreen: FC<Props> = ({ children, title, center }) => {
         <StackFlowAppScreen
             appBar={{
                 title,
-                iconColor: COLOR.gray.icon,
+                iconColor: COLOR.gray.main,
             }}
         >
             <Container
