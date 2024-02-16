@@ -32,6 +32,7 @@ const RAW_RUNTIME_STATE =
           ["@emotion/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:11.11.3"],\
           ["@emotion/styled", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:11.11.0"],\
           ["@fontsource/roboto", "npm:5.0.8"],\
+          ["@iconify/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:4.1.1"],\
           ["@mui/icons-material", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.15.10"],\
           ["@mui/material", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.15.10"],\
           ["@mui/styled-engine-sc", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:6.0.0-alpha.16"],\
@@ -1212,6 +1213,38 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../.yarn/berry/cache/@humanwhocodes-object-schema-npm-2.0.2-77b42018f9-10c0.zip/node_modules/@humanwhocodes/object-schema/",\
         "packageDependencies": [\
           ["@humanwhocodes/object-schema", "npm:2.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@iconify/react", [\
+      ["npm:4.1.1", {\
+        "packageLocation": "../.yarn/berry/cache/@iconify-react-npm-4.1.1-f66d08052a-10c0.zip/node_modules/@iconify/react/",\
+        "packageDependencies": [\
+          ["@iconify/react", "npm:4.1.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:4.1.1", {\
+        "packageLocation": "./.yarn/__virtual__/@iconify-react-virtual-55d7e8a3c4/2/.yarn/berry/cache/@iconify-react-npm-4.1.1-f66d08052a-10c0.zip/node_modules/@iconify/react/",\
+        "packageDependencies": [\
+          ["@iconify/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:4.1.1"],\
+          ["@iconify/types", "npm:2.0.0"],\
+          ["@types/react", "npm:18.2.55"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@iconify/types", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "../.yarn/berry/cache/@iconify-types-npm-2.0.0-faa2398199-10c0.zip/node_modules/@iconify/types/",\
+        "packageDependencies": [\
+          ["@iconify/types", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5000,6 +5033,7 @@ const RAW_RUNTIME_STATE =
           ["@emotion/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:11.11.3"],\
           ["@emotion/styled", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:11.11.0"],\
           ["@fontsource/roboto", "npm:5.0.8"],\
+          ["@iconify/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:4.1.1"],\
           ["@mui/icons-material", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.15.10"],\
           ["@mui/material", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.15.10"],\
           ["@mui/styled-engine-sc", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:6.0.0-alpha.16"],\
