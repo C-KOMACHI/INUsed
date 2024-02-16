@@ -1,6 +1,6 @@
 import { stackflow } from '@stackflow/react';
 import { basicRendererPlugin } from '@stackflow/plugin-renderer-basic';
-import { Login, Register } from '@/activities';
+import { Login, Register, Main } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
     transitionDuration: 350,
@@ -8,8 +8,9 @@ export const { Stack, useFlow, activities } = stackflow({
     activities: {
         Login,
         Register,
+        Main,
     },
-    initialActivity: () => 'Login',
+    initialActivity: () => 'Main',
 });
 
 export type TypeActivities = typeof activities;
