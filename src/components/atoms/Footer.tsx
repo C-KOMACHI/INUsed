@@ -38,11 +38,15 @@ interface Props {
 
 export const Footer: FC<Props> = ({ login, register }) => {
     const { push } = useFlow();
+    const { pop } = useFlow();
 
-    const handleClick = () => {
+    const handleClickRegister = () => {
         push('Register', {
             title: '회원 가입',
         });
+    };
+    const handleClickLogin = () => {
+        pop();
     };
     return (
         <StyledFooter>
@@ -58,7 +62,7 @@ export const Footer: FC<Props> = ({ login, register }) => {
                         </Grid>
                         <Grid item xs={6}>
                             {login && (
-                                <Button size="small" sx={style.button} onClick={handleClick}>
+                                <Button size="small" sx={style.button} onClick={handleClickRegister}>
                                     회원 가입
                                 </Button>
                             )}
@@ -68,7 +72,7 @@ export const Footer: FC<Props> = ({ login, register }) => {
                 <Box sx={style.container2}>
                     <Stack>
                         {register && (
-                            <Button size="small" sx={style.button} onClick={handleClick}>
+                            <Button size="small" sx={style.button} onClick={handleClickLogin}>
                                 로그인하기
                             </Button>
                         )}

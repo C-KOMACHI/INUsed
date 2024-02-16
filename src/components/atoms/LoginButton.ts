@@ -16,4 +16,7 @@ export const LoginButton = styled.button`
     font-size: 1.125rem;
     color: ${COLOR.white.main};
     font-family: 'Jua';
+    &:hover {
+        background: ${COLOR.blue.hover};
+    }
 `;
