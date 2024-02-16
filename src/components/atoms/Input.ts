@@ -3,6 +3,7 @@ import { COLOR } from '@/constants';
 
 interface Props {
     small?: boolean;
+    search?: boolean;
 }
 
 export const Input = styled.input<Props>`
@@ -16,6 +17,17 @@ export const Input = styled.input<Props>`
     padding-left: 1rem;
     font-family: 'Jua';
     outline: none;
+
+    //검색 아이콘
+    ${(props) =>
+        props.search &&
+        `
+            background: url('https://api.iconify.design/ion/search.svg?color=%23aaa') no-repeat;
+            background-size: 20px 20px;
+            background-position: 13px center;
+            background-color: white;
+            padding-left: 2.5rem;
+          `}
 
     &::placeholder {
         color: ${COLOR.gray.main};
