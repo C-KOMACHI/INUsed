@@ -13,9 +13,10 @@ import { useFlow } from '@/stackflow';
 
 const style = {
     container: {
-        width: '100%',
         position: 'fixed',
         bottom: '0',
+        width: '100%',
+        maxWidth: '720px',
     },
 
     button: {

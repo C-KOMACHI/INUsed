@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
-export const Logo = styled.img`
-    width: 280px;
+interface Props {
+    small?: boolean;
+}
+
+export const Logo = styled.img<Props>`
+    width: ${(props) => (props.small ? '150px' : '280px')};
 `;

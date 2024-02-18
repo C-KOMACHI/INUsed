@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Box } from '@mui/material';
 import { NotificationsNone as AlarmIcon } from '@mui/icons-material';
-import { Input } from '@/components/atoms';
+import { Input, Logo } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
 const style = {
@@ -12,17 +12,21 @@ const style = {
         alignItems: 'center',
         top: '0',
         justifyContent: 'center',
-        height: '56px',
+        height: '66px',
+        maxWidth: '720px',
+        padding: '0 0 0 12px',
     },
     button: {
         color: COLOR.gray.main,
+        margin: '0 12px',
     },
 };
 
 export const Header: FC = () => {
     return (
-        <Box sx={style.container} gap="5rem">
-            <Input search small placeholder="물품을 검색해보세요" />
+        <Box sx={style.container}>
+            <Logo small src="Logo.png" alt="logo" />
+            <Input search placeholder="물품을 검색해보세요" />
             <AlarmIcon sx={style.button} fontSize="large" />
         </Box>
     );
