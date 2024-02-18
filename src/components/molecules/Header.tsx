@@ -12,7 +12,7 @@ const style = {
         alignItems: 'center',
         top: 0,
         justifyContent: 'center',
-        height: '60px',
+        height: '55px',
         maxWidth: '767px',
         padding: '0 0 0 12px',
         background: COLOR.blue.main,

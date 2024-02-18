@@ -28,6 +28,7 @@ export const Input = styled.input<Props>`
             background-color: white;
             padding-left: 2.5rem;
             margin: 0 0 0 12px;
+            height: 40px;
           `}
 
     &::placeholder {
