@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Stack, Box } from '@mui/material';
+import { Stack, Box, Divider } from '@mui/material';
 import { PostItem } from '@/components/molecules';
 import { COLOR } from '@/constants';
 
@@ -17,6 +17,7 @@ interface Props {
 
 const style = {
     width: '100%',
+    padding: '1.5rem 0 0.35rem 0',
     maxWidth: '767px',
     height: '82vh',
     overflowX: 'hidden',
@@ -26,9 +27,14 @@ const style = {
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Box sx={style}>
-            <Stack spacing={2}>
+            <Stack spacing={1}>
                 {posts.map(({ id, src, title, subTitle, body }) => {
-                    return <PostItem key={id} src={src} title={title} subTitle={subTitle} body={body} />;
+                    return (
+                        <Stack spacing={3} key={id}>
+                            <PostItem src={src} title={title} subTitle={subTitle} body={body} />
+                            <Divider />
+                        </Stack>
+                    );
                 })}
             </Stack>
         </Box>
