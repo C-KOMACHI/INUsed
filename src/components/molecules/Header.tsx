@@ -12,6 +12,7 @@ const style = {
         alignItems: 'center',
         top: '0',
         justifyContent: 'center',
+        height: '56px',
     },
     button: {
         color: COLOR.gray.main,
@@ -21,7 +22,7 @@ const style = {
 export const Header: FC = () => {
     return (
         <Box sx={style.container} gap="5rem">
-            <Input search placeholder="물품을 검색해보세요" />
+            <Input search small placeholder="물품을 검색해보세요" />
             <AlarmIcon sx={style.button} fontSize="large" />
         </Box>
     );
