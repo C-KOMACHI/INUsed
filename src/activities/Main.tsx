@@ -1,12 +1,11 @@
 import type { ActivityComponentType } from '@stackflow/react';
 import { Suspense } from 'react';
-import { BottomMenubar, Input } from '@/components/atoms';
+import { MainTemplate } from '@/components/templates';
 
 export const Main: ActivityComponentType = () => {
     return (
         <Suspense>
-            <Input search />
-            <BottomMenubar />
+            <MainTemplate />
         </Suspense>
     );
 };
