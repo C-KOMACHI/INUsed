@@ -14,7 +14,7 @@ const posts = [
 
 export const MainTemplate: FC = () => {
     return (
-        <AppScreen center>
+        <AppScreen center main>
             <Header />
             <PostList posts={posts} />
             <BottomMenubar />

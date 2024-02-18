@@ -1,7 +1,8 @@
 import type { FC } from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Stack, Divider } from '@mui/material';
 import { FavoriteBorder as HeartIcon } from '@mui/icons-material';
 import { Image, Text } from '@/components/atoms';
+import { COLOR } from '@/constants';
 
 interface Props {
     src: string;
@@ -14,20 +15,24 @@ const style = {
     position: 'absolute',
     bottom: '0',
     right: '3rem',
+    color: COLOR.gray.main,
 };
 
 export const PostItem: FC<Props> = ({ src, title, subTitle, body }) => {
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={4}>
-                <Image src={src} alt={title} />
+        <Stack spacing={2}>
+            <Grid container spacing={2}>
+                <Grid item xs={4}>
+                    <Image src={src} alt={title} />
+                </Grid>
+                <Grid item xs={8} sx={{ position: 'relative' }}>
+                    <Text type="title">{title}</Text>
+                    {subTitle && <Text type="subtitle">{subTitle}</Text>}
+                    {body && <Text type="body">{body}</Text>}
+                    <HeartIcon sx={style} />
+                </Grid>
             </Grid>
-            <Grid item xs={8} sx={{ position: 'relative' }}>
-                <Text type="title">{title}</Text>
-                {subTitle && <Text type="subtitle">{subTitle}</Text>}
-                {body && <Text type="body">{body}</Text>}
-                <HeartIcon sx={style} />
-            </Grid>
-        </Grid>
+            <Divider />
+        </Stack>
     );
 };
