@@ -39,7 +39,7 @@ export const BottomMenubar: FC = () => {
                     }
                 }}
                 sx={{
-                    background: COLOR.blue.main,
+                    background: COLOR.blue.menubar,
                 }}
             >
                 <BottomNavigationAction label="홈" icon={<HomeIcon />} sx={style.button} />

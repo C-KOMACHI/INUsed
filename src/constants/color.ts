@@ -3,6 +3,7 @@ export const COLOR = {
         main: 'linear-gradient(135deg, #e7f0fd 0%,#accbee 100%)',
         button: '#ACCBEE',
         hover: '#80B0E6',
+        menubar: '#E2EDFA',
     },
     pink: {
         main: 'linear-gradient(135deg, #dad4ec 0%,#f3e7e9 100%)',
