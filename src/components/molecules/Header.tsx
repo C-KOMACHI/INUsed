@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Box } from '@mui/material';
 import { NotificationsNone as AlarmIcon } from '@mui/icons-material';
-import { Input, Logo } from '@/components/atoms';
+import { Input } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
 const style = {
