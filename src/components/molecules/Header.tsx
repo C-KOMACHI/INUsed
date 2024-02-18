@@ -13,8 +13,10 @@ const style = {
         top: '0',
         justifyContent: 'center',
         height: '66px',
-        maxWidth: '720px',
+        maxWidth: '767px',
         padding: '0 0 0 12px',
+        background: COLOR.blue.main,
+        overflowX: 'hidden',
     },
     button: {
         color: COLOR.gray.main,

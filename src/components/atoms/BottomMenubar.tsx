@@ -16,7 +16,8 @@ const style = {
         position: 'fixed',
         bottom: '0',
         width: '100%',
-        maxWidth: '720px',
+        maxWidth: '767px',
+        overflowX: 'hidden',
     },
 
     button: {

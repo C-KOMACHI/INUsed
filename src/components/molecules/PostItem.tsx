@@ -12,10 +12,10 @@ interface Props {
 export const PostItem: FC<Props> = ({ src, title, subTitle, body }) => {
     return (
         <Grid container spacing={2}>
-            <Grid item xs={2}>
+            <Grid item xs={4}>
                 <Image src={src} alt={title} />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={8}>
                 <Text type="title">{title}</Text>
                 {subTitle && <Text type="subtitle">{subTitle}</Text>}
                 {body && <Text type="body">{body}</Text>}
