@@ -10,6 +10,7 @@ const style = {
         width: '350px',
         alignItems: 'center',
         padding: '2rem 2rem 0 2rem',
+        margin: '7rem 0 0 0',
     },
     button: {
         borderRadius: '30px',
@@ -38,6 +39,7 @@ export const FormBox: FC<Props> = ({ login, register }) => {
                             </Button>
                         </Stack>
                         <Stack direction="row" spacing={2}>
+                            <Input placeholder="학교 이메일" small />
                             <Button size="small" sx={style.button} variant="contained" endIcon={<SendIcon />}>
                                 인증하기
                             </Button>
