@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { Box } from '@mui/material';
 import { AppScreen, PostList } from '@/components/organisms';
 import { Header } from '@/components/molecules';
 import { BottomMenubar } from '@/components/atoms';

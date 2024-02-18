@@ -26,7 +26,7 @@ const StyledFooter = styled.div`
         font-size: 0.9rem;
         font-family: 'Jura';
         color: ${COLOR.pink.footer};
-        padding-top: 3rem;
+        padding-top: 2.3rem;
         text-align: center;
     }
 `;
