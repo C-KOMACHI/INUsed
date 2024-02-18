@@ -5,7 +5,7 @@ import { Footer } from '@/components/atoms';
 
 export const RegisterTemplate: FC = () => {
     return (
-        <AppScreen center>
+        <AppScreen center login>
             <Stack>
                 <FormBox register />
                 <Footer register />

@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Stack } from '@mui/material';
 import { AppScreen, PostList } from '@/components/organisms';
 import { Header } from '@/components/molecules';
 import { BottomMenubar } from '@/components/atoms';
@@ -15,9 +16,11 @@ const posts = [
 export const MainTemplate: FC = () => {
     return (
         <AppScreen center>
-            <Header />
-            <PostList posts={posts} />
-            <BottomMenubar />
+            <Stack direction="row">
+                <Header />
+                <PostList posts={posts} />
+                <BottomMenubar />
+            </Stack>
         </AppScreen>
     );
 };

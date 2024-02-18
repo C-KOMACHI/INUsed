@@ -6,9 +6,10 @@ import { COLOR } from '@/constants';
 interface Props extends AppScreenProps {
     title?: string;
     center?: boolean;
+    login?: boolean;
 }
 
-export const AppScreen: FC<Props> = ({ children, title, center }) => {
+export const AppScreen: FC<Props> = ({ children, title, center, login }) => {
     return (
         <StackFlowAppScreen
             appBar={{
@@ -19,19 +20,19 @@ export const AppScreen: FC<Props> = ({ children, title, center }) => {
             <Container
                 disableGutters
                 maxWidth={false}
-                sx={
-                    center
-                        ? {
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              display: 'flex',
-                              height: '100%',
-                              background: COLOR.blue.main,
-                              overflowX: 'hidden',
-                              maxWidth: '767px',
-                          }
-                        : null
-                }
+                sx={{
+                    ...(center && {
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        display: 'flex',
+                        height: '100%',
+                        overflowX: 'hidden',
+                        maxWidth: '767px',
+                    }),
+                    ...(login && {
+                        background: COLOR.blue.main,
+                    }),
+                }}
                 component="main"
             >
                 {children}

@@ -17,9 +17,9 @@ interface Props {
 
 const style = {
     width: '100%',
-    padding: '1.5rem 0 0.35rem 0',
+    padding: '1.8rem 0 0.9rem 0',
     maxWidth: '767px',
-    height: '82vh',
+    height: '50vh',
     overflowX: 'hidden',
     background: COLOR.white.main,
 };
