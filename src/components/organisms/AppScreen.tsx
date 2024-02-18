@@ -27,6 +27,8 @@ export const AppScreen: FC<Props> = ({ children, title, center }) => {
                               display: 'flex',
                               height: '100%',
                               background: COLOR.blue.main,
+                              overflowX: 'hidden',
+                              maxWidth: '767px',
                           }
                         : null
                 }

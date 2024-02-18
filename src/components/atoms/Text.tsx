@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 import { Typography, type TypographyTypeMap } from '@mui/material';
 
 const variant = {
-    title: 'h5',
+    title: 'h6',
     subtitle: 'subtitle2',
     body: 'body1',
 };
