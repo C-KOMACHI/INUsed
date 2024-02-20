@@ -22,6 +22,9 @@ const style = {
 
     button: {
         color: COLOR.gray.main,
+        '& .MuiBottomNavigationAction-label': {
+            fontSize: '0.7rem',
+        },
     },
 };
 
