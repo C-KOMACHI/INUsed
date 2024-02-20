@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { COLOR } from '@/constants';
 
-export const LoginButton = styled.button`
+export const Button = styled.button`
     border: none;
     border-radius: 4px;
     font-size: 1rem;
