@@ -2,14 +2,16 @@ import type { FC } from 'react';
 import { Container } from '@mui/material';
 import { AppScreen as StackFlowAppScreen, type AppScreenProps } from '@stackflow/plugin-basic-ui';
 import { COLOR } from '@/constants';
+import { BottomMenubar } from './BottomMenubar';
 
 interface Props extends AppScreenProps {
     title?: string;
     center?: boolean;
     main?: boolean;
+    bottomNavigation?: boolean;
 }
 
-export const AppScreen: FC<Props> = ({ children, title, center, main }) => {
+export const AppScreen: FC<Props> = ({ children, title, center, bottomNavigation }) => {
     return (
         <StackFlowAppScreen
             appBar={{
@@ -32,15 +34,11 @@ export const AppScreen: FC<Props> = ({ children, title, center, main }) => {
                               maxWidth: '767px',
                           }
                         : null),
-                    ...(main
-                        ? {
-                              background: COLOR.white.main,
-                          }
-                        : null),
                 }}
                 component="main"
             >
                 {children}
+                {bottomNavigation && <BottomMenubar />}
             </Container>
         </StackFlowAppScreen>
     );

@@ -3,7 +3,6 @@ import { Fab, Stack } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import { AppScreen, PostList } from '@/components/organisms';
 import { Header } from '@/components/molecules';
-import { BottomMenubar } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
 const posts = [
@@ -33,14 +32,13 @@ const style = {
 
 export const MainTemplate: FC = () => {
     return (
-        <AppScreen center main>
+        <AppScreen center bottomNavigation>
             <Stack sx={{ position: 'relative' }}>
                 <Header />
                 <PostList posts={posts} />
                 <Fab sx={style.fab}>
                     <AddIcon sx={style.icon} />
                 </Fab>
-                <BottomMenubar />
             </Stack>
         </AppScreen>
     );
