@@ -7,7 +7,6 @@ import { BottomMenubar } from './BottomMenubar';
 interface Props extends AppScreenProps {
     title?: string;
     center?: boolean;
-    main?: boolean;
     bottomNavigation?: boolean;
 }
 
