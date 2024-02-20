@@ -17,10 +17,10 @@ interface Props {
 
 const style = {
     width: '100%',
-    maxWidth: '767px',
     height: '80vh',
     overflowX: 'hidden',
     background: COLOR.white.main,
+    paddingTop: '7px',
 };
 
 export const PostList: FC<Props> = ({ posts }) => {

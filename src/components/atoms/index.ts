@@ -1,5 +1,5 @@
 export * from './Input';
-export * from './LoginButton';
+export * from './Button';
 export * from './Logo';
 export * from './Footer';
 export * from './BottomMenubar';
