@@ -24,6 +24,7 @@ const style = {
         color: COLOR.gray.main,
         '& .MuiBottomNavigationAction-label': {
             fontSize: '0.7rem',
+            fontFamily: 'Jua',
         },
     },
 };

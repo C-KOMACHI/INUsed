@@ -1,8 +1,7 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider } from '@mui/material';
 import { MoreVert as MenuIcon } from '@mui/icons-material';
-import { Image, Text } from '@/components/atoms';
-import { HeartIcon } from '@/components/atoms';
+import { Image, Text, HeartIcon } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
 interface Props {
