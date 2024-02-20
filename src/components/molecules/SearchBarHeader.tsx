@@ -25,7 +25,7 @@ const style = {
     },
 };
 
-export const Header: FC = () => {
+export const SearchBarHeader: FC = () => {
     return (
         <Box sx={style.container}>
             <Logo small src="Logo.png" alt="logo" />

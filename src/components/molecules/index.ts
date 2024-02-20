@@ -1,2 +1,2 @@
-export * from './Header';
+export * from './SearchBarHeader';
 export * from './PostItem';

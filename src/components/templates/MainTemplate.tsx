@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Fab, Stack } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import { AppScreen, PostList } from '@/components/organisms';
-import { Header } from '@/components/molecules';
+import { SearchBarHeader } from '@/components/molecules';
 import { COLOR } from '@/constants';
 
 const posts = [
@@ -34,7 +34,7 @@ export const MainTemplate: FC = () => {
     return (
         <AppScreen center bottomNavigation>
             <Stack sx={{ position: 'relative' }}>
-                <Header />
+                <SearchBarHeader />
                 <PostList posts={posts} />
                 <Fab sx={style.fab}>
                     <AddIcon sx={style.icon} />
