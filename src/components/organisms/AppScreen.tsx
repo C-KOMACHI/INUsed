@@ -6,7 +6,7 @@ import { COLOR } from '@/constants';
 interface Props extends AppScreenProps {
     title?: string;
     center?: boolean;
-    main?: boolean; 
+    main?: boolean;
 }
 
 export const AppScreen: FC<Props> = ({ children, title, center, main }) => {
