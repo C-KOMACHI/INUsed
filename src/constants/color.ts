@@ -18,4 +18,5 @@ export const COLOR = {
         footer: 'rgba(0, 0, 0, 0.75)',
         hover: 'rgba(0, 0, 0, 0.62)',
     },
+    red: '#E75757',
 };
