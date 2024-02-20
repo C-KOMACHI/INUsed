@@ -5,20 +5,13 @@ import { COLOR } from '@/constants';
 import { BottomMenubar } from './BottomMenubar';
 
 interface Props extends AppScreenProps {
-    title?: string;
     center?: boolean;
-    main?: boolean;
     bottomNavigation?: boolean;
 }
 
-export const AppScreen: FC<Props> = ({ children, title, center, bottomNavigation }) => {
+export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => {
     return (
-        <StackFlowAppScreen
-            appBar={{
-                title,
-                iconColor: COLOR.gray.main,
-            }}
-        >
+        <StackFlowAppScreen>
             <Container
                 disableGutters
                 maxWidth={false}

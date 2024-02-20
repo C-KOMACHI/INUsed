@@ -22,6 +22,10 @@ const style = {
 
     button: {
         color: COLOR.gray.main,
+        '& .MuiBottomNavigationAction-label': {
+            fontSize: '0.7rem',
+            fontFamily: 'Jua',
+        },
     },
 };
 
@@ -33,10 +37,13 @@ export const BottomMenubar: FC = () => {
         <Box sx={style.container}>
             <MuiBottomNavigation
                 showLabels
-                value={activity.name === 'Main' ? 0 : 1}
+                value={activity.name === 'Main' ? 0 : 4}
                 onChange={(_, newValue: number) => {
                     if (newValue === 0) {
                         replace('Main', {}, { animate: false });
+                    }
+                    if (newValue === 4) {
+                        replace('MyPage', {}, { animate: false });
                     }
                 }}
                 sx={{

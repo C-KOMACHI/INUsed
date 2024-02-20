@@ -12,7 +12,7 @@ const style = {
         alignItems: 'center',
         top: 0,
         justifyContent: 'center',
-        height: '55px',
+        height: '60px',
         maxWidth: '767px',
         padding: '0 0 0 12px',
         background: COLOR.blue.main,
@@ -25,7 +25,7 @@ const style = {
     },
 };
 
-export const Header: FC = () => {
+export const SearchBarHeader: FC = () => {
     return (
         <Box sx={style.container}>
             <Logo small src="Logo.png" alt="logo" />
