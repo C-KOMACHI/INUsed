@@ -1,11 +1,7 @@
 import { type FC, useState } from 'react';
-import { FavoriteBorder as EmptyIcon, Favorite as FilledIcon, PropaneSharp } from '@mui/icons-material';
+import { FavoriteBorder as EmptyIcon, Favorite as FilledIcon } from '@mui/icons-material';
 import { Stack, Typography } from '@mui/material';
 import { COLOR } from '@/constants';
-
-interface Props {
-    filled: 'boolean';
-}
 
 const style = {
     container: {
