@@ -16,8 +16,10 @@ const style = {
         position: 'fixed',
         bottom: '0',
         width: '100%',
-        maxWidth: '767px',
         overflowX: 'hidden',
+        zIndex: 1,
+        height: '57px',
+        overflowY: 'hidden',
     },
 
     button: {

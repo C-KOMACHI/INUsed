@@ -5,10 +5,12 @@ import { Login, Register, Main, MyPage } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
     transitionDuration: 350,
-    plugins: [basicRendererPlugin(),
-    basicUIPlugin({
-        theme: 'cupertino',
-    })],
+    plugins: [
+        basicRendererPlugin(),
+        basicUIPlugin({
+            theme: 'cupertino',
+        }),
+    ],
     activities: {
         Login,
         Register,
