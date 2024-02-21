@@ -33,7 +33,7 @@ const style = {
 export const MainTemplate: FC = () => {
     return (
         <AppScreen center bottomNavigation>
-            <Stack sx={{ position: 'relative' }}>
+            <Stack sx={{ position: 'relative', height: '100%', width: '100%' }}>
                 <SearchBarHeader />
                 <PostList posts={posts} />
                 <Fab sx={style.fab}>
