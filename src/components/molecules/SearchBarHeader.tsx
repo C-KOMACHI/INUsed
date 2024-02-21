@@ -28,7 +28,6 @@ const style = {
 export const SearchBarHeader: FC = () => {
     return (
         <Box sx={style.container}>
-            <Logo small src="Logo.png" alt="logo" />
             <Input search placeholder="물품을 검색해보세요" />
             <AlarmIcon sx={style.button} fontSize="large" />
         </Box>
