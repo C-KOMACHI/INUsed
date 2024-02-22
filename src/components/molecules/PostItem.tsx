@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Grid, Stack, Divider } from '@mui/material';
+import { Grid, Stack, Divider, Box } from '@mui/material';
 import { MoreVert as MenuIcon } from '@mui/icons-material';
 import { Image, Text, HeartIcon } from '@/components/atoms';
 import { COLOR } from '@/constants';
@@ -7,8 +7,11 @@ import { COLOR } from '@/constants';
 interface Props {
     src: string;
     title: string;
-    subTitle?: string;
+    subTitle1: string;
+    subTitle2: string;
     body?: string;
+    post?: boolean;
+    main?: boolean;
 }
 
 const style = {
@@ -19,22 +22,39 @@ const style = {
     cursor: 'pointer',
 };
 
-export const PostItem: FC<Props> = ({ src, title, subTitle, body }) => {
+export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main }) => {
     return (
         <Stack spacing={2}>
-            <Grid container spacing={2}>
-                <Grid item xs={4}>
-                    <Image src={src} alt={title} />
-                </Grid>
-                <Grid item xs={8} sx={{ position: 'relative' }}>
-                    <Text type="title">{title}</Text>
-                    {subTitle && <Text type="subtitle">{subTitle}</Text>}
-                    {body && <Text type="body">{body}</Text>}
-                    <MenuIcon sx={style} />
-                    <HeartIcon />
-                </Grid>
-            </Grid>
-            <Divider />
+            {main && (
+                <>
+                    <Grid container spacing={2}>
+                        <Grid item xs={4}>
+                            <Image src={src} alt={title} />
+                        </Grid>
+                        <Grid item xs={8} sx={{ position: 'relative' }}>
+                            <Text type="title">{title}</Text>
+                            <Text type="subtitle1">{subTitle1}</Text>
+                            <Text type="subtitle2">{subTitle2}</Text>
+                            <MenuIcon sx={style} />
+                            <HeartIcon />
+                        </Grid>
+                    </Grid>
+                    <Divider />
+                </>
+            )}
+            {post && (
+                <>
+                    <Image src={src} alt={title} disabledBorderRadius />
+                    <Stack sx={{ pl: '20px' }}>
+                        <Box sx={{ position: 'relative', pb: '15px' }}>
+                            <Text type="title">{title}</Text>
+                            <Text type="subtitle1">{subTitle1}</Text>
+                            <MenuIcon sx={{ ...style, right: 20, top: 5 }} />
+                        </Box>
+                        <Text type="body">{body}</Text>
+                    </Stack>
+                </>
+            )}
         </Stack>
     );
 };

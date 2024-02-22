@@ -7,7 +7,8 @@ export interface Post {
     id: number;
     src: string;
     title: string;
-    subTitle?: string;
+    subTitle1: string;
+    subTitle2: string;
     body?: string;
 }
 
@@ -24,8 +25,17 @@ const style = {
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Box sx={style}>
-            {posts.map(({ id, src, title, subTitle, body }) => {
-                return <PostItem key={id} src={src} title={title} subTitle={subTitle} body={body} />;
+            {posts.map(({ id, src, title, subTitle1, subTitle2, body }) => {
+                return (
+                    <PostItem
+                        key={id}
+                        src={src}
+                        title={title}
+                        subTitle1={subTitle1}
+                        subTitle2={subTitle2}
+                        body={body}
+                    />
+                );
             })}
         </Box>
     );
