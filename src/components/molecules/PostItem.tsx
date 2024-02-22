@@ -8,7 +8,7 @@ interface Props {
     src: string;
     title: string;
     subTitle1: string;
-    subTitle2: string;
+    subTitle2?: string;
     body?: string;
     post?: boolean;
     main?: boolean;
