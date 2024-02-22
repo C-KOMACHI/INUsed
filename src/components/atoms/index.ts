@@ -6,3 +6,4 @@ export * from './Text';
 export * from './Image';
 export * from './HeartIcon';
 export * from './WriteButton';
+export * from './PostBottomMenubar';
