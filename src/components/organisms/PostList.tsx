@@ -9,7 +9,6 @@ export interface Post {
     title: string;
     subTitle1: string;
     subTitle2: string;
-    body?: string;
 }
 
 interface Props {
@@ -25,17 +24,8 @@ const style = {
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Box sx={style}>
-            {posts.map(({ id, src, title, subTitle1, subTitle2, body }) => {
-                return (
-                    <PostItem
-                        key={id}
-                        src={src}
-                        title={title}
-                        subTitle1={subTitle1}
-                        subTitle2={subTitle2}
-                        body={body}
-                    />
-                );
+            {posts.map(({ id, src, title, subTitle1, subTitle2 }) => {
+                return <PostItem key={id} src={src} title={title} subTitle1={subTitle1} subTitle2={subTitle2} main />;
             })}
         </Box>
     );
