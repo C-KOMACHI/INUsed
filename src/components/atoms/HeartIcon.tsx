@@ -15,6 +15,7 @@ const style = {
         position: 'absolute',
         bottom: 0,
         right: '2rem',
+        width: '25px',
     },
     icon: {
         fontSize: 23,

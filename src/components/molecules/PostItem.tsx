@@ -32,7 +32,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                             <Image src={src} alt={title} />
                         </Grid>
                         <Grid item xs={8} sx={{ position: 'relative' }}>
-                            <Text type="title">{title}</Text>
+                            <Text type="title1">{title}</Text>
                             <Text type="subtitle1">{subTitle1}</Text>
                             <Text type="subtitle2">{subTitle2}</Text>
                             <MenuIcon sx={style} />
@@ -47,11 +47,11 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                     <Image src={src} alt={title} disabledBorderRadius />
                     <Stack sx={{ pl: '20px' }}>
                         <Box sx={{ position: 'relative', pb: '15px' }}>
-                            <Text type="title">{title}</Text>
+                            <Text type="title1">{title}</Text>
                             <Text type="subtitle1">{subTitle1}</Text>
                             <MenuIcon sx={{ ...style, right: 20, top: 5 }} />
                         </Box>
-                        <Text type="body">{body}</Text>
+                        <Text type="body1">{body}</Text>
                     </Stack>
                 </>
             )}
