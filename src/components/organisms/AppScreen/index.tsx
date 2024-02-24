@@ -27,7 +27,7 @@ export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => 
                               overflowX: 'hidden',
                               pb: '50px',
                           }
-                        : null),
+                        : { height: '100%' }),
                 }}
                 component="main"
             >
