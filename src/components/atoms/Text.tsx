@@ -5,6 +5,7 @@ import { COLOR } from '@/constants';
 const variant = {
     title1: 'h6',
     title2: 'h5',
+    title3: 'h6',
     subtitle1: 'subtitle1',
     subtitle2: 'subtitle2',
     body1: 'body1',
@@ -14,10 +15,11 @@ const variant = {
 const color: Partial<typeof variant> = {
     subtitle1: 'gray',
     title2: COLOR.gray.hover,
+    title3: COLOR.white.main,
 };
 
 interface Props extends PropsWithChildren {
-    type?: 'title1' | 'title2' | 'subtitle1' | 'subtitle2' | 'body1' | 'body2';
+    type?: 'title1' | 'title2' | 'title3' | 'subtitle1' | 'subtitle2' | 'body1' | 'body2';
 }
 
 const style = {
