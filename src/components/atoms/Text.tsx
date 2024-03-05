@@ -16,6 +16,7 @@ const color: Partial<typeof variant> = {
     subtitle1: 'gray',
     title2: COLOR.gray.hover,
     title3: COLOR.white.main,
+    body2: COLOR.gray.main,
 };
 
 interface Props extends PropsWithChildren {

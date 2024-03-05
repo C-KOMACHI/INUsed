@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Stack } from '@mui/material';
-import { Profile, Text } from '@/components/atoms';
+import { Profile, Text, Temperature } from '@/components/atoms';
 
 interface Props {
     alt: string;
@@ -8,21 +8,24 @@ interface Props {
     nickName: string;
     name: string;
     email: string;
+    temperature: number;
 }
 
 const style = {
     container: {
-        display: 'flex',
         alignItems: 'center',
     },
 };
-export const ProfileInformation: FC<Props> = ({ alt, src, nickName, name, email }) => {
+export const ProfileInformation: FC<Props> = ({ alt, src, nickName, name, email, temperature }) => {
     return (
-        <Stack sx={style.container} spacing={1}>
-            <Profile alt={alt} src={src} />
-            <Text type="title3">{nickName}</Text>
-            <Text type="subtitle1">{name}</Text>
-            <Text type="subtitle1">{email}</Text>
+        <Stack sx={{ width: 0.9 }} spacing={3}>
+            <Stack sx={style.container} spacing={1}>
+                <Profile alt={alt} src={src} />
+                <Text type="title3">{nickName}</Text>
+                <Text type="subtitle1">{name}</Text>
+                <Text type="subtitle1">{email}</Text>
+            </Stack>
+            <Temperature temperature={temperature} />
         </Stack>
     );
 };
