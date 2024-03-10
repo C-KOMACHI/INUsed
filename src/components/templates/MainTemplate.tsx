@@ -8,10 +8,10 @@ import { COLOR } from '@/constants';
 const posts = [
     { id: 1, src: '/image.jpg', title: '양말1', subTitle: '2일 전', body: '5000원' },
     { id: 2, src: '/image.jpg', title: '양말2', subTitle: '2일 전', body: '5000원' },
-    { id: 3, src: '/image.jpg', title: '양말3', subTitle: '2일 전', body: '5000원' },
-    { id: 4, src: '/image.jpg', title: '양말4', subTitle: '2일 전', body: '5000원' },
-    { id: 5, src: '/image.jpg', title: '양말5', subTitle: '2일 전', body: '5000원' },
-    { id: 6, src: '/image.jpg', title: '양말6', subTitle: '2일 전', body: '5000원' },
+    { id: 3, src: '/image.jpg', title: '양말3', subTitle: '3일 전', body: '5000원' },
+    { id: 4, src: '/image.jpg', title: '양말4', subTitle: '3일 전', body: '5000원' },
+    { id: 5, src: '/image.jpg', title: '양말5', subTitle: '4일 전', body: '5000원' },
+    { id: 6, src: '/image.jpg', title: '양말6', subTitle: '5일 전', body: '5000원' },
 ];
 
 const style = {
