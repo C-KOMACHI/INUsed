@@ -1,1 +1,1 @@
-npx commitlint --edit
+yarn commitlint --edit

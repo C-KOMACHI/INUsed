@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { AppScreen } from '@/components/organisms';
-import { PostItem } from '@/components/molecules';
-import { PostBottomMenubar } from '@/components/molecules';
+import { PostItem, PostBottomMenubar } from '@/components/molecules';
 
 export const PostTemplate: FC = () => {
     return (
