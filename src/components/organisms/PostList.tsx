@@ -7,8 +7,8 @@ export interface Post {
     id: number;
     src: string;
     title: string;
-    subTitle?: string;
-    body?: string;
+    subTitle1: string;
+    subTitle2: string;
 }
 
 interface Props {
@@ -17,17 +17,15 @@ interface Props {
 
 const style = {
     width: '100%',
-    height: '79.6vh',
     overflowX: 'hidden',
     background: COLOR.white.main,
-    paddingTop: '10px',
 };
 
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Box sx={style}>
-            {posts.map(({ id, src, title, subTitle, body }) => {
-                return <PostItem key={id} src={src} title={title} subTitle={subTitle} body={body} />;
+            {posts.map(({ id, src, title, subTitle1, subTitle2 }) => {
+                return <PostItem key={id} src={src} title={title} subTitle1={subTitle1} subTitle2={subTitle2} main />;
             })}
         </Box>
     );

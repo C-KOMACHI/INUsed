@@ -5,3 +5,6 @@ export * from './Footer';
 export * from './Text';
 export * from './Image';
 export * from './HeartIcon';
+export * from './WriteButton';
+export * from './Profile';
+export * from './Temperature';

@@ -29,7 +29,6 @@ export const Input = styled.input<Props>`
             padding-left: 2.5rem;
             margin: 0 0 0 12px;
             height: 40px;
-            font-size: 0.8rem;
           `}
 
     &::placeholder {

@@ -17,6 +17,7 @@ export const COLOR = {
         main: '#AAAAAA',
         footer: 'rgba(0, 0, 0, 0.75)',
         hover: 'rgba(0, 0, 0, 0.62)',
+        temp: '#D9D9D9',
     },
     red: '#E75757',
 };

@@ -21,12 +21,13 @@ export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => 
                               alignItems: 'center',
                               justifyContent: 'center',
                               display: 'flex',
+                              flexDirection: 'column',
                               height: '100%',
                               background: COLOR.blue.main,
                               overflowX: 'hidden',
-                              maxWidth: '767px',
+                              pb: '50px',
                           }
-                        : null),
+                        : { height: '100%' }),
                 }}
                 component="main"
             >
