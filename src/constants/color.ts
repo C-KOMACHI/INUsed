@@ -1,7 +1,7 @@
 export const COLOR = {
     blue: {
         main: 'linear-gradient(180deg, #E7F0FD 70%, rgba(172, 203, 238, 0) 90%)',
-        button: '#ACCBEE',
+        button: '#80B0E6',
         hover: '#80B0E6',
         menubar: '#E2EDFA',
         fab: '#B8D2F1',

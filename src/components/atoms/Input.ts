@@ -8,9 +8,9 @@ interface Props {
 }
 
 export const Input = styled.input<Props>`
-    border: none;
-    border-radius: 20px;
-    height: 45px;
+    border: 1.6px solid ${COLOR.gray.main};
+    border-radius: 25px;
+    height: 50px;
     font-size: 0.9rem;
     width: ${(props) => {
         if (props.small) return '50%';
@@ -18,7 +18,6 @@ export const Input = styled.input<Props>`
         return '100%';
     }};
 
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: 10px center;
     padding-left: 10px;
     font-family: 'Jua';
