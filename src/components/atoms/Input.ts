@@ -19,7 +19,7 @@ export const Input = styled.input<Props>`
     }};
 
     text-align: 10px center;
-    padding-left: 10px;
+    padding-left: 20px;
     font-family: 'Jua';
     outline: none;
 

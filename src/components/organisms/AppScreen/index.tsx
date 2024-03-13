@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { Container } from '@mui/material';
 import { AppScreen as StackFlowAppScreen, type AppScreenProps } from '@stackflow/plugin-basic-ui';
-import { COLOR } from '@/constants';
 import { BottomMenubar } from './BottomMenubar';
 
 interface Props extends AppScreenProps {
@@ -23,7 +22,6 @@ export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => 
                               display: 'flex',
                               flexDirection: 'column',
                               height: '100%',
-                              background: COLOR.white.main,
                               overflowX: 'hidden',
                               pb: '50px',
                           }

@@ -8,14 +8,11 @@ const style = {
         position: 'absolute',
         right: 16,
         bottom: 25,
-        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25)',
-        backgroundColor: COLOR.white.main,
-        border: `1px solid ${COLOR.blue.fab}`,
+        backgroundColor: COLOR.blue.fab,
     },
     icon: {
-        color: COLOR.blue.fab,
-        fontSize: 50,
-        filter: 'drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25))',
+        color: COLOR.white.main,
+        fontSize: 45,
     },
 };
 

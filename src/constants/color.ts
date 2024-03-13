@@ -4,7 +4,7 @@ export const COLOR = {
         button: '#80B0E6',
         hover: '#80B0E6',
         menubar: '#E2EDFA',
-        fab: '#B8D2F1',
+        fab: '#CBDDF5',
     },
     pink: {
         main: 'linear-gradient(135deg, #dad4ec 70%, #f3e7e9 90%)',
