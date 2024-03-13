@@ -5,5 +5,5 @@ interface Props {
 }
 
 export const Logo = styled.img<Props>`
-    width: ${(props) => (props.small ? '150px' : '280px')};
+    width: ${(props) => (props.small ? '150px' : '330px')};
 `;

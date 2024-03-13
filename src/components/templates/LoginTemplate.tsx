@@ -8,7 +8,7 @@ export const LoginTemplate: FC = () => {
         <AppScreen center>
             <Stack spacing={1}>
                 <FormBox login />
-                <Footer login />
+                <Footer />
             </Stack>
         </AppScreen>
     );
