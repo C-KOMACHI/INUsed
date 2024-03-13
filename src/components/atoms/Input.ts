@@ -27,13 +27,15 @@ export const Input = styled.input<Props>`
     ${(props) =>
         props.search &&
         `
+            border: none;
             background: url('https://api.iconify.design/ion/search.svg?color=%23aaa') no-repeat;
             background-size: 20px 20px;
             background-position: 13px center;
             background-color: white;
             padding-left: 2.5rem;
             margin: 0 0 0 12px;
-            height: 40px;
+            height: 40px; 
+            
           `}
 
     &::placeholder {
