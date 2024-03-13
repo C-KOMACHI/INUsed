@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Stack, Box, Button as AuthButton } from '@mui/material';
+import { Stack, Box, Button as AuthButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import CheckIcon from '@mui/icons-material/Check';
 import { Input, Button, Logo } from '@/components/atoms';
@@ -7,10 +7,9 @@ import { COLOR } from '@/constants';
 
 const style = {
     container: {
-        width: '350px',
+        width: '400px',
         alignItems: 'center',
-        padding: '2rem 2rem 0 2rem',
-        margin: '7rem 0 0 0',
+        padding: '0rem 2rem 0 2rem',
     },
     button: {
         borderRadius: '30px',
@@ -18,6 +17,8 @@ const style = {
         '&:hover': {
             background: COLOR.blue.hover,
         },
+        height: '45px',
+        width: '120px',
     },
 };
 
@@ -33,13 +34,14 @@ export const FormBox: FC<Props> = ({ login, register }) => {
                 {register && (
                     <>
                         <Stack direction="row" spacing={2}>
-                            <Input placeholder="닉네임" small />
+                            <Input placeholder="닉네임" medium />
                             <AuthButton size="small" sx={style.button} variant="contained" endIcon={<CheckIcon />}>
                                 중복확인
                             </AuthButton>
                         </Stack>
-                        <Stack direction="row" spacing={2}>
+                        <Stack direction="row" spacing={1.3} alignItems="center">
                             <Input placeholder="학교 이메일" small />
+                            <Typography sx={{ fontFamily: 'Jua', color: COLOR.gray.main }}>@inu.ac.kr</Typography>
                             <AuthButton size="small" sx={style.button} variant="contained" endIcon={<SendIcon />}>
                                 인증하기
                             </AuthButton>
