@@ -21,10 +21,10 @@ const style = {
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
     },
     button: {
-        background: COLOR.blue.button,
+        background: COLOR.blue.fab,
         fontFamily: 'Jua',
-        borderRadius: '8px',
-        right: 17,
+        borderRadius: '15px',
+        right: 10,
         position: 'fixed',
         fontSize: '1.1rem',
     },
