@@ -7,7 +7,6 @@ export const Button = styled.button`
     font-size: 1rem;
     padding: 0.25rem 1rem;
     cursor: pointer;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: ${COLOR.blue.button};
     border-radius: 20px;
     padding-top: 0.75rem;

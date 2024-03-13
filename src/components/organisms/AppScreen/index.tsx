@@ -23,7 +23,7 @@ export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => 
                               display: 'flex',
                               flexDirection: 'column',
                               height: '100%',
-                              background: COLOR.blue.main,
+                              background: COLOR.white.main,
                               overflowX: 'hidden',
                               pb: '50px',
                           }
