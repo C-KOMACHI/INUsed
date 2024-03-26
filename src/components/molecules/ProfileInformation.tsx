@@ -21,7 +21,7 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, name, email,
         <Stack sx={{ width: 0.9 }} spacing={3}>
             <Stack sx={style.container} spacing={1}>
                 <Profile alt={alt} src={src} />
-                <Text type="title3">{nickName}</Text>
+                <Text type="h6">{nickName}</Text>
                 <Text type="subtitle1">{name}</Text>
                 <Text type="subtitle1">{email}</Text>
             </Stack>
