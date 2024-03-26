@@ -42,6 +42,7 @@ const RAW_RUNTIME_STATE =
           ["@stackflow/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:1.1.8"],\
           ["@tanstack/react-query", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.28.8"],\
           ["@tanstack/react-query-devtools", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.28.8"],\
+          ["@types/lodash", "npm:4.17.0"],\
           ["@types/react", "npm:18.2.57"],\
           ["@types/react-dom", "npm:18.2.19"],\
           ["@typescript-eslint/eslint-plugin", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:6.21.0"],\
@@ -61,6 +62,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-refresh", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:0.4.5"],\
           ["husky", "npm:9.0.11"],\
           ["lint-staged", "npm:15.2.2"],\
+          ["lodash", "npm:4.17.21"],\
           ["normalize.css", "npm:8.0.1"],\
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
@@ -2056,6 +2058,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../.yarn/berry/cache/@types-json5-npm-0.0.29-f63a7916bd-10c0.zip/node_modules/@types/json5/",\
         "packageDependencies": [\
           ["@types/json5", "npm:0.0.29"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/lodash", [\
+      ["npm:4.17.0", {\
+        "packageLocation": "../.yarn/berry/cache/@types-lodash-npm-4.17.0-11e757616b-10c0.zip/node_modules/@types/lodash/",\
+        "packageDependencies": [\
+          ["@types/lodash", "npm:4.17.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5189,6 +5200,7 @@ const RAW_RUNTIME_STATE =
           ["@stackflow/react", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:1.1.8"],\
           ["@tanstack/react-query", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.28.8"],\
           ["@tanstack/react-query-devtools", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:5.28.8"],\
+          ["@types/lodash", "npm:4.17.0"],\
           ["@types/react", "npm:18.2.57"],\
           ["@types/react-dom", "npm:18.2.19"],\
           ["@typescript-eslint/eslint-plugin", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:6.21.0"],\
@@ -5208,6 +5220,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-refresh", "virtual:4cfa13ca53c136cf97ebf2dd796efeb87d1a01aa88ea0e4982e1b84dd652981e0d95d7663bbd6032f58f25c5343f53ae536fc7ea94c713941978c8d8d2517ce3#npm:0.4.5"],\
           ["husky", "npm:9.0.11"],\
           ["lint-staged", "npm:15.2.2"],\
+          ["lodash", "npm:4.17.21"],\
           ["normalize.css", "npm:8.0.1"],\
           ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
