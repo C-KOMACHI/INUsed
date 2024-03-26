@@ -18,7 +18,7 @@ const variant = {
 const color: Partial<typeof variant> = {
     subtitle1: 'gray',
     h5: COLOR.gray.hover,
-    h6: COLOR.white.main,
+    body1: COLOR.pink.main,
     body2: COLOR.gray.main,
 };
 

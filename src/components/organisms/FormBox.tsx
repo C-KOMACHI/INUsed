@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { Stack, Box, Button as AuthButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import CheckIcon from '@mui/icons-material/Check';
 import { Input, Button, Logo } from '@/components/atoms';
+import { NickName } from '@/components/molecules';
 import { COLOR } from '@/constants';
 
 const style = {
@@ -33,12 +33,7 @@ export const FormBox: FC<Props> = ({ login, register }) => {
                 <Logo src="Logo.png" alt="logo" />
                 {register && (
                     <>
-                        <Stack direction="row" spacing={2}>
-                            <Input placeholder="닉네임" medium />
-                            <AuthButton size="small" sx={style.button} variant="contained" endIcon={<CheckIcon />}>
-                                중복확인
-                            </AuthButton>
-                        </Stack>
+                        <NickName />
                         <Stack direction="row" spacing={1.3} alignItems="center">
                             <Input placeholder="학교 이메일" small />
                             <Typography sx={{ fontFamily: 'Jua', color: COLOR.gray.main }}>@inu.ac.kr</Typography>
