@@ -7,7 +7,6 @@ import { COLOR } from '@/constants';
 
 interface Check {
     blank: null | boolean;
-    length: null | boolean;
 }
 
 const style = {
@@ -23,13 +22,13 @@ const style = {
 };
 
 export const Email = () => {
-    const [nickName, setNickName] = useState<Check>({ blank: null, length: null });
+    const [email, setEmail] = useState<Check>({ blank: null });
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
 
-        setNickName((prev) => ({
+        setEmail((prev) => ({
             ...prev,
             blank: value.length !== 0,
         }));
@@ -38,7 +37,7 @@ export const Email = () => {
     const debounceHandleChange = debounce(handleChange, 100);
 
     const handleCheckNickName = () => {
-        if (!nickName.blank) {
+        if (!email.blank) {
             setErrorMessage('이메일을 입력해 주세요.');
         } else {
             setErrorMessage('');
