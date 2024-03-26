@@ -1396,6 +1396,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.28.8":
+  version: 5.28.8
+  resolution: "@tanstack/query-core@npm:5.28.8"
+  checksum: 10c0/6aa66dd77e61d9298268e9428eec5969c3b95ece4f836b4bc2bbe6bd26c6d3f559c17ff6c3e333b5e498b4e91b2caae1d0638804fe72b2f3ecfe9c7034540e1a
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.28.8":
+  version: 5.28.8
+  resolution: "@tanstack/react-query@npm:5.28.8"
+  dependencies:
+    "@tanstack/query-core": "npm:5.28.8"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 10c0/439c821b89123d9a20f948d7a1c8a2177db50e4fc043f81a63ae5e6b777f6fac69f2cc2497e619082d060e93228ec5e62f23e92365d8458042f5cd147503d266
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.20.5":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -3987,6 +4005,7 @@ __metadata:
     "@stackflow/plugin-basic-ui": "npm:^1.5.3"
     "@stackflow/plugin-renderer-basic": "npm:^1.1.8"
     "@stackflow/react": "npm:^1.1.8"
+    "@tanstack/react-query": "npm:^5.28.8"
     "@types/react": "npm:^18.2.55"
     "@types/react-dom": "npm:^18.2.19"
     "@typescript-eslint/eslint-plugin": "npm:^6.21.0"
