@@ -18,7 +18,7 @@ export const { Stack, useFlow, activities } = stackflow({
         MyPage,
         Post,
     },
-    initialActivity: () => 'Register',
+    initialActivity: () => 'MyPage',
 });
 
 export type TypeActivities = typeof activities;
