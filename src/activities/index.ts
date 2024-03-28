@@ -3,3 +3,4 @@ export * from './Register';
 export * from './Main';
 export * from './MyPage';
 export * from './Post';
+export * from './Writer';
