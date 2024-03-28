@@ -39,14 +39,14 @@ export const MyPageTemplate: FC = () => {
 
             <Divider />
 
-            <List aria-label="mailbox folders" sx={{ pl: 2}}>
-                <ListItemButton sx={{py:1}}>
+            <List aria-label="mailbox folders" sx={{ pl: 2 }}>
+                <ListItemButton sx={{ py: 1 }}>
                     <Text>공지사항</Text>
                 </ListItemButton>
-                <ListItemButton sx={{py:1}}>
+                <ListItemButton sx={{ py: 1 }}>
                     <Text>운영자 문의</Text>
                 </ListItemButton>
-                <ListItemButton sx={{py:1}}>
+                <ListItemButton sx={{ py: 1 }}>
                     <Text>약관 및 정책</Text>
                 </ListItemButton>
             </List>
