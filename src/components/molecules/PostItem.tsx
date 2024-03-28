@@ -3,6 +3,7 @@ import { Grid, Stack, Divider, Box } from '@mui/material';
 import { MoreVert as MenuIcon } from '@mui/icons-material';
 import { Image, Text, HeartIcon } from '@/components/atoms';
 import { COLOR } from '@/constants';
+import { useFlow } from '@/stackflow';
 
 interface Props {
     src: string;
@@ -23,11 +24,19 @@ const style = {
 };
 
 export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main }) => {
+    const { push } = useFlow();
+
+    const handleClick = () => {
+        push('Post', {
+            title,
+        });
+    };
+
     return (
         <Stack spacing={2}>
             {main && (
                 <>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} onClick={handleClick}>
                         <Grid item xs={4}>
                             <Image src={src} alt={title} />
                         </Grid>

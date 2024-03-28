@@ -7,10 +7,9 @@ import { BottomMenubar } from './BottomMenubar';
 
 const style = {
     appBar: {
-        borderColor: COLOR.white.main,
-        textColor: COLOR.white.main,
+        textColor: COLOR.blue.menubar,
         iconColor: COLOR.gray.main,
-        backgroundColor: 'transparent',
+        backgroundColor: COLOR.blue.menubar,
     },
 };
 interface Props extends AppScreenProps {
