@@ -8,6 +8,7 @@ import { COLOR } from '@/constants';
 interface Check {
     blank: null | boolean;
     length: null | boolean;
+    nickname: null | boolean;
 }
 
 const style = {
@@ -23,7 +24,7 @@ const style = {
 };
 
 export const NickName = () => {
-    const [nickName, setNickName] = useState<Check>({ blank: null, length: null });
+    const [nickName, setNickName] = useState<Check>({ blank: null, length: null, nickname: null });
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +34,7 @@ export const NickName = () => {
             ...prev,
             blank: value.length !== 0,
             length: value.length < 9,
+            nickname: value === '유잼잼',
         }));
     };
 
@@ -43,6 +45,8 @@ export const NickName = () => {
             setErrorMessage('닉네임을 입력해 주세요.');
         } else if (!nickName.length) {
             setErrorMessage('닉네임은 8자 이하여야 합니다.');
+        } else if (nickName.nickname) {
+            setErrorMessage('사용 가능한 닉네임입니다.');
         } else {
             setErrorMessage('');
         }

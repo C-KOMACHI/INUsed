@@ -51,7 +51,7 @@ export const Email = () => {
 
         setAuthNumber((prev) => ({
             ...prev,
-            correct: value === '123456',
+            correct: value === '2V08tN2U',
         }));
     };
 
