@@ -13,7 +13,7 @@ import { useFlow } from '@/stackflow';
 
 const style = {
     container: {
-        position: 'fixed',
+        position: 'sticky',
         bottom: '0',
         width: '100%',
         overflowX: 'hidden',

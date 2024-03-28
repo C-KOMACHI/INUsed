@@ -1,16 +1,28 @@
 import type { FC } from 'react';
 import { Container } from '@mui/material';
 import { AppScreen as StackFlowAppScreen, type AppScreenProps } from '@stackflow/plugin-basic-ui';
+import { SearchBarHeader } from '@/components/molecules';
+import { COLOR } from '@/constants';
 import { BottomMenubar } from './BottomMenubar';
 
+const style = {
+    appBar: {
+        textColor: COLOR.blue.menubar,
+        iconColor: COLOR.gray.main,
+        backgroundColor: COLOR.blue.menubar,
+    },
+};
 interface Props extends AppScreenProps {
+    title?: string;
     center?: boolean;
     bottomNavigation?: boolean;
+    searchBar?: boolean;
 }
 
-export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => {
+export const AppScreen: FC<Props> = ({ children, title, center, bottomNavigation, searchBar }) => {
     return (
-        <StackFlowAppScreen>
+        <StackFlowAppScreen appBar={title ? { ...style.appBar, title } : undefined}>
+            {searchBar && <SearchBarHeader />}
             <Container
                 disableGutters
                 maxWidth={false}
@@ -30,8 +42,8 @@ export const AppScreen: FC<Props> = ({ children, center, bottomNavigation }) => 
                 component="main"
             >
                 {children}
-                {bottomNavigation && <BottomMenubar />}
             </Container>
+            {bottomNavigation && <BottomMenubar />}
         </StackFlowAppScreen>
     );
 };
