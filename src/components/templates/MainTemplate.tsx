@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Stack } from '@mui/material';
 import { WriteButton } from '@/components/atoms';
 import { AppScreen, PostList } from '@/components/organisms';
-import { SearchBarHeader } from '@/components/molecules';
+import { Header } from '@/components/molecules';
 
 const posts = [
     { id: 1, src: '/image.jpg', title: '양말1', subTitle1: '2일 전', subTitle2: '5000원' },
@@ -15,9 +15,9 @@ const posts = [
 
 export const MainTemplate: FC = () => {
     return (
-        <AppScreen center bottomNavigation>
+        <AppScreen bottomNavigation>
             <Stack sx={{ position: 'relative', height: '100%', width: '100%' }}>
-                <SearchBarHeader />
+                <Header />
                 <PostList posts={posts} />
                 <WriteButton />
             </Stack>

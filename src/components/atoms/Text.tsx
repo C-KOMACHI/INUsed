@@ -1,6 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
 import { Typography, type TypographyTypeMap } from '@mui/material';
-import { COLOR } from '@/constants';
 
 const variant = {
     h1: 'h1',
@@ -17,9 +16,6 @@ const variant = {
 
 const color: Partial<typeof variant> = {
     subtitle2: 'gray',
-    h5: COLOR.gray.hover,
-    body1: COLOR.pink.main,
-    body2: COLOR.gray.main,
 };
 
 interface Props extends PropsWithChildren {

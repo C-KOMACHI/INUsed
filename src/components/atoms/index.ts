@@ -8,3 +8,4 @@ export * from './HeartIcon';
 export * from './WriteButton';
 export * from './Profile';
 export * from './Temperature';
+export * from './SearchBar';

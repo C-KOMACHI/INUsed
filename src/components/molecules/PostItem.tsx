@@ -44,7 +44,6 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                             <Text type="h6">{title}</Text>
                             <Text type="subtitle2">{subTitle1}</Text>
                             <Text type="subtitle1">{subTitle2}</Text>
-                            <MenuIcon sx={style} />
                         </Grid>
                         <Grid item xs={2} sx={{ position: 'relative' }}>
                             <HeartIcon />

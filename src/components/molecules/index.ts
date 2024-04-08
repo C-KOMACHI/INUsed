@@ -1,4 +1,4 @@
-export * from './SearchBarHeader';
+export * from './Header';
 export * from './PostItem';
 export * from './PostBottomMenubar';
 export * from './ProfileInformation';
