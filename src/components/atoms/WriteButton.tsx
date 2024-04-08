@@ -8,7 +8,7 @@ const style = {
     fab: {
         position: 'absolute',
         right: 16,
-        bottom: 90,
+        bottom: 25,
         backgroundColor: COLOR.blue.fab,
     },
     icon: {

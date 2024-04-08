@@ -13,7 +13,7 @@ const style = {
         top: 0,
         justifyContent: 'center',
         height: '60px',
-        background: COLOR.blue.menubar,
+        background: COLOR.blue.main,
         overflowX: 'hidden',
         zIndex: 1,
         minHeight: '60px',

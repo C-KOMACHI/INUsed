@@ -16,7 +16,7 @@ const variant = {
 };
 
 const color: Partial<typeof variant> = {
-    subtitle1: 'gray',
+    subtitle2: 'gray',
     h5: COLOR.gray.hover,
     body1: COLOR.pink.main,
     body2: COLOR.gray.main,
@@ -30,7 +30,6 @@ const style = {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
-    fontFamily: 'Jua',
 };
 
 export const Text: FC<Props> = ({ children, type = 'body1' }) => {
