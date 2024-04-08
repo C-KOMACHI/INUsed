@@ -13,6 +13,7 @@ const style = {
     },
     container: {
         minHeight: 'calc(100vh - 101px)',
+        padding: 0,
     },
     wrapper: {
         display: 'flex',

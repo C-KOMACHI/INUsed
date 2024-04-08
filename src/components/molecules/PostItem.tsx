@@ -33,38 +33,40 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
     };
 
     return (
-        <Stack spacing={2}>
-            {main && (
-                <>
-                    <Grid container spacing={2}>
-                        <Grid item xs={4} onClick={handleClick}>
-                            <Image src={src} alt={title} />
+        <Box sx={{ pt: '5px' }}>
+            <Stack spacing={2}>
+                {main && (
+                    <>
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} onClick={handleClick}>
+                                <Image src={src} alt={title} />
+                            </Grid>
+                            <Grid item xs={6} onClick={handleClick}>
+                                <Text type="h6">{title}</Text>
+                                <Text type="subtitle2">{subTitle1}</Text>
+                                <Text type="subtitle1">{subTitle2}</Text>
+                            </Grid>
+                            <Grid item xs={2} sx={{ position: 'relative' }}>
+                                <HeartIcon />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={6} onClick={handleClick}>
-                            <Text type="h6">{title}</Text>
-                            <Text type="subtitle2">{subTitle1}</Text>
-                            <Text type="subtitle1">{subTitle2}</Text>
-                        </Grid>
-                        <Grid item xs={2} sx={{ position: 'relative' }}>
-                            <HeartIcon />
-                        </Grid>
-                    </Grid>
-                    <Divider />
-                </>
-            )}
-            {post && (
-                <>
-                    <Image src={src} alt={title} disabledBorderRadius />
-                    <Stack sx={{ pl: '20px' }}>
-                        <Box sx={{ position: 'relative', pb: '15px' }}>
-                            <Text type="h6">{title}</Text>
-                            <Text type="subtitle1">{subTitle1}</Text>
-                            <MenuIcon sx={{ ...style, right: 20, top: 5 }} />
-                        </Box>
-                        <Text type="body1">{body}</Text>
-                    </Stack>
-                </>
-            )}
-        </Stack>
+                        <Divider />
+                    </>
+                )}
+                {post && (
+                    <>
+                        <Image src={src} alt={title} disabledBorderRadius />
+                        <Stack sx={{ pl: '20px' }}>
+                            <Box sx={{ position: 'relative', pb: '15px' }}>
+                                <Text type="h6">{title}</Text>
+                                <Text type="subtitle1">{subTitle1}</Text>
+                                <MenuIcon sx={{ ...style, right: 20, top: 5 }} />
+                            </Box>
+                            <Text type="body1">{body}</Text>
+                        </Stack>
+                    </>
+                )}
+            </Stack>
+        </Box>
     );
 };

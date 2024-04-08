@@ -9,6 +9,10 @@ const style = {
         backgroundColor: COLOR.blue.main,
         padding: '10px',
     },
+    button: {
+        color: COLOR.gray.main,
+        margin: '0 12px',
+    },
 };
 export const Header: FC = () => {
     return (
@@ -16,7 +20,7 @@ export const Header: FC = () => {
             <AppBar position="static" sx={style.container}>
                 <Stack direction="row" alignItems="center" spacing={1}>
                     <SearchBar />
-                    <AlarmIcon fontSize="large" />
+                    <AlarmIcon sx={style.button} fontSize="large" />
                 </Stack>
             </AppBar>
         </Box>

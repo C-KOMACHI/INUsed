@@ -16,7 +16,7 @@ const posts = [
 export const MainTemplate: FC = () => {
     return (
         <AppScreen bottomNavigation>
-            <Stack sx={{ position: 'relative', height: '100%', width: '100%' }}>
+            <Stack sx={{ position: 'relative' }}>
                 <Header />
                 <PostList posts={posts} />
                 <WriteButton />
