@@ -7,15 +7,16 @@ const StyledInput = styled.input`
     height: 45px;
     font-size: 0.9rem;
     width: 100%;
-    text-align: 10px center;
     outline: none;
-    background-image: url('./SearchIcon.png');
-    background-size: 20px 20px;
-    background-position: calc(100% - 15px) center;
     background-repeat: no-repeat;
+    border: none;
+    background: url('https://api.iconify.design/ion/search.svg?color=%23aaa') no-repeat;
+    background-size: 20px 20px;
     background-color: white;
-    padding-left: 1.5rem;
+    padding-left: 2.5rem;
+    margin: 0 0 0 12px;
     height: 40px;
+    background-position: 10px center;
 `;
 
 export const SearchBar: FC = () => {
