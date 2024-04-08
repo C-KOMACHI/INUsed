@@ -5,8 +5,15 @@ import { Footer } from '@/components/atoms';
 
 export const LoginTemplate: FC = () => {
     return (
-        <AppScreen center>
-            <Stack spacing={1}>
+        <AppScreen>
+            <Stack
+                spacing={1}
+                sx={{
+                    height: '100%',
+                    alignItems: 'center',
+                    pt: 15,
+                }}
+            >
                 <FormBox login />
                 <Footer />
             </Stack>

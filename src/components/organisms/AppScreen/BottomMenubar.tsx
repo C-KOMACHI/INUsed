@@ -13,13 +13,9 @@ import { useFlow } from '@/stackflow';
 
 const style = {
     container: {
-        position: 'fixed',
+        width: 1,
+        position: 'sticky',
         bottom: '0',
-        width: '100%',
-        overflowX: 'hidden',
-        zIndex: 1,
-        height: '57px',
-        overflowY: 'hidden',
     },
 
     button: {

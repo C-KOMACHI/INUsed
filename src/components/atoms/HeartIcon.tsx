@@ -43,7 +43,7 @@ export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', conta
             sx={{ ...style.container, ...containerStyle }}
             onClick={handleClick}
         >
-            {isClicked ? <FilledIcon sx={{ ...style.icon, color: COLOR.red }} /> : <EmptyIcon sx={style.icon} />}
+            {isClicked ? <FilledIcon sx={{ ...style.icon, color: COLOR.red.temp }} /> : <EmptyIcon sx={style.icon} />}
             <Typography sx={{ ...style.text, ...textStyle }}>{heart}</Typography>
         </Stack>
     );

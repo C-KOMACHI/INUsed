@@ -4,8 +4,15 @@ import { FormBox, AppScreen } from '@/components/organisms';
 
 export const RegisterTemplate: FC = () => {
     return (
-        <AppScreen center>
-            <Stack>
+        <AppScreen>
+            <Stack
+                spacing={1}
+                sx={{
+                    height: '100%',
+                    alignItems: 'center',
+                    pt: 15,
+                }}
+            >
                 <FormBox register />
             </Stack>
         </AppScreen>

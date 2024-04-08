@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Container } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 import { AppScreen as StackFlowAppScreen, type AppScreenProps } from '@stackflow/plugin-basic-ui';
 import { COLOR } from '@/constants';
 import { BottomMenubar } from './BottomMenubar';
@@ -11,37 +11,28 @@ const style = {
         backgroundColor: COLOR.blue.main,
         height: '57px',
     },
+    container: {
+        minHeight: 'calc(100vh - 101px)',
+    },
+    wrapper: {
+        display: 'flex',
+    },
 };
 
 interface Props extends AppScreenProps {
     title?: string;
-    center?: boolean;
     bottomNavigation?: boolean;
 }
 
-export const AppScreen: FC<Props> = ({ title, children, center, bottomNavigation }) => {
+export const AppScreen: FC<Props> = ({ title, children, bottomNavigation }) => {
     return (
         <StackFlowAppScreen appBar={title ? { ...style.appBar, title } : undefined}>
-            <Container
-                disableGutters
-                maxWidth={false}
-                sx={{
-                    ...(center
-                        ? {
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              height: '100%',
-                              overflowX: 'hidden',
-                              pb: '50px',
-                          }
-                        : { height: '100%' }),
-                }}
-            >
-                {children}
-            </Container>
-            {bottomNavigation && <BottomMenubar />}
+            <Stack sx={style.wrapper}>
+                <Container component="main" sx={style.container}>
+                    {children}
+                </Container>
+                {bottomNavigation && <BottomMenubar />}
+            </Stack>
         </StackFlowAppScreen>
     );
 };

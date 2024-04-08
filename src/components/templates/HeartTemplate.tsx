@@ -5,7 +5,7 @@ import { Footer } from '@/components/atoms';
 
 export const HeartTemplate: FC = () => {
     return (
-        <AppScreen center>
+        <AppScreen>
             <Stack spacing={1}>
                 <FormBox login />
                 <Footer />
