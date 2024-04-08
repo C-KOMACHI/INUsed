@@ -13,7 +13,7 @@ import { useFlow } from '@/stackflow';
 
 const style = {
     container: {
-        position: 'sticky',
+        position: 'fixed',
         bottom: '0',
         width: '100%',
         overflowX: 'hidden',
@@ -26,7 +26,6 @@ const style = {
         color: COLOR.gray.main,
         '& .MuiBottomNavigationAction-label': {
             fontSize: '0.7rem',
-            fontFamily: 'Jua',
         },
     },
 };
@@ -49,7 +48,7 @@ export const BottomMenubar: FC = () => {
                     }
                 }}
                 sx={{
-                    background: COLOR.blue.menubar,
+                    background: COLOR.blue.main,
                 }}
             >
                 <BottomNavigationAction label="홈" icon={<HomeIcon />} sx={style.button} />
