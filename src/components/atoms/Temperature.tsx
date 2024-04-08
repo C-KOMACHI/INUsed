@@ -38,21 +38,21 @@ const style = {
 };
 
 export const Temperature: FC<Props> = ({ temperature }) => {
-    const [color, setColor] = useState(COLOR.blue.temp);
+    const [color, setColor] = useState(COLOR.yellow.temp);
 
     useEffect(() => {
-        if (temperature < 800) {
+        if (temperature < 900) {
             setColor(COLOR.red.temp);
-        } else if (temperature >= 800 && temperature < 1300) {
+        } else if (temperature >= 900 && temperature < 1200) {
             setColor(COLOR.yellow.temp);
-        } else if (temperature >= 1300 && temperature < 1500) {
+        } else if (temperature >= 1200 && temperature < 1500) {
             setColor(COLOR.green.temp);
         } else if (temperature >= 1500) {
             setColor(COLOR.blue.temp);
         }
     }, [temperature]);
 
-    const tempWidth = temperature * (1 / 1500);
+    const tempWidth = temperature * (1 / 1800);
 
     return (
         <Stack spacing={1}>
