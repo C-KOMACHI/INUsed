@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider, List, ListItemButton, Container } from '@mui/material';
 import { FavoriteBorder, ShoppingCartOutlined, NotificationAddOutlined } from '@mui/icons-material';
+import { useFlow } from '@/stackflow';
 import { Text } from '@/components/atoms';
 import { AppScreen } from '@/components/organisms';
 import { ProfileInformation } from '@/components/molecules';
@@ -11,6 +12,12 @@ const style = {
 };
 
 export const MyPageTemplate: FC = () => {
+    const { push } = useFlow();
+
+    const handleClick = () => {
+        push('Notice', {});
+    };
+
     return (
         <AppScreen title="내 프로필" bottomNavigation>
             <Container sx={style}>
@@ -44,7 +51,7 @@ export const MyPageTemplate: FC = () => {
                 </Grid>
                 <Divider />
                 <List aria-label="mailbox folders">
-                    <ListItemButton sx={{ py: 1 }}>
+                    <ListItemButton sx={{ py: 1 }} onClick={handleClick}>
                         <Text type="body2">공지사항</Text>
                     </ListItemButton>
                     <ListItemButton sx={{ py: 1 }}>

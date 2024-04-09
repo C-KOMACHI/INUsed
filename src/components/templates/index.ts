@@ -5,3 +5,4 @@ export * from './MyPageTemplate';
 export * from './PostTemplate';
 export * from './WriterTemplate';
 export * from './HeartTemplate';
+export * from './NoticeTemplate';

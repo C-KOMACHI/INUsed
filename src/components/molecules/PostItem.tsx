@@ -6,13 +6,14 @@ import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
 interface Props {
-    src: string;
+    src?: string;
     title: string;
     subTitle1: string;
     subTitle2?: string;
     body?: string;
     post?: boolean;
     main?: boolean;
+    notice?: boolean;
 }
 
 const style = {
@@ -23,7 +24,7 @@ const style = {
     cursor: 'pointer',
 };
 
-export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main }) => {
+export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice }) => {
     const { push } = useFlow();
 
     const handleClick = () => {
@@ -64,6 +65,13 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                             </Box>
                             <Text type="body1">{body}</Text>
                         </Stack>
+                    </>
+                )}
+                {notice && (
+                    <>
+                        <Text type="h6">{title}</Text>
+                        <Text type="subtitle2">{subTitle1}</Text>
+                        <Divider />
                     </>
                 )}
             </Stack>
