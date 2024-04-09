@@ -4,10 +4,10 @@ import { PostItem } from '@/components/molecules';
 
 export interface Post {
     id: number;
-    src: string;
+    src?: string;
     title: string;
     subTitle1: string;
-    subTitle2: string;
+    subTitle2?: string;
 }
 
 interface Props {
@@ -18,7 +18,7 @@ export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Stack>
             {posts.map(({ id, src, title, subTitle1, subTitle2 }) => {
-                return <PostItem key={id} src={src} title={title} subTitle1={subTitle1} subTitle2={subTitle2} main />;
+                return <PostItem key={id} src={src} title={title} subTitle1={subTitle1} subTitle2={subTitle2} main={!!subTitle2} notice={!subTitle2}/>;
             })}
         </Stack>
     );
