@@ -14,7 +14,7 @@ const style = {
     container: {
         position: 'absolute',
         bottom: 0,
-        right: '2.3rem',
+        right: '25px',
         width: '25px',
     },
     icon: {
