@@ -4,18 +4,17 @@ import styled from '@emotion/styled';
 const StyledInput = styled.input`
     border: none;
     border-radius: 20px;
-    height: 45px;
-    font-size: 0.9rem;
+    height: 40px;
+    font-size: 0.97rem;
     width: 100%;
     outline: none;
     background-repeat: no-repeat;
     border: none;
     background: url('https://api.iconify.design/ion/search.svg?color=%23aaa') no-repeat;
-    background-size: 20px 20px;
+    background-size: 25px 25px;
     background-color: white;
-    padding-left: 2.5rem;
+    padding-left: 2.8rem;
     margin: 0 0 0 12px;
-    height: 40px;
     background-position: 10px center;
 `;
 

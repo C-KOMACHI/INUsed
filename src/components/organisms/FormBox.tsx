@@ -9,7 +9,7 @@ const style = {
     container: {
         width: '400px',
         alignItems: 'center',
-        padding: '0rem 2rem 0 2rem',
+        padding: '0 2rem 0 2rem',
     },
     button: {
         borderRadius: '30px',

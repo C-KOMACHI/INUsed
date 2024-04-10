@@ -16,6 +16,7 @@ const style = {
         bottom: 0,
         right: '25px',
         width: '25px',
+        zIndex: 0,
     },
     icon: {
         fontSize: 23,

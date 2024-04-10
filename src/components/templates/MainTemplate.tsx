@@ -15,7 +15,7 @@ const posts = [
 
 export const MainTemplate: FC = () => {
     return (
-        <AppScreen bottomNavigation writeButton searchBar>
+        <AppScreen bottomNavigation writeButton searchBar borderRadius>
             <PostList posts={posts} />
         </AppScreen>
     );

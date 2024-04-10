@@ -6,7 +6,7 @@ import { COLOR } from '@/constants';
 const style = {
     container1: {
         width: '400px',
-        padding: '0 0 0 2rem',
+        padding: '0 0 0 2.5rem',
         display: 'flex',
         position: 'relative',
     },
