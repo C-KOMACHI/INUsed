@@ -8,8 +8,13 @@ import {
     QuestionAnswer as ChatIcon,
     Person as PersonIcon,
 } from '@mui/icons-material';
+import { WriteButton } from '@/components/atoms';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
+
+interface Props {
+    writeButton?: boolean;
+}
 
 const style = {
     container: {
@@ -26,12 +31,13 @@ const style = {
     },
 };
 
-export const BottomMenubar: FC = () => {
+export const BottomMenubar: FC<Props> = ({ writeButton }) => {
     const activity = useActivity();
     const { replace } = useFlow();
 
     return (
         <Box sx={style.container}>
+            {writeButton && <WriteButton />}
             <MuiBottomNavigation
                 showLabels
                 value={activity.name === 'Main' ? 0 : 4}

@@ -5,10 +5,10 @@ import { COLOR } from '@/constants';
 
 const style = {
     fab: {
-        position: 'sticky',
-        right: 0,
-        bottom: 80,
         backgroundColor: COLOR.blue.fab,
+        position: 'absolute',
+        right: 15,
+        bottom: 80,
     },
     icon: {
         color: COLOR.white.main,
