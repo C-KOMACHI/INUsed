@@ -33,38 +33,38 @@ export const MyPageTemplate: FC = () => {
                     <Grid item xs={4}>
                         <Stack alignItems="center">
                             <FavoriteBorder fontSize="large" />
-                            <Text type="body2">관심 목록</Text>
+                            <Text type="medium">관심 목록</Text>
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
                         <Stack alignItems="center">
                             <ShoppingCartOutlined fontSize="large" />
-                            <Text type="body2">판매 내역</Text>
+                            <Text type="medium">판매 내역</Text>
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
                         <Stack alignItems="center">
                             <NotificationAddOutlined fontSize="large" />
-                            <Text type="body2">키워드 알림</Text>
+                            <Text type="medium">키워드 알림</Text>
                         </Stack>
                     </Grid>
                 </Grid>
                 <Divider />
                 <List aria-label="mailbox folders">
                     <ListItemButton sx={{ py: 1 }} onClick={handleClick}>
-                        <Text type="body2">공지사항</Text>
+                        <Text type="medium">공지사항</Text>
                     </ListItemButton>
                     <ListItemButton sx={{ py: 1 }}>
-                        <Text type="body2">운영자 문의</Text>
+                        <Text type="medium">운영자 문의</Text>
                     </ListItemButton>
                     <ListItemButton sx={{ py: 1 }}>
-                        <Text type="body2">서비스 이용 약관</Text>
+                        <Text type="medium">서비스 이용 약관</Text>
                     </ListItemButton>
                     <ListItemButton sx={{ py: 1 }}>
-                        <Text type="body2">개인정보 처리방침</Text>
+                        <Text type="medium">개인정보 처리방침</Text>
                     </ListItemButton>
                     <ListItemButton sx={{ py: 1 }}>
-                        <Text type="body2">회원 탈퇴</Text>
+                        <Text type="medium">회원 탈퇴</Text>
                     </ListItemButton>
                 </List>
             </Container>

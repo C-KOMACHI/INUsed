@@ -40,7 +40,7 @@ export const PostBottomMenubar: FC<Props> = ({ subTitle2 }) => {
                 textStyle={{ position: 'static', paddingLeft: '6.6px' }}
             />
             <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
-            <Text type="h5">{subTitle2}</Text>
+            <Text type="large">{subTitle2}</Text>
 
             <Button size="medium" variant="contained" sx={style.button}>
                 채팅하기
