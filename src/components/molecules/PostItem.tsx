@@ -25,9 +25,9 @@ const style = {
     },
     button: {
         position: 'absolute',
-        right: 13,
+        right: 20,
         top: 20,
-        color: COLOR.gray.main,
+        color: COLOR.white.main,
         cursor: 'pointer',
     },
 };
@@ -65,17 +65,19 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
 
             {/* 포스트 게시물 */}
             {post && (
-                <Stack direction="column" spacing={2}>
-                    <Image src={src} alt={title} disabledBorderRadius />
-                    <Stack sx={{ pl: '20px' }}>
-                        <Box sx={{ position: 'relative', pb: '15px' }}>
-                            <Text type="large">{title}</Text>
-                            <Text type="smallGray">{subTitle1}</Text>
-                            <MenuIcon sx={{ ...style.button, right: 20, top: 5 }} />
-                        </Box>
-                        <Text type="mediumGray">{body}</Text>
+                <>
+                    <MenuIcon sx={style.button} />
+                    <Stack direction="column" spacing={2}>
+                        <Image src={src} alt={title} disabledBorderRadius />
+                        <Stack sx={{ pl: '10px' }}>
+                            <Box sx={{ position: 'relative', pb: '15px' }}>
+                                <Text type="large">{title}</Text>
+                                <Text type="smallGray">{subTitle1}</Text>
+                            </Box>
+                            <Text type="mediumGray">{body}</Text>
+                        </Stack>
                     </Stack>
-                </Stack>
+                </>
             )}
 
             {/* 공지사항 */}
