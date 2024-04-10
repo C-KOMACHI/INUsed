@@ -21,7 +21,7 @@ const style = {
     container: {
         paddingTop: '20px',
         paddingLeft: '20px',
-        zIndex: -1,
+        zIndex: 0,
     },
     button: {
         position: 'absolute',

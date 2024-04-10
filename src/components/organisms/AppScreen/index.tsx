@@ -8,10 +8,9 @@ import { AppBar } from './AppBar';
 
 const style = {
     container: {
-        mt: -2.5,
+        mt: 1.5,
         minHeight: 'calc(100vh - 101px)',
         backgroundColor: 'white',
-        zIndex: -2,
     },
     wrapper: {
         display: 'flex',
@@ -35,18 +34,29 @@ interface Props extends AppScreenProps {
     title?: string;
     writeButton?: boolean;
     searchBar?: boolean;
+    borderRadius?: boolean;
 }
 
-export const AppScreen: FC<Props> = ({ children, bottomNavigation, header, title, writeButton, searchBar }) => {
+export const AppScreen: FC<Props> = ({
+    children,
+    bottomNavigation,
+    header,
+    title,
+    writeButton,
+    searchBar,
+    borderRadius,
+}) => {
     return (
         <StackFlowAppScreen>
             {header && <AppBar title={title} />}
             {searchBar && <Header />}
             <Stack sx={style.wrapper}>
-                <Box sx={style.box1}>
-                    <Box sx={style.box2} />
-                </Box>
-                <Container component="main" sx={style.container}>
+                {borderRadius && (
+                    <Box sx={style.box1}>
+                        <Box sx={style.box2} />
+                    </Box>
+                )}
+                <Container component="main" sx={{ ...style.container, ...(borderRadius && { mt: -2.5 }) }}>
                     {children}
                 </Container>
                 {bottomNavigation && <BottomMenubar writeButton={writeButton} />}

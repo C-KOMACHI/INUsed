@@ -12,6 +12,7 @@ const style = {
         width: 1,
         zIndex: 1,
         top: 0,
+        height: '60px',
     },
     button: {
         color: COLOR.gray.main,
