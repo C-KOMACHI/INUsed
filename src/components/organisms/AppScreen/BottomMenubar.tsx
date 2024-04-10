@@ -51,7 +51,7 @@ export const BottomMenubar: FC = () => {
                 <BottomNavigationAction label="카테고리" icon={<CategoryIcon />} sx={style.button} />
                 <BottomNavigationAction label="관심" icon={<FavoriteIcon />} sx={style.button} />
                 <BottomNavigationAction label="채팅" icon={<ChatIcon />} sx={style.button} />
-                <BottomNavigationAction label="내 프로필" icon={<PersonIcon />} sx={style.button} />
+                <BottomNavigationAction label="내프로필" icon={<PersonIcon />} sx={style.button} />
             </MuiBottomNavigation>
         </Box>
     );

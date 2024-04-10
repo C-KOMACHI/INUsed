@@ -5,8 +5,8 @@ import { COLOR } from '@/constants';
 
 const style = {
     fab: {
-        position: 'absolute',
-        right: 15,
+        position: 'sticky',
+        right: 0,
         bottom: 80,
         backgroundColor: COLOR.blue.fab,
     },
