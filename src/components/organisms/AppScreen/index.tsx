@@ -11,6 +11,7 @@ const style = {
         mt: -2.5,
         minHeight: 'calc(100vh - 101px)',
         backgroundColor: 'white',
+        zIndex: -2,
     },
     wrapper: {
         display: 'flex',
@@ -25,7 +26,7 @@ const style = {
         height: '30px',
         backgroundColor: 'white',
         borderRadius: '30px 30px 0 0',
-    }
+    },
 };
 
 interface Props extends AppScreenProps {
