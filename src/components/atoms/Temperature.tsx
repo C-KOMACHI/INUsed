@@ -57,7 +57,7 @@ export const Temperature: FC<Props> = ({ temperature }) => {
     return (
         <Stack spacing={1}>
             <Stack direction="row" sx={{ position: 'relative' }}>
-                <Text type="body2">횃불온도</Text>
+                <Text type="medium">횃불온도</Text>
                 <Typography variant="subtitle1" sx={{ ...style.text, color }}>
                     {temperature}℃
                 </Typography>

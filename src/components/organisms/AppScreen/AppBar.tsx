@@ -29,7 +29,7 @@ const style = {
 export const AppBar: FC<Props> = ({ title }) => {
     return (
         <Box sx={style.container}>
-            <Text type="subtitle2">{title}</Text>
+            <Text type="largeGray">{title}</Text>
         </Box>
     );
 };

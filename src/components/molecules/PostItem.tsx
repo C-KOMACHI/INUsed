@@ -50,9 +50,9 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                             <Image src={src} alt={title} />
                         </Grid>
                         <Grid item xs={6} onClick={handleClick}>
-                            <Text type="h6">{title}</Text>
-                            <Text type="subtitle2">{subTitle1}</Text>
-                            <Text type="subtitle1">{subTitle2}</Text>
+                            <Text type="large">{title}</Text>
+                            <Text type="medium">{subTitle1}</Text>
+                            <Text type="smallGray">{subTitle2}</Text>
                         </Grid>
                         <Grid item xs={2} sx={{ position: 'relative' }}>
                             <HeartIcon />
@@ -68,11 +68,11 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                     <Image src={src} alt={title} disabledBorderRadius />
                     <Stack sx={{ pl: '20px' }}>
                         <Box sx={{ position: 'relative', pb: '15px' }}>
-                            <Text type="h6">{title}</Text>
-                            <Text type="subtitle1">{subTitle1}</Text>
+                            <Text type="large">{title}</Text>
+                            <Text type="smallGray">{subTitle1}</Text>
                             <MenuIcon sx={{ ...style.button, right: 20, top: 5 }} />
                         </Box>
-                        <Text type="body1">{body}</Text>
+                        <Text type="mediumGray">{body}</Text>
                     </Stack>
                 </Stack>
             )}
@@ -80,8 +80,8 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
             {/* 공지사항 */}
             {notice && (
                 <>
-                    <Text type="h6">{title}</Text>
-                    <Text type="subtitle2">{subTitle1}</Text>
+                    <Text type="large">{title}</Text>
+                    <Text type="smallGray">{subTitle1}</Text>
                     <Divider />
                 </>
             )}

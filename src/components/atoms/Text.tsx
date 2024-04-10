@@ -1,25 +1,23 @@
 import type { FC, PropsWithChildren } from 'react';
-import { Typography, type TypographyTypeMap } from '@mui/material';
+import { Typography, type TypographyVariant } from '@mui/material';
 
 const variant = {
-    h1: 'h1',
-    h2: 'h2',
-    h3: 'h3',
-    h4: 'h4',
-    h5: 'h5',
-    h6: 'h6',
-    subtitle1: 'subtitle1',
-    subtitle2: 'subtitle2',
-    body1: 'body1',
-    body2: 'body2',
+    large: 'h6',
+    medium: 'subtitle1',
+    small: 'caption',
+    largeGray: 'h6',
+    mediumGray: 'subtitle1',
+    smallGray: 'caption',
 };
 
 const color: Partial<typeof variant> = {
-    subtitle2: 'gray',
+    largeGray: 'gray',
+    mediumGray: 'gray',
+    smallGray: 'gray',
 };
 
 interface Props extends PropsWithChildren {
-    type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'subtitle1' | 'subtitle2' | 'body1' | 'body2';
+    type?: 'large' | 'medium' | 'small' | 'largeGray' | 'mediumGray' | 'smallGray';
 }
 
 const style = {
@@ -28,9 +26,9 @@ const style = {
     textOverflow: 'ellipsis',
 };
 
-export const Text: FC<Props> = ({ children, type = 'body1' }) => {
+export const Text: FC<Props> = ({ children, type = 'large' }) => {
     return (
-        <Typography variant={variant[type] as TypographyTypeMap['props']['variant']} color={color[type]} sx={style}>
+        <Typography variant={variant[type as keyof typeof variant] as TypographyVariant} color={color[type]} sx={style}>
             {children}
         </Typography>
     );
