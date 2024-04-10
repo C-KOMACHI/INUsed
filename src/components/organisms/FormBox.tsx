@@ -27,7 +27,7 @@ interface Props {
     register?: boolean;
 }
 export const FormBox: FC<Props> = ({ login, register }) => {
-    const { push } = useFlow();
+    const { replace } = useFlow();
 
     return (
         <Box sx={style.container}>
@@ -46,9 +46,9 @@ export const FormBox: FC<Props> = ({ login, register }) => {
                 )}
                 {register && <Password />}
                 {login ? (
-                    <Button onClick={() => push('Main', {})}>로그인</Button>
+                    <Button onClick={() => replace('Main', {}, { animate: false })}>로그인</Button>
                 ) : (
-                    <Button onClick={() => push('Login', {})}>회원가입</Button>
+                    <Button onClick={() => replace('Login', {}, { animate: false })}>회원가입</Button>
                 )}
             </Stack>
         </Box>

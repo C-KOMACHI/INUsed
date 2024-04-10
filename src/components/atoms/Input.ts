@@ -4,13 +4,17 @@ import { COLOR } from '@/constants';
 interface Props {
     small?: boolean;
     medium?: boolean;
+    big?: boolean;
     search?: boolean;
 }
 
 export const Input = styled.input<Props>`
     border: 1.6px solid ${COLOR.gray.main};
     border-radius: 25px;
-    height: 50px;
+    height: ${(props) => {
+        if (props.big) return '200px';
+        return '50px';
+    }};
     font-size: 0.9rem;
     width: ${(props) => {
         if (props.small) return '50%';
