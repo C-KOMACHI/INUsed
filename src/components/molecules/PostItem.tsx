@@ -16,15 +16,22 @@ interface Props {
     notice?: boolean;
 }
 
-const style = {
-    position: 'absolute',
-    right: 35,
-    top: 20,
-    color: COLOR.gray.main,
-    cursor: 'pointer',
+// 스타일 객체 정의
+const styles = {
+    container: {
+        paddingTop: '20px',
+        paddingLeft: '20px',
+    },
+    button: {
+        position: 'absolute',
+        right: 13,
+        top: 20,
+        color: COLOR.gray.main,
+        cursor: 'pointer',
+    },
 };
 
-export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice }) => {
+const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice }) => {
     const { push } = useFlow();
 
     const handleClick = () => {
@@ -34,47 +41,52 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
     };
 
     return (
-        <Box sx={{ pt: '5px' }}>
-            <Stack spacing={2}>
-                {main && (
-                    <>
-                        <Grid container spacing={2}>
-                            <Grid item xs={4} onClick={handleClick}>
-                                <Image src={src} alt={title} />
-                            </Grid>
-                            <Grid item xs={6} onClick={handleClick}>
+        <>
+            {/* 메인 게시물 */}
+            {main && (
+                <Box sx={styles.container}>
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid item xs={6} onClick={handleClick}>
+                            <Stack spacing={1}>
                                 <Text type="h6">{title}</Text>
                                 <Text type="subtitle2">{subTitle1}</Text>
                                 <Text type="subtitle1">{subTitle2}</Text>
-                            </Grid>
-                            <Grid item xs={2} sx={{ position: 'relative' }}>
-                                <HeartIcon />
-                            </Grid>
+                            </Stack>
                         </Grid>
-                        <Divider />
-                    </>
-                )}
-                {post && (
-                    <>
-                        <Image src={src} alt={title} disabledBorderRadius />
-                        <Stack sx={{ pl: '20px' }}>
-                            <Box sx={{ position: 'relative', pb: '15px' }}>
-                                <Text type="h6">{title}</Text>
-                                <Text type="subtitle1">{subTitle1}</Text>
-                                <MenuIcon sx={{ ...style, right: 20, top: 5 }} />
-                            </Box>
-                            <Text type="body1">{body}</Text>
-                        </Stack>
-                    </>
-                )}
-                {notice && (
-                    <>
-                        <Text type="h6">{title}</Text>
-                        <Text type="subtitle2">{subTitle1}</Text>
-                        <Divider />
-                    </>
-                )}
-            </Stack>
-        </Box>
+                        <Grid item xs={2} sx={{ position: 'relative' }}>
+                            <HeartIcon />
+                            <MenuIcon sx={styles.button} />
+                        </Grid>
+                    </Grid>
+                    <Divider sx={{ pt: '20px' }} />
+                </Box>
+            )}
+
+            {/* 포스트 게시물 */}
+            {post && (
+                <Stack direction="row" spacing={2}>
+                    <Image src={src} alt={title} disabledBorderRadius />
+                    <Stack spacing={1}>
+                        <Box sx={{ position: 'relative', pb: '15px' }}>
+                            <Text type="h6">{title}</Text>
+                            <Text type="subtitle1">{subTitle1}</Text>
+                            <MenuIcon sx={{ ...styles.button, right: 15, top: 5 }} />
+                        </Box>
+                        <Text type="body1">{body}</Text>
+                    </Stack>
+                </Stack>
+            )}
+
+            {/* 공지사항 */}
+            {notice && (
+                <>
+                    <Text type="h6">{title}</Text>
+                    <Text type="subtitle2">{subTitle1}</Text>
+                    <Divider />
+                </>
+            )}
+        </>
     );
 };
+
+export default PostItem;

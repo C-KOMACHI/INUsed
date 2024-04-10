@@ -11,12 +11,15 @@ const posts = [
     { id: 4, src: '/image.jpg', title: '양말4', subTitle1: '2일 전', subTitle2: '5000원' },
     { id: 5, src: '/image.jpg', title: '양말5', subTitle1: '2일 전', subTitle2: '5000원' },
     { id: 6, src: '/image.jpg', title: '양말6', subTitle1: '2일 전', subTitle2: '5000원' },
+    { id: 7, src: '/image.jpg', title: '양말4', subTitle1: '2일 전', subTitle2: '5000원' },
+    { id: 8, src: '/image.jpg', title: '양말5', subTitle1: '2일 전', subTitle2: '5000원' },
+    { id: 9, src: '/image.jpg', title: '양말6', subTitle1: '2일 전', subTitle2: '5000원' },
 ];
 
 export const MainTemplate: FC = () => {
     return (
         <AppScreen bottomNavigation>
-            <Stack sx={{ position: 'relative' }}>
+            <Stack>
                 <Header />
                 <PostList posts={posts} />
                 <WriteButton />

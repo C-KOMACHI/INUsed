@@ -2,13 +2,12 @@ import type { FC } from 'react';
 import { Fab } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
 import { COLOR } from '@/constants';
-import { useFlow } from '@/stackflow';
 
 const style = {
     fab: {
         position: 'absolute',
-        right: 16,
-        bottom: 25,
+        right: 15,
+        bottom: 80,
         backgroundColor: COLOR.blue.fab,
     },
     icon: {
@@ -18,13 +17,8 @@ const style = {
 };
 
 export const WriteButton: FC = () => {
-    const { push } = useFlow();
-
-    const handleClick = () => {
-        push('Writer', {});
-    };
     return (
-        <Fab sx={style.fab} onClick={handleClick}>
+        <Fab sx={style.fab}>
             <AddIcon sx={style.icon} />
         </Fab>
     );

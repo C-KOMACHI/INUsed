@@ -16,7 +16,7 @@ const style = {
 };
 export const Header: FC = () => {
     return (
-        <Box sx={{ flexGrow: '1', margin: 0 }}>
+        <Box sx={{ flexGrow: '1' }}>
             <AppBar position="static" sx={style.container}>
                 <Stack direction="row" alignItems="center" spacing={1}>
                     <SearchBar />
