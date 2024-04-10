@@ -19,7 +19,7 @@ export const MyPageTemplate: FC = () => {
     };
 
     return (
-        <AppScreen title="내 프로필" bottomNavigation>
+        <AppScreen bottomNavigation header title="내 프로필">
             <Container sx={style}>
                 <ProfileInformation
                     alt="프로필 사진"

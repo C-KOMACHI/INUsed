@@ -1,16 +1,10 @@
 import type { FC } from 'react';
 import { Container, Stack } from '@mui/material';
 import { AppScreen as StackFlowAppScreen, type AppScreenProps } from '@stackflow/plugin-basic-ui';
-import { COLOR } from '@/constants';
 import { BottomMenubar } from './BottomMenubar';
+import { AppBar } from './AppBar';
 
 const style = {
-    appBar: {
-        textColor: COLOR.gray.main,
-        iconColor: COLOR.gray.main,
-        backgroundColor: COLOR.blue.main,
-        height: '57px',
-    },
     container: {
         minHeight: 'calc(100vh - 101px)',
         padding: 0,
@@ -21,13 +15,15 @@ const style = {
 };
 
 interface Props extends AppScreenProps {
-    title?: string;
     bottomNavigation?: boolean;
+    header?: boolean;
+    title?: string;
 }
 
-export const AppScreen: FC<Props> = ({ title, children, bottomNavigation }) => {
+export const AppScreen: FC<Props> = ({ children, bottomNavigation, header, title }) => {
     return (
-        <StackFlowAppScreen appBar={title ? { ...style.appBar, title } : undefined}>
+        <StackFlowAppScreen>
+            {header && <AppBar title={title} />}
             <Stack sx={style.wrapper}>
                 <Container component="main" sx={style.container}>
                     {children}
