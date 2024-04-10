@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider, Box } from '@mui/material';
-import { MoreVert as MenuIcon } from '@mui/icons-material';
+import { MoreVert as MenuIcon, ArrowBackIosNewRounded as BackIcon } from '@mui/icons-material';
 import { Image, Text, HeartIcon } from '@/components/atoms';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
@@ -25,10 +25,10 @@ const style = {
     },
     button: {
         position: 'absolute',
-        right: 20,
         top: 20,
         color: COLOR.white.main,
         cursor: 'pointer',
+        fontSize: '30px',
     },
 };
 
@@ -66,7 +66,11 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
             {/* 포스트 게시물 */}
             {post && (
                 <>
-                    <MenuIcon sx={style.button} />
+                    <Stack direction="row" spacing={5}>
+                        <BackIcon sx={{ ...style.button, left: 20 }} />
+                        <MenuIcon sx={{ ...style.button, right: 20 }} />
+                    </Stack>
+
                     <Stack direction="column" spacing={2}>
                         <Image src={src} alt={title} disabledBorderRadius />
                         <Stack sx={{ pl: '10px' }}>
