@@ -22,10 +22,10 @@ const style = {
         top: '60px',
     },
     box2: {
-        height: '30px',
+        height: '100%',
         backgroundColor: 'white',
         borderRadius: '30px 30px 0 0',
-    }
+    },
 };
 
 interface Props extends AppScreenProps {
