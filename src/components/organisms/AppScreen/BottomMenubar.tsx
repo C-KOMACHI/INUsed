@@ -2,13 +2,12 @@ import type { FC } from 'react';
 import { useActivity } from '@stackflow/react';
 import { Box, BottomNavigation as MuiBottomNavigation, BottomNavigationAction } from '@mui/material';
 import {
-    Home as HomeIcon,
     Dashboard as CategoryIcon,
     Favorite as FavoriteIcon,
     QuestionAnswer as ChatIcon,
     Person as PersonIcon,
 } from '@mui/icons-material';
-import { WriteButton } from '@/components/atoms';
+import { WriteButton, Image } from '@/components/atoms';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
@@ -53,7 +52,7 @@ export const BottomMenubar: FC<Props> = ({ writeButton }) => {
                     background: COLOR.blue.main,
                 }}
             >
-                <BottomNavigationAction label="홈" icon={<HomeIcon />} sx={style.button} />
+                <BottomNavigationAction label="홈" icon={<Image src="/icons/Home.png"/>} sx={style.button} />
                 <BottomNavigationAction label="카테고리" icon={<CategoryIcon />} sx={style.button} />
                 <BottomNavigationAction label="관심" icon={<FavoriteIcon />} sx={style.button} />
                 <BottomNavigationAction label="채팅" icon={<ChatIcon />} sx={style.button} />
