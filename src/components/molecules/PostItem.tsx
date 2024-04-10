@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider, Box } from '@mui/material';
-import { MoreVert as MenuIcon, ArrowBackIosNewRounded as BackIcon } from '@mui/icons-material';
-import { Image, Text, HeartIcon } from '@/components/atoms';
+import { ArrowBackIosNewRounded as BackIcon } from '@mui/icons-material';
+import { Image, Text, HeartIcon, MenuIcon } from '@/components/atoms';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
@@ -73,7 +73,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                 <>
                     <Stack direction="row" spacing={5}>
                         <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
-                        <MenuIcon sx={{ ...style.button, right: 20 }} />
+                        <MenuIcon myPost />
                     </Stack>
 
                     <Stack direction="column" spacing={2}>
