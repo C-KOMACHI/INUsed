@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, AppBar as Bar } from '@mui/material';
+import { Box } from '@mui/material';
 import { Text } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
@@ -11,7 +11,15 @@ const style = {
     container: {
         backgroundColor: COLOR.blue.main,
         padding: '10px',
+        position: 'sticky',
+        width: 1,
+        zIndex: 1,
+        top: 0,
         alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        display: 'flex',
+        height: '60px',
     },
     button: {
         color: COLOR.gray.main,
@@ -20,10 +28,8 @@ const style = {
 };
 export const AppBar: FC<Props> = ({ title }) => {
     return (
-        <Box sx={{ flexGrow: '1' }}>
-            <Bar position="static" sx={style.container}>
-                <Text type="subtitle2">{title}</Text>
-            </Bar>
+        <Box sx={style.container}>
+            <Text type="subtitle2">{title}</Text>
         </Box>
     );
 };
