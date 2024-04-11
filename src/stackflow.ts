@@ -21,7 +21,7 @@ export const { Stack, useFlow, activities } = stackflow({
         Notice,
         Report,
     },
-    initialActivity: () => 'Report',
+    initialActivity: () => 'Main',
 });
 
 export type TypeActivities = typeof activities;

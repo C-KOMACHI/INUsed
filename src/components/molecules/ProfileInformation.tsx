@@ -43,7 +43,7 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, tempe
                         <Text type="large">{nickName}</Text>
                         <Text type="mediumGray">{email}</Text>
                     </Stack>
-                    <Temperature temperature={temperature} />
+                    <Temperature temperature={temperature} myProfile />
                 </Stack>
             )}
         </>

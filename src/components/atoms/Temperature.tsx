@@ -25,7 +25,7 @@ const style = {
     text: {
         position: 'absolute',
         right: 10,
-        bottom: -5,
+        bottom: 0,
     },
     arrow: {
         position: 'relative',
@@ -64,14 +64,14 @@ export const Temperature: FC<Props> = ({ temperature, post, myProfile }) => {
                 </Typography>
             )}
             {myProfile && (
-                <Stack spacing={1}>
+                <Stack>
                     <Stack direction="row" sx={{ position: 'relative' }}>
                         <Text type="medium">횃불온도</Text>
                         <Typography variant="subtitle1" sx={{ ...style.text, color }}>
                             {temperature}℃
                         </Typography>
                     </Stack>
-                    <Stack spacing={0}>
+                    <Stack>
                         <Box sx={style.container}>
                             <Box sx={{ ...style.temp, width: tempWidth, backgroundColor: color }} />
                         </Box>
