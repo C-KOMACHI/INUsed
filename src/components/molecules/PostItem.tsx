@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { Grid, Stack, Divider, Box } from '@mui/material';
 import { ArrowBackIosNewRounded as BackIcon } from '@mui/icons-material';
 import { Image, Text, HeartIcon, MenuIcon } from '@/components/atoms';
+import { ProfileInformation } from '@/components/molecules';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
@@ -78,7 +79,16 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
 
                     <Stack direction="column" spacing={2}>
                         <Image src={src} alt={title} disabledBorderRadius />
-                        <Stack sx={{ pl: '10px' }}>
+                        <Stack sx={{ pl: '10px' }} spacing={2}>
+                            <ProfileInformation
+                                alt="프로필 사진"
+                                src="/profile.png"
+                                nickName="유잼잼"
+                                email="jin03021425@inu.ac.kr"
+                                temperature={1300}
+                                post
+                            />
+                            <Divider />
                             <Box sx={{ position: 'relative', pb: '15px' }}>
                                 <Text type="large">{title}</Text>
                                 <Text type="smallGray">{subTitle1}</Text>

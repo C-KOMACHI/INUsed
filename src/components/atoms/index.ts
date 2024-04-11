@@ -10,3 +10,4 @@ export * from './Profile';
 export * from './Temperature';
 export * from './SearchBar';
 export * from './MenuIcon';
+export * from './Icon';
