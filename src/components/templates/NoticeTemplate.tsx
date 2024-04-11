@@ -9,7 +9,7 @@ const notices = [
 
 export const NoticeTemplate: FC = () => {
     return (
-        <AppScreen>
+        <AppScreen backIcon>
             <PostList posts={notices} />
         </AppScreen>
     );

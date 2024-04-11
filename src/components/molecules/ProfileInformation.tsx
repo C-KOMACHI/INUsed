@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Stack } from '@mui/material';
 import { Profile, Text, Temperature } from '@/components/atoms';
+import { useFlow } from '@/stackflow';
 
 interface Props {
     alt: string;
@@ -19,10 +20,15 @@ const style = {
 };
 
 export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, temperature, post, myProfile }) => {
+    const { push } = useFlow();
+
+    const handleClick = () => {
+        push('MyPage', {});
+    };
     return (
         <>
             {post && (
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack direction="row" alignItems="center" spacing={1} onClick={handleClick}>
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Profile alt={alt} src={src} small />
                         <Text type="medium">{nickName}</Text>

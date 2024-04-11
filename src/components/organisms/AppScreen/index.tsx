@@ -35,6 +35,7 @@ interface Props extends AppScreenProps {
     writeButton?: boolean;
     searchBar?: boolean;
     borderRadius?: boolean;
+    backIcon?: boolean;
 }
 
 export const AppScreen: FC<Props> = ({
@@ -45,10 +46,11 @@ export const AppScreen: FC<Props> = ({
     writeButton,
     searchBar,
     borderRadius,
+    backIcon,
 }) => {
     return (
         <StackFlowAppScreen>
-            {header && <AppBar title={title} />}
+            {header && <AppBar title={title} backIcon={backIcon} />}
             {searchBar && <Header />}
             <Stack sx={style.wrapper}>
                 {borderRadius && (

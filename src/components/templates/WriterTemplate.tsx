@@ -5,7 +5,7 @@ import { AppScreen } from '@/components/organisms';
 
 export const WriterTemplate: FC = () => {
     return (
-        <AppScreen header borderRadius title="상품 등록">
+        <AppScreen header borderRadius title="상품 등록" backIcon>
             <Stack sx={{ pt: 2.5, px: 1, pb: 2 }} spacing={2}>
                 <Box
                     alignItems="center"
