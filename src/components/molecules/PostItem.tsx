@@ -1,20 +1,21 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider, Box } from '@mui/material';
-import { ArrowBackIosNewRounded as BackIcon } from '@mui/icons-material';
-import { Image, Text, HeartIcon, MenuIcon } from '@/components/atoms';
+import { ArrowBackIosNewRounded as BackIcon, ChevronRight as RightIcon } from '@mui/icons-material';
+import { Image, HeartIcon, MenuIcon, Text } from '@/components/atoms';
 import { ProfileInformation } from '@/components/molecules';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
 interface Props {
     src?: string;
-    title: string;
-    subTitle1: string;
+    title?: string;
+    subTitle1?: string;
     subTitle2?: string;
     body?: string;
     post?: boolean;
     main?: boolean;
     notice?: boolean;
+    report?: boolean;
 }
 
 // 스타일 객체 정의
@@ -33,7 +34,7 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice }) => {
+export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice, report }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
@@ -106,6 +107,15 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                     <Text type="smallGray">{subTitle1}</Text>
                     <Divider />
                 </>
+            )}
+
+            {/* 신고 페이지 */}
+            {report && (
+                <Stack sx={{ position: 'relative' }} spacing={1.5}>
+                    <Text type="medium">{title}</Text>
+                    <RightIcon sx={{ position: 'absolute', right: 5, bottom: 16 }} />
+                    <Divider />
+                </Stack>
             )}
         </>
     );
