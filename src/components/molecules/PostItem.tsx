@@ -102,11 +102,11 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
 
             {/* 공지사항 */}
             {notice && (
-                <>
+                <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
                     <Text type="large">{title}</Text>
                     <Text type="smallGray">{subTitle1}</Text>
                     <Divider />
-                </>
+                </Stack>
             )}
 
             {/* 신고 페이지 */}
