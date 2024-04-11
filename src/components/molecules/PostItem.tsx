@@ -75,7 +75,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                 <>
                     <Stack direction="row" spacing={5}>
                         <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
-                        <MenuIcon myPost />
+                        <MenuIcon />
                     </Stack>
 
                     <Stack direction="column" spacing={2}>

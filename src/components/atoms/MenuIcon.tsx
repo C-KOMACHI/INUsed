@@ -2,6 +2,7 @@ import { type FC, useState } from 'react';
 import { Menu, MenuItem, IconButton } from '@mui/material';
 import { MoreVert as Icon } from '@mui/icons-material';
 import { COLOR } from '@/constants';
+import { useFlow } from '@/stackflow';
 
 interface Props {
     myPost?: boolean;
@@ -23,6 +24,7 @@ const style = {
 export const MenuIcon: FC<Props> = ({ myPost }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const [open, setOpen] = useState<boolean>(false);
+    const { push } = useFlow();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -32,6 +34,11 @@ export const MenuIcon: FC<Props> = ({ myPost }) => {
     const handleClose = () => {
         setAnchorEl(null);
         setOpen(false);
+    };
+
+    const handleReportClick = () => {
+        handleClose();
+        push('Report', {});
     };
 
     return (
@@ -69,7 +76,7 @@ export const MenuIcon: FC<Props> = ({ myPost }) => {
                           </MenuItem>,
                       ]
                     : [
-                          <MenuItem key="report" onClick={handleClose}>
+                          <MenuItem key="report" onClick={handleReportClick}>
                               신고하기
                           </MenuItem>,
                           <MenuItem key="copyUrl" onClick={handleClose}>
