@@ -27,6 +27,7 @@ export const MyPageTemplate: FC = () => {
                     nickName="유잼잼"
                     email="jin03021425@inu.ac.kr"
                     temperature={1300}
+                    myProfile
                 />
 
                 <Grid container spacing={2} pt={3} pb={1}>
