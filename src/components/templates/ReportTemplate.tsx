@@ -13,7 +13,7 @@ const reports = [
 
 export const ReportTemplate: FC = () => {
     return (
-        <AppScreen bottomNavigation writeButton header borderRadius title="사용자 신고" backIcon>
+        <AppScreen bottomNavigation header borderRadius title="사용자 신고" backIcon>
             <Stack spacing={2} sx={{ pl: '5px' }}>
                 <Stack sx={{ pt: '20px' }}>
                     <Text type="medium">
