@@ -9,4 +9,5 @@ export * from './WriteButton';
 export * from './Profile';
 export * from './Temperature';
 export * from './SearchBar';
+export * from './MenuIcon';
 export * from './Icon';
