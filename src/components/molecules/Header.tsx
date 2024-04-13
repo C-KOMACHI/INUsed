@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { Box, Stack } from '@mui/material';
-import { NotificationsNone as AlarmIcon } from '@mui/icons-material';
-import { SearchBar } from '@/components/atoms';
+import { SearchBar, Icon } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
 const style = {
@@ -24,7 +23,7 @@ export const Header: FC = () => {
         <Box sx={style.container}>
             <Stack direction="row" alignItems="center" spacing={1}>
                 <SearchBar />
-                <AlarmIcon sx={style.button} fontSize="large" />
+                <Icon gray src="/icons/Alarm.png" />
             </Stack>
         </Box>
     );
