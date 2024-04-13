@@ -6,3 +6,4 @@ export * from './Post';
 export * from './Writer';
 export * from './Notice';
 export * from './Report';
+export * from './NoticeSub';

@@ -21,7 +21,7 @@ export const WriteButton: FC = () => {
     const { push } = useFlow();
 
     return (
-        <Fab sx={style.fab} onClick={() => push('Writer', {}, { animate: false })}>
+        <Fab sx={style.fab} onClick={() => push('Writer', {})}>
             <AddIcon sx={style.icon} />
         </Fab>
     );
