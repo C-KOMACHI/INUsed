@@ -7,3 +7,4 @@ export * from './WriterTemplate';
 export * from './HeartTemplate';
 export * from './NoticeTemplate';
 export * from './ReportTemplate';
+export * from './DocsTemplate';

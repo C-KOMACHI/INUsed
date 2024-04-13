@@ -18,10 +18,10 @@ const style = {
 };
 
 export const WriteButton: FC = () => {
-    const { replace } = useFlow();
+    const { push } = useFlow();
 
     return (
-        <Fab sx={style.fab} onClick={() => replace('Writer', {}, { animate: false })}>
+        <Fab sx={style.fab} onClick={() => push('Writer', {})}>
             <AddIcon sx={style.icon} />
         </Fab>
     );
