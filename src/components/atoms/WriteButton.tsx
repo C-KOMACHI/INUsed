@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Fab } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';
+import { useFlow } from '@/stackflow';
 import { COLOR } from '@/constants';
 
 const style = {
@@ -17,8 +18,10 @@ const style = {
 };
 
 export const WriteButton: FC = () => {
+    const { replace } = useFlow();
+
     return (
-        <Fab sx={style.fab}>
+        <Fab sx={style.fab} onClick={() => replace('Writer', {}, { animate: false })}>
             <AddIcon sx={style.icon} />
         </Fab>
     );

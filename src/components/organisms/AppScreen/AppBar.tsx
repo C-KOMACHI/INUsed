@@ -1,10 +1,11 @@
 import type { FC } from 'react';
 import { Box } from '@mui/material';
-import { Text } from '@/components/atoms';
+import { Text, BackIcon } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
 interface Props {
     title?: string;
+    backIcon?: boolean;
 }
 
 const style = {
@@ -26,9 +27,10 @@ const style = {
         margin: '0 12px',
     },
 };
-export const AppBar: FC<Props> = ({ title }) => {
+export const AppBar: FC<Props> = ({ title, backIcon }) => {
     return (
         <Box sx={style.container}>
+            {backIcon && <BackIcon />}
             <Text type="largeGray">{title}</Text>
         </Box>
     );

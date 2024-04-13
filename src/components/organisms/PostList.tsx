@@ -5,8 +5,8 @@ import { PostItem } from '@/components/molecules';
 export interface Post {
     id: number;
     src?: string;
-    title: string;
-    subTitle1: string;
+    title?: string;
+    subTitle1?: string;
     subTitle2?: string;
 }
 

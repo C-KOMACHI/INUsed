@@ -1,5 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import { Typography, type TypographyVariant } from '@mui/material';
+import { COLOR } from '@/constants';
 
 const variant = {
     large: 'h6',
@@ -13,7 +14,7 @@ const variant = {
 const color: Partial<typeof variant> = {
     largeGray: 'gray',
     mediumGray: 'gray',
-    smallGray: 'gray',
+    smallGray: COLOR.gray.main,
 };
 
 interface Props extends PropsWithChildren {
@@ -22,8 +23,9 @@ interface Props extends PropsWithChildren {
 
 const style = {
     overflow: 'hidden',
-    whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
+    wordWrap: 'break-word',
+    display: 'block',
 };
 
 export const Text: FC<Props> = ({ children, type = 'large' }) => {

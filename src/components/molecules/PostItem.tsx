@@ -1,19 +1,21 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider, Box } from '@mui/material';
-import { MoreVert as MenuIcon, ArrowBackIosNewRounded as BackIcon } from '@mui/icons-material';
-import { Image, Text, HeartIcon } from '@/components/atoms';
+import { ArrowBackIosNewRounded as BackIcon, ChevronRight as RightIcon } from '@mui/icons-material';
+import { Image, HeartIcon, MenuIcon, Text } from '@/components/atoms';
+import { ProfileInformation } from '@/components/molecules';
 import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
 interface Props {
     src?: string;
-    title: string;
-    subTitle1: string;
+    title?: string;
+    subTitle1?: string;
     subTitle2?: string;
     body?: string;
     post?: boolean;
     main?: boolean;
     notice?: boolean;
+    report?: boolean;
 }
 
 // 스타일 객체 정의
@@ -32,7 +34,7 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice }) => {
+export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice, report }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
@@ -73,12 +75,21 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                 <>
                     <Stack direction="row" spacing={5}>
                         <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
-                        <MenuIcon sx={{ ...style.button, right: 20 }} />
+                        <MenuIcon />
                     </Stack>
 
                     <Stack direction="column" spacing={2}>
                         <Image src={src} alt={title} disabledBorderRadius />
-                        <Stack sx={{ pl: '10px' }}>
+                        <Stack sx={{ pl: '10px' }} spacing={2}>
+                            <ProfileInformation
+                                alt="프로필 사진"
+                                src="/profile.png"
+                                nickName="유잼잼"
+                                email="jin03021425@inu.ac.kr"
+                                temperature={1300}
+                                post
+                            />
+                            <Divider />
                             <Box sx={{ position: 'relative', pb: '15px' }}>
                                 <Text type="large">{title}</Text>
                                 <Text type="smallGray">{subTitle1}</Text>
@@ -91,11 +102,20 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
 
             {/* 공지사항 */}
             {notice && (
-                <>
+                <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
                     <Text type="large">{title}</Text>
                     <Text type="smallGray">{subTitle1}</Text>
                     <Divider />
-                </>
+                </Stack>
+            )}
+
+            {/* 신고 페이지 */}
+            {report && (
+                <Stack sx={{ position: 'relative' }} spacing={1.5}>
+                    <Text type="medium">{title}</Text>
+                    <RightIcon sx={{ position: 'absolute', right: 5, bottom: 16 }} />
+                    <Divider />
+                </Stack>
             )}
         </>
     );

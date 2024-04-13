@@ -6,6 +6,8 @@ import { Text } from '@/components/atoms';
 
 interface Props {
     temperature: number;
+    myProfile?: boolean;
+    post?: boolean;
 }
 
 const style = {
@@ -23,7 +25,7 @@ const style = {
     text: {
         position: 'absolute',
         right: 10,
-        bottom: -5,
+        bottom: 0,
     },
     arrow: {
         position: 'relative',
@@ -37,7 +39,7 @@ const style = {
     },
 };
 
-export const Temperature: FC<Props> = ({ temperature }) => {
+export const Temperature: FC<Props> = ({ temperature, post, myProfile }) => {
     const [color, setColor] = useState(COLOR.yellow.temp);
 
     useEffect(() => {
@@ -55,21 +57,30 @@ export const Temperature: FC<Props> = ({ temperature }) => {
     const tempWidth = temperature * (1 / 1800);
 
     return (
-        <Stack spacing={1}>
-            <Stack direction="row" sx={{ position: 'relative' }}>
-                <Text type="medium">횃불온도</Text>
-                <Typography variant="subtitle1" sx={{ ...style.text, color }}>
+        <>
+            {post && (
+                <Typography variant="subtitle1" sx={{ color }}>
                     {temperature}℃
                 </Typography>
-            </Stack>
-            <Stack spacing={0}>
-                <Box sx={style.container}>
-                    <Box sx={{ ...style.temp, width: tempWidth, backgroundColor: color }} />
-                </Box>
-                <Box sx={{ ...style.arrow, width: tempWidth }}>
-                    <ArrowIcon sx={style.icon} fontSize="large" />
-                </Box>
-            </Stack>
-        </Stack>
+            )}
+            {myProfile && (
+                <Stack>
+                    <Stack direction="row" sx={{ position: 'relative' }}>
+                        <Text type="medium">횃불온도</Text>
+                        <Typography variant="subtitle1" sx={{ ...style.text, color }}>
+                            {temperature}℃
+                        </Typography>
+                    </Stack>
+                    <Stack>
+                        <Box sx={style.container}>
+                            <Box sx={{ ...style.temp, width: tempWidth, backgroundColor: color }} />
+                        </Box>
+                        <Box sx={{ ...style.arrow, width: tempWidth }}>
+                            <ArrowIcon sx={style.icon} fontSize="large" />
+                        </Box>
+                    </Stack>
+                </Stack>
+            )}
+        </>
     );
 };
