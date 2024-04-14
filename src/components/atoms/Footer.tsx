@@ -19,22 +19,21 @@ const style = {
 export const Footer: FC = () => {
     const { push } = useFlow();
 
-    const handleClickRegister = () => {
-        push('Register', {
-            title: '회원 가입',
-        });
+    const handleClick = (iconName: 'Register' | 'FindPassword') => {
+        push(iconName === 'Register' ? 'Register' : 'FindPassword', {}, { animate: false });
     };
+
     return (
         <Stack>
             <Box sx={style.container1}>
                 <Stack direction="row" spacing={22}>
                     <Grid item xs={6}>
-                        <Button size="small" sx={style.button}>
+                        <Button size="small" sx={style.button} onClick={() => handleClick('FindPassword')}>
                             비밀번호 찾기
                         </Button>
                     </Grid>
                     <Grid item xs={6}>
-                        <Button size="small" sx={style.button} onClick={handleClickRegister}>
+                        <Button size="small" sx={style.button} onClick={() => handleClick('Register')}>
                             회원 가입
                         </Button>
                     </Grid>
