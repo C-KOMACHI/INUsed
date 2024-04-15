@@ -38,10 +38,8 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
     const { push } = useFlow();
     const { pop } = useFlow();
 
-    const pushHandleClick = () => {
-        push('Post', {
-            title,
-        });
+    const pushHandleClick = (s: 'Post' | 'NoticeSub') => {
+        push((s === 'Post'? 'Post' : 'NoticeSub'), {title,});
     };
 
     const popHandleClick = () => {
@@ -53,11 +51,11 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
             {/* 메인 게시물 */}
             {main && (
                 <Box sx={style.container}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={4} onClick={pushHandleClick}>
+                    <Grid container spacing={2} onClick={() => pushHandleClick('Post')}>
+                        <Grid item xs={4}>
                             <Image src={src} alt={title} />
                         </Grid>
-                        <Grid item xs={6} onClick={pushHandleClick}>
+                        <Grid item xs={6}>
                             <Text type="large">{title}</Text>
                             <Text type="medium">{subTitle1}</Text>
                             <Text type="smallGray">{subTitle2}</Text>
@@ -103,8 +101,10 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
             {/* 공지사항 */}
             {notice && (
                 <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
-                    <Text type="large">{title}</Text>
-                    <Text type="smallGray">{subTitle1}</Text>
+                    <Box onClick={() => pushHandleClick('NoticeSub')}>
+                        <Text type="large">{title}</Text>
+                        <Text type="smallGray">{subTitle1}</Text>
+                    </Box>
                     <Divider />
                 </Stack>
             )}
