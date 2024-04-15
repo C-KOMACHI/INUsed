@@ -39,7 +39,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
     const { pop } = useFlow();
 
     const pushHandleClick = (s: 'Post' | 'NoticeSub') => {
-        push((s === 'Post'? 'Post' : 'NoticeSub'), {title,});
+        push(s === 'Post' ? 'Post' : 'NoticeSub', { title });
     };
 
     const popHandleClick = () => {

@@ -18,6 +18,7 @@ const style = {
         margin: '0 12px',
     },
 };
+
 export const Header: FC = () => {
     return (
         <Box sx={style.container}>

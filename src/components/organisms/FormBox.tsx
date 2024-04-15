@@ -20,13 +20,19 @@ const style = {
         height: '45px',
         width: '120px',
     },
+    stack: {
+        height: '100%',
+        alignItems: 'center',
+        pt: 15,
+    }
 };
 
 interface Props {
     login?: boolean;
     register?: boolean;
+    findPassword?: boolean;
 }
-export const FormBox: FC<Props> = ({ login, register }) => {
+export const FormBox: FC<Props> = ({ login, register, findPassword }) => {
     const { replace } = useFlow();
 
     return (
@@ -39,16 +45,25 @@ export const FormBox: FC<Props> = ({ login, register }) => {
                         <Email />
                     </>
                 )}
+                {findPassword && (
+                        <Email />
+                )}
                 {login && (
                     <>
-                        <Input placeholder="학교 이메일" /> <Input placeholder="비밀번호" />
+                        <Input placeholder="학교 이메일" />
+                        <Input placeholder="비밀번호" />
                     </>
                 )}
-                {register && <Password />}
-                {login ? (
+                {!login && <Password />}
+
+                {login && (
                     <Button onClick={() => replace('Main', {}, { animate: false })}>로그인</Button>
-                ) : (
+                )}
+                {register && (
                     <Button onClick={() => replace('Login', {}, { animate: false })}>회원가입</Button>
+                )}
+                {findPassword && (
+                    <Button onClick={() => replace('Login', {}, { animate: false })}>확인</Button>
                 )}
             </Stack>
         </Box>

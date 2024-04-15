@@ -14,7 +14,7 @@ const style = {
         width: 1,
         height: '60px',
         position: 'sticky',
-        bottom: '0', 
+        bottom: '0',
         backgroundColor: COLOR.blue.main,
     },
 
@@ -37,38 +37,38 @@ export const BottomMenubar: FC<Props> = ({ writeButton }) => {
     return (
         <Box sx={style.container}>
             {writeButton && <WriteButton />}
-                <Grid container textAlign='center' pt={1}>
-                    <Grid item xs={2.4} onClick={() => handleClick('Main')}>
-                        <Stack alignItems="center">
-                            <Icon gray src={activity.name === 'Main' ? "/icons/Home2.png" : "/icons/Home.png"} />
-                            <Text type="smallGray">홈</Text>
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={2.4}>
-                        <Stack alignItems="center">
-                            <Icon gray src="/icons/Kategorie.png" />
-                            <Text type="smallGray">카테고리</Text>
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={2.4}>
-                        <Stack alignItems="center">
-                            <Icon gray src="/icons/Heart.png" />
-                            <Text type="smallGray">관심</Text>
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={2.4}>
-                        <Stack alignItems="center">
-                            <Icon gray src="/icons/Chatting.png" />
-                            <Text type="smallGray">채팅</Text>
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={2.4} onClick={() => handleClick('MyPage')}>
-                        <Stack alignItems="center">
-                            <Icon gray src={activity.name === 'MyPage' ? "/icons/Profile2.png" : "/icons/Profile.png"} />
-                            <Text type="smallGray">내 프로필</Text>
-                        </Stack>
-                    </Grid>
+            <Grid container textAlign="center" pt={1}>
+                <Grid item xs={2.4} onClick={() => handleClick('Main')}>
+                    <Stack alignItems="center">
+                        <Icon gray src={activity.name === 'Main' ? '/icons/Home2.png' : '/icons/Home.png'} />
+                        <Text type="smallGray">홈</Text>
+                    </Stack>
                 </Grid>
+                <Grid item xs={2.4}>
+                    <Stack alignItems="center">
+                        <Icon gray src="/icons/Kategorie.png" />
+                        <Text type="smallGray">카테고리</Text>
+                    </Stack>
+                </Grid>
+                <Grid item xs={2.4}>
+                    <Stack alignItems="center">
+                        <Icon gray src="/icons/Heart.png" />
+                        <Text type="smallGray">관심</Text>
+                    </Stack>
+                </Grid>
+                <Grid item xs={2.4}>
+                    <Stack alignItems="center">
+                        <Icon gray src="/icons/Chatting.png" />
+                        <Text type="smallGray">채팅</Text>
+                    </Stack>
+                </Grid>
+                <Grid item xs={2.4} onClick={() => handleClick('MyPage')}>
+                    <Stack alignItems="center">
+                        <Icon gray src={activity.name === 'MyPage' ? '/icons/Profile2.png' : '/icons/Profile.png'} />
+                        <Text type="smallGray">내 프로필</Text>
+                    </Stack>
+                </Grid>
+            </Grid>
         </Box>
     );
 };
