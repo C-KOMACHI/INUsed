@@ -38,7 +38,7 @@ export const { Stack, useFlow, activities } = stackflow({
         FindPassword,
         Kategorie,
         Heart,
-        MyPost, 
+        MyPost,
     },
     initialActivity: () => 'Login',
 });

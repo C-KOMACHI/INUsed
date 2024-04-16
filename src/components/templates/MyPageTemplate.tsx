@@ -1,8 +1,7 @@
 import type { FC } from 'react';
 import { Grid, Stack, Divider, List, ListItemButton, Container } from '@mui/material';
-import { FavoriteBorder, ShoppingCartOutlined, NotificationAddOutlined } from '@mui/icons-material';
 import { useFlow } from '@/stackflow';
-import { Text } from '@/components/atoms';
+import { Text, Icon } from '@/components/atoms';
 import { AppScreen } from '@/components/organisms';
 import { ProfileInformation } from '@/components/molecules';
 
@@ -34,19 +33,19 @@ export const MyPageTemplate: FC = () => {
                 <Grid container spacing={2} pt={3} pb={1}>
                     <Grid item xs={4}>
                         <Stack alignItems="center" onClick={() => replace('Heart', {}, { animate: false })}>
-                            <FavoriteBorder fontSize="large" />
+                            <Icon src="./icons/Heart.png" />
                             <Text type="medium">관심 목록</Text>
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
                         <Stack alignItems="center" onClick={() => push('MyPost', {})}>
-                            <ShoppingCartOutlined fontSize="large" />
+                            <Icon src="./icons/Cart.png" />
                             <Text type="medium">내 게시물</Text>
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
                         <Stack alignItems="center">
-                            <NotificationAddOutlined fontSize="large" />
+                            <Icon src="./icons/AlarmAdd.png" />
                             <Text type="medium">키워드 알림</Text>
                         </Stack>
                     </Grid>
