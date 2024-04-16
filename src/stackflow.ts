@@ -15,6 +15,7 @@ import {
     Kategorie,
     Heart,
     MyPost,
+    Inquiry,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -39,6 +40,7 @@ export const { Stack, useFlow, activities } = stackflow({
         Kategorie,
         Heart,
         MyPost,
+        Inquiry,
     },
     initialActivity: () => 'Login',
 });

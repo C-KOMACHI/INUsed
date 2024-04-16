@@ -14,8 +14,8 @@ export const MyPageTemplate: FC = () => {
     const { push } = useFlow();
     const { replace } = useFlow();
 
-    const handleClick = () => {
-        push('Notice', {});
+    const handleClick = (page: 'Notice' | 'Inquiry') => {
+        push(page, {});
     };
 
     return (
@@ -52,18 +52,22 @@ export const MyPageTemplate: FC = () => {
                 </Grid>
                 <Divider />
                 <List aria-label="mailbox folders">
-                    <ListItemButton sx={{ py: 1 }} onClick={handleClick}>
+                    <ListItemButton sx={{ py: 1 }} onClick={() => handleClick('Notice')}>
                         <Text type="medium">공지사항</Text>
                     </ListItemButton>
-                    <ListItemButton sx={{ py: 1 }}>
+
+                    <ListItemButton sx={{ py: 1 }} onClick={() => handleClick('Inquiry')}>
                         <Text type="medium">운영자 문의</Text>
                     </ListItemButton>
+
                     <ListItemButton sx={{ py: 1 }}>
                         <Text type="medium">서비스 이용 약관</Text>
                     </ListItemButton>
+
                     <ListItemButton sx={{ py: 1 }}>
                         <Text type="medium">개인정보 처리방침</Text>
                     </ListItemButton>
+
                     <ListItemButton sx={{ py: 1 }}>
                         <Text type="medium">회원 탈퇴</Text>
                     </ListItemButton>
