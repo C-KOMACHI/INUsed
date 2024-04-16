@@ -13,9 +13,15 @@ const posts = [
     { id: 9, src: '/image.jpg', title: '양말9', subTitle1: '5000원', subTitle2: '2일 전' },
 ];
 
-export const MainTemplate: FC = () => {
+interface Props {
+    main?: boolean;
+    title?: string;
+    pop?: boolean;
+}
+
+export const MainTemplate: FC<Props> = ({main, title, pop}) => {
     return (
-        <AppScreen bottomNavigation writeButton searchBar borderRadius>
+        <AppScreen bottomNavigation={!pop} writeButton={main} searchBar={main} borderRadius header={!main} title={title} backIcon={pop}>
             <PostList posts={posts} />
         </AppScreen>
     );

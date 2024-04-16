@@ -14,6 +14,7 @@ import {
     FindPassword,
     Kategorie,
     Heart,
+    MyPost,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -37,6 +38,7 @@ export const { Stack, useFlow, activities } = stackflow({
         FindPassword,
         Kategorie,
         Heart,
+        MyPost, 
     },
     initialActivity: () => 'Login',
 });

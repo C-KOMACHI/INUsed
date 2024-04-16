@@ -39,9 +39,9 @@ export const MyPageTemplate: FC = () => {
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
-                        <Stack alignItems="center">
+                        <Stack alignItems="center" onClick={() => push('MyPost', {})}>
                             <ShoppingCartOutlined fontSize="large" />
-                            <Text type="medium">판매 내역</Text>
+                            <Text type="medium">내 게시물</Text>
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
