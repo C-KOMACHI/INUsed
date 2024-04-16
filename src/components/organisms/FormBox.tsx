@@ -24,7 +24,7 @@ const style = {
         height: '100%',
         alignItems: 'center',
         pt: 15,
-    }
+    },
 };
 
 interface Props {
@@ -45,9 +45,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword }) => {
                         <Email />
                     </>
                 )}
-                {findPassword && (
-                        <Email />
-                )}
+                {findPassword && <Email />}
                 {login && (
                     <>
                         <Input placeholder="학교 이메일" />
@@ -56,15 +54,9 @@ export const FormBox: FC<Props> = ({ login, register, findPassword }) => {
                 )}
                 {!login && <Password />}
 
-                {login && (
-                    <Button onClick={() => replace('Main', {}, { animate: false })}>로그인</Button>
-                )}
-                {register && (
-                    <Button onClick={() => replace('Login', {}, { animate: false })}>회원가입</Button>
-                )}
-                {findPassword && (
-                    <Button onClick={() => replace('Login', {}, { animate: false })}>확인</Button>
-                )}
+                {login && <Button onClick={() => replace('Main', {}, { animate: false })}>로그인</Button>}
+                {register && <Button onClick={() => replace('Login', {}, { animate: false })}>회원가입</Button>}
+                {findPassword && <Button onClick={() => replace('Login', {}, { animate: false })}>확인</Button>}
             </Stack>
         </Box>
     );

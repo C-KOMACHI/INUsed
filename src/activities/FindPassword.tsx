@@ -5,7 +5,7 @@ import { StartTemplate } from '@/components/templates';
 export const FindPassword: ActivityComponentType = () => {
     return (
         <Suspense>
-            <StartTemplate findPassword/>
+            <StartTemplate findPassword />
         </Suspense>
     );
 };

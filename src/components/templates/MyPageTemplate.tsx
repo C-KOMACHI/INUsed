@@ -13,6 +13,7 @@ const style = {
 
 export const MyPageTemplate: FC = () => {
     const { push } = useFlow();
+    const { replace } = useFlow();
 
     const handleClick = () => {
         push('Notice', {});
@@ -32,7 +33,7 @@ export const MyPageTemplate: FC = () => {
 
                 <Grid container spacing={2} pt={3} pb={1}>
                     <Grid item xs={4}>
-                        <Stack alignItems="center">
+                        <Stack alignItems="center" onClick={() => replace('Heart', {}, { animate: false })}>
                             <FavoriteBorder fontSize="large" />
                             <Text type="medium">관심 목록</Text>
                         </Stack>
