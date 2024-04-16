@@ -5,7 +5,7 @@ import { MainTemplate } from '@/components/templates';
 export const Main: ActivityComponentType = () => {
     return (
         <Suspense>
-            <MainTemplate />
+            <MainTemplate main/>
         </Suspense>
     );
 };
