@@ -8,3 +8,4 @@ export * from './Notice';
 export * from './Report';
 export * from './NoticeSub';
 export * from './FindPassword';
+export * from './Kategorie';

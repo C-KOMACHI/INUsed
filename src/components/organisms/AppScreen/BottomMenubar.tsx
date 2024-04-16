@@ -30,8 +30,8 @@ export const BottomMenubar: FC<Props> = ({ writeButton }) => {
     const activity = useActivity();
     const { replace } = useFlow();
 
-    const handleClick = (iconName: 'Main' | 'MyPage') => {
-        replace(iconName === 'Main' ? 'Main' : 'MyPage', {}, { animate: false });
+    const handleClick = (iconName: 'Main' | 'Kategorie' | 'MyPage') => {
+        replace(iconName, {}, { animate: false });
     };
 
     return (
@@ -44,9 +44,9 @@ export const BottomMenubar: FC<Props> = ({ writeButton }) => {
                         <Text type="smallGray">홈</Text>
                     </Stack>
                 </Grid>
-                <Grid item xs={2.4}>
+                <Grid item xs={2.4}  onClick={() => handleClick('Kategorie')}>
                     <Stack alignItems="center">
-                        <Icon gray src="/icons/Kategorie.png" />
+                        <Icon gray src={activity.name === 'Kategorie' ? '/icons/Kategorie2.png' : '/icons/Kategorie.png'} />
                         <Text type="smallGray">카테고리</Text>
                     </Stack>
                 </Grid>
