@@ -5,7 +5,7 @@ import { KategorieTemplate } from '@/components/templates';
 export const Kategorie: ActivityComponentType = () => {
     return (
         <Suspense>
-            <KategorieTemplate/>
+            <KategorieTemplate />
         </Suspense>
     );
 };

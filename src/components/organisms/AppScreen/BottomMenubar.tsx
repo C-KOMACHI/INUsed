@@ -44,9 +44,12 @@ export const BottomMenubar: FC<Props> = ({ writeButton }) => {
                         <Text type="smallGray">홈</Text>
                     </Stack>
                 </Grid>
-                <Grid item xs={2.4}  onClick={() => handleClick('Kategorie')}>
+                <Grid item xs={2.4} onClick={() => handleClick('Kategorie')}>
                     <Stack alignItems="center">
-                        <Icon gray src={activity.name === 'Kategorie' ? '/icons/Kategorie2.png' : '/icons/Kategorie.png'} />
+                        <Icon
+                            gray
+                            src={activity.name === 'Kategorie' ? '/icons/Kategorie2.png' : '/icons/Kategorie.png'}
+                        />
                         <Text type="smallGray">카테고리</Text>
                     </Stack>
                 </Grid>

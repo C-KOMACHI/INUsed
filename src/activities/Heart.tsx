@@ -5,7 +5,7 @@ import { HeartTemplate } from '@/components/templates';
 export const Heart: ActivityComponentType = () => {
     return (
         <Suspense>
-            <HeartTemplate/>
+            <HeartTemplate />
         </Suspense>
     );
 };

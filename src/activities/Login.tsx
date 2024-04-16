@@ -5,7 +5,7 @@ import { StartTemplate } from '@/components/templates';
 export const Login: ActivityComponentType = () => {
     return (
         <Suspense>
-            <StartTemplate login/>
+            <StartTemplate login />
         </Suspense>
     );
 };
