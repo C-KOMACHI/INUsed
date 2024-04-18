@@ -25,18 +25,15 @@ export const Icon = styled.img<Props>`
             width: 30px;
             height: 30px;
         `;
-    
     }}
 
-    filter: ${
-        (props) => {
-            if (props.gray) {
-                return 'opacity(0.4)';
-            }
-            if (props.white) {
-                return 'brightness(0) invert(1)';
-            }
-            return 'none';
+    filter: ${(props) => {
+        if (props.gray) {
+            return 'opacity(0.4)';
         }
-    };
+        if (props.white) {
+            return 'brightness(0) invert(1)';
+        }
+        return 'none';
+    }};
 `;

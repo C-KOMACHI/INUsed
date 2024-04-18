@@ -63,8 +63,8 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
 
                 {inquiry && (
                     <>
-                        <FormInput title='제목' placeholder='제목을 입력해주세요.' />
-                        <FormInput big title='내용' placeholder='내용을 입력해주세요.' />
+                        <FormInput title="제목" placeholder="제목을 입력해주세요." />
+                        <FormInput big title="내용" placeholder="내용을 입력해주세요." />
                         <Button>문의하기</Button>
                     </>
                 )}

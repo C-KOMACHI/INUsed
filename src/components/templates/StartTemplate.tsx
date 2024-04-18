@@ -19,7 +19,7 @@ const style = {
 export const StartTemplate: FC<Props> = ({ login, register, findPassword }) => {
     return (
         <AppScreen backIcon={!login}>
-            <Stack spacing={1} sx={style.stack} >
+            <Stack spacing={1} sx={style.stack}>
                 <FormBox login={login} register={register} findPassword={findPassword} />
                 {login && <Footer />}
             </Stack>

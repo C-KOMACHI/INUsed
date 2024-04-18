@@ -11,7 +11,7 @@ interface Props {
 
 export const FormInput: FC<Props> = ({ title, placeholder, id, big }) => {
     return (
-        <Stack sx={{width: '100%'}}>
+        <Stack sx={{ width: '100%' }}>
             <Text type="medium">{title}</Text>
             <Input placeholder={placeholder} big={big} id={id} />
         </Stack>

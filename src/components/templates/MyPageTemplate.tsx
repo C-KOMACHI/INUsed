@@ -14,7 +14,7 @@ export const MyPageTemplate: FC = () => {
     const { push } = useFlow();
     const { replace } = useFlow();
 
-    const handleClick = (page: 'Notice' | 'Inquiry') => {
+    const handleClick = (page: 'Notice' | 'Inquiry' | 'Keyword') => {
         push(page, {});
     };
 
@@ -30,7 +30,7 @@ export const MyPageTemplate: FC = () => {
                     myProfile
                 />
 
-                <Grid container pt={3} pb={1}>
+                <Grid container spacing={2} pt={3} pb={1}>
                     <Grid item xs={4}>
                         <Stack alignItems="center" onClick={() => replace('Heart', {}, { animate: false })}>
                             <Icon src="./icons/Heart.png" />
@@ -44,7 +44,7 @@ export const MyPageTemplate: FC = () => {
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
-                        <Stack alignItems="center">
+                        <Stack alignItems="center"  onClick={() => push('Keyword', {})}>
                             <Icon src="./icons/AlarmAdd.png" />
                             <Text type="medium">키워드 알림</Text>
                         </Stack>
