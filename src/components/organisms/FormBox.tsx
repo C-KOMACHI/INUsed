@@ -3,22 +3,13 @@ import { Stack, Box } from '@mui/material';
 import { useFlow } from '@/stackflow';
 import { Input, Button, Logo } from '@/components/atoms';
 import { NickName, Email, Password, FormInput } from '@/components/molecules';
-import { COLOR } from '@/constants';
 
 const style = {
     container: {
         width: '400px',
         alignItems: 'center',
         padding: '0 2rem 0 2rem',
-    },
-    button: {
-        borderRadius: '30px',
-        background: COLOR.blue.button,
-        '&:hover': {
-            background: COLOR.blue.hover,
-        },
-        height: '45px',
-        width: '120px',
+        pt: 15,
     },
     stack: {
         height: '100%',

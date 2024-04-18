@@ -30,7 +30,7 @@ export const MyPageTemplate: FC = () => {
                     myProfile
                 />
 
-                <Grid container spacing={2} pt={3} pb={1}>
+                <Grid container pt={3} pb={1}>
                     <Grid item xs={4}>
                         <Stack alignItems="center" onClick={() => replace('Heart', {}, { animate: false })}>
                             <Icon src="./icons/Heart.png" />

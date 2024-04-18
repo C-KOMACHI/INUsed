@@ -18,11 +18,9 @@ interface Props {
     report?: boolean;
 }
 
-// 스타일 객체 정의
 const style = {
     container: {
         paddingTop: '20px',
-        paddingLeft: '10px',
         zIndex: 0,
     },
     button: {

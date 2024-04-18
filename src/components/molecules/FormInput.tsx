@@ -9,11 +9,11 @@ interface Props {
     big?: boolean;
 }
 
-export const FormInput : FC<Props> = ({title, placeholder, id, big}) => {
+export const FormInput: FC<Props> = ({ title, placeholder, id, big }) => {
     return (
-        <Stack>
-            <Text type='small'>{title}</Text>
-            <Input placeholder={placeholder} big={big} id={id}/>
+        <Stack sx={{width: '100%'}}>
+            <Text type="medium">{title}</Text>
+            <Input placeholder={placeholder} big={big} id={id} />
         </Stack>
     );
 };
