@@ -21,8 +21,7 @@ export const Input = styled.input<Props>`
         if (props.medium) return '80%';
         return '100%';
     }};
-
-    text-align: 10px center;
+    padding-bottom: ${(props) => (props.big ? '145px' : 'initial')};
     padding-left: 20px;
     font-family: 'Jua';
     outline: none;

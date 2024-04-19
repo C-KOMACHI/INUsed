@@ -7,3 +7,5 @@ export * from './ReportTemplate';
 export * from './DocsTemplate';
 export * from './StartTemplate';
 export * from './KategorieTemplate';
+export * from './FormTemplate';
+export * from './KeywordTemplate';

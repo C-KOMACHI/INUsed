@@ -19,9 +19,17 @@ interface Props {
     pop?: boolean;
 }
 
-export const MainTemplate: FC<Props> = ({main, title, pop}) => {
+export const MainTemplate: FC<Props> = ({ main, title, pop }) => {
     return (
-        <AppScreen bottomNavigation={!pop} writeButton={main} searchBar={main} borderRadius header={!main} title={title} backIcon={pop}>
+        <AppScreen
+            bottomNavigation={!pop}
+            writeButton={main}
+            searchBar={main}
+            borderRadius
+            header={!main}
+            title={title}
+            backIcon={pop}
+        >
             <PostList posts={posts} />
         </AppScreen>
     );

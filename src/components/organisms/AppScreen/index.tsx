@@ -11,6 +11,8 @@ const style = {
         mt: 1.5,
         minHeight: 'calc(100vh - 101px)',
         backgroundColor: 'white',
+        px: '7%',
+        width: '100%',
     },
     wrapper: {
         display: 'flex',

@@ -13,7 +13,6 @@ const style = {
     stack: {
         height: '100%',
         alignItems: 'center',
-        pt: 15,
     },
 };
 

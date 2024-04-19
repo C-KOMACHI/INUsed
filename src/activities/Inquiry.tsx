@@ -1,11 +1,11 @@
 import type { ActivityComponentType } from '@stackflow/react';
 import { Suspense } from 'react';
-import { MainTemplate } from '@/components/templates';
+import { FormTemplate } from '@/components/templates';
 
-export const Heart: ActivityComponentType = () => {
+export const Inquiry: ActivityComponentType = () => {
     return (
         <Suspense>
-            <MainTemplate title="관심" />
+            <FormTemplate inquiry />
         </Suspense>
     );
 };

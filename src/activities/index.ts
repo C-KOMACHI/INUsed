@@ -11,3 +11,5 @@ export * from './FindPassword';
 export * from './Kategorie';
 export * from './Heart';
 export * from './MyPost';
+export * from './Inquiry';
+export * from './Keyword';

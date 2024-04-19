@@ -56,7 +56,7 @@ export const Password = () => {
     const debounceBottomHandleChange = debounce(handleBottomChange, 500);
 
     return (
-        <Stack direction="column" spacing={1}>
+        <Stack direction="column" spacing={2}>
             <Input type="password" placeholder="비밀번호" onChange={debounceTopHandleChange} />
             {errorMessage && (
                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
