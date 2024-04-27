@@ -55,7 +55,7 @@ export const Email = () => {
         }));
     };
 
-    const handleCheckNickName = () => {
+    const handleCheckEmail = () => {
         if (!email.blank) {
             setErrorMessage('이메일을 입력해 주세요.');
         } else {
@@ -84,7 +84,7 @@ export const Email = () => {
                     sx={style.button}
                     variant="contained"
                     endIcon={<SendIcon />}
-                    onClick={handleCheckNickName}
+                    onClick={handleCheckEmail}
                 >
                     인증하기
                 </AuthButton>
