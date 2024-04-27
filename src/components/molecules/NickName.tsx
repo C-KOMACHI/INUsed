@@ -34,7 +34,7 @@ export const NickName = () => {
             ...prev,
             blank: value.length !== 0,
             length: value.length < 9,
-            nickname: value === '유잼잼',
+            nickname: /^[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]*$/.test(value),
         }));
     };
 
@@ -45,8 +45,8 @@ export const NickName = () => {
             setErrorMessage('닉네임을 입력해 주세요.');
         } else if (!nickName.length) {
             setErrorMessage('닉네임은 8자 이하여야 합니다.');
-        } else if (nickName.nickname) {
-            setErrorMessage('사용 가능한 닉네임입니다.');
+        } else if (!nickName.nickname) {
+            setErrorMessage('닉네임은 알파벳과 한글만 입력 가능합니다.');
         } else {
             setErrorMessage('');
         }
