@@ -44,7 +44,7 @@ export const MyPageTemplate: FC = () => {
                         </Stack>
                     </Grid>
                     <Grid item xs={4}>
-                        <Stack alignItems="center"  onClick={() => push('Keyword', {})}>
+                        <Stack alignItems="center" onClick={() => push('Keyword', {})}>
                             <Icon src="./icons/AlarmAdd.png" />
                             <Text type="medium">키워드 알림</Text>
                         </Stack>
