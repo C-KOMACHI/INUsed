@@ -16,7 +16,7 @@ interface Props {
 
 export const PostList: FC<Props> = ({ posts }) => {
     return (
-        <Stack>
+        <Stack sx={{ pl: '10px' }}>
             {posts.map(({ id, src, title, subTitle1, subTitle2 }) => {
                 return (
                     <PostItem
