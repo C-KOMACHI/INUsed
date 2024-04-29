@@ -53,12 +53,12 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                         <Grid item xs={4} onClick={() => pushHandleClick('Post')}>
                             <Image src={src} alt={title} />
                         </Grid>
-                        <Grid item xs={6} onClick={() => pushHandleClick('Post')}>
+                        <Grid item xs={7} onClick={() => pushHandleClick('Post')}>
                             <Text type="large">{title}</Text>
                             <Text type="medium">{subTitle1}</Text>
                             <Text type="smallGray">{subTitle2}</Text>
                         </Grid>
-                        <Grid item xs={2} sx={{ position: 'relative' }}>
+                        <Grid item xs={1} sx={{ position: 'relative' }}>
                             <HeartIcon />
                         </Grid>
                     </Grid>
@@ -76,7 +76,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
 
                     <Stack direction="column" spacing={2}>
                         <Image src={src} alt={title} disabledBorderRadius />
-                        <Stack sx={{ pl: '10px' }} spacing={2}>
+                        <Stack spacing={2}>
                             <ProfileInformation
                                 alt="프로필 사진"
                                 src="/profile.png"

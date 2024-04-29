@@ -19,6 +19,7 @@ const style = {
         display: 'flex',
         alignItems: 'center',
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
+        marginLeft: -1.9,
     },
     button: {
         background: COLOR.blue.fab,
@@ -36,7 +37,7 @@ export const PostBottomMenubar: FC<Props> = ({ subTitle2 }) => {
             <HeartIcon
                 direction="column"
                 spacing="0"
-                containerStyle={{ left: '1.2rem', top: '13px' }}
+                containerStyle={{ left: '1.3rem', top: '13px' }}
                 textStyle={{ position: 'static', paddingLeft: '6.6px' }}
             />
             <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />

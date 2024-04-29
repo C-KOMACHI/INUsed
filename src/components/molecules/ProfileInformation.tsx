@@ -37,7 +37,7 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, tempe
                 </Stack>
             )}
             {myProfile && (
-                <Stack spacing={2} sx={{ px: 3, pt: 4 }}>
+                <Stack spacing={2} sx={{ px: 1, pt: 2.5 }}>
                     <Stack sx={style.container}>
                         <Profile alt={alt} src={src} />
                         <Text type="large">{nickName}</Text>
