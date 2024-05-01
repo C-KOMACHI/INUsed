@@ -3,7 +3,7 @@ import { Stack, Button as AuthButton, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import { Input } from '@/components/atoms';
 import { COLOR } from '@/constants';
-import { useCheckNickname } from '@/hooks';
+import { useCheckNickname } from '@/hooks/apis/auth-query';
 
 const style = {
     button: {
@@ -20,7 +20,7 @@ const style = {
 export const NickName = () => {
     const [nickName, setNickName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { refetch, data } = useCheckNickname(nickName, false);
+    const { refetch } = useCheckNickname(nickName, false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -36,13 +36,11 @@ export const NickName = () => {
         if (validateNickname(nickName)) {
             refetch()
                 .then(() => {
-                    if (data && data.data.code === 'SU') {
-                        setErrorMessage('사용 가능한 닉네임입니다.');
-                    } else {
-                        setErrorMessage('이미 존재하는 닉네임입니다.');
-                    }
+                    setErrorMessage('사용 가능한 닉네임입니다.');
                 })
-                .catch(() => {});
+                .catch(() => {
+                    setErrorMessage('이미 존재하는 닉네임입니다.');
+                });
         } else {
             setErrorMessage('닉네임은 특수문자 제외 1~8글자로 입력해 주세요.');
         }
