@@ -4,6 +4,11 @@ export interface Register {
     password: string;
 }
 
+export interface RegisterResponse {
+    code: string;
+    message: string;
+}
+
 export interface CheckEmail {
     isEmailTaken: boolean;
 }

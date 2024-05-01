@@ -1,7 +1,8 @@
 import Axios from 'axios';
 
 export const axios = Axios.create({
-    baseURL: 'http://ec2-18-205-241-235.compute-1.amazonaws.com',
+    baseURL: 'https://api.inused.store/api/v1',
+    withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
     },

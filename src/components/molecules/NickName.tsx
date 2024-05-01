@@ -1,15 +1,9 @@
 import { useState, type ChangeEvent } from 'react';
-import { debounce } from 'lodash';
 import { Stack, Button as AuthButton, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import { Input } from '@/components/atoms';
 import { COLOR } from '@/constants';
-
-interface Check {
-    blank: null | boolean;
-    length: null | boolean;
-    nickname: null | boolean;
-}
+import { useCheckNickname } from '@/hooks';
 
 const style = {
     button: {
@@ -24,44 +18,46 @@ const style = {
 };
 
 export const NickName = () => {
-    const [nickName, setNickName] = useState<Check>({ blank: null, length: null, nickname: null });
+    const [nickName, setNickName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const { refetch, data } = useCheckNickname(nickName, false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
-
-        setNickName((prev) => ({
-            ...prev,
-            blank: value.length !== 0,
-            length: value.length < 9,
-            nickname: /^[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]*$/.test(value),
-        }));
+        setNickName(value);
     };
 
-    const debounceHandleChange = debounce(handleChange, 100);
+    const validateNickname = (nickname: string) => {
+        return /^[가-힣\d\w]{1,8}$/.test(nickname);
+    };
 
-    const handleCheckNickName = () => {
-        if (!nickName.blank) {
-            setErrorMessage('닉네임을 입력해 주세요.');
-        } else if (!nickName.length) {
-            setErrorMessage('닉네임은 8자 이하여야 합니다.');
-        } else if (!nickName.nickname) {
-            setErrorMessage('닉네임은 알파벳과 한글만 입력 가능합니다.');
+    const handleCheckNickname = () => {
+        setErrorMessage('');
+        if (validateNickname(nickName)) {
+            refetch()
+                .then(() => {
+                    if (data && data.data.code === 'SU') {
+                        setErrorMessage('사용 가능한 닉네임입니다.');
+                    } else {
+                        setErrorMessage('이미 존재하는 닉네임입니다.');
+                    }
+                })
+                .catch(() => {});
         } else {
-            setErrorMessage('');
+            setErrorMessage('닉네임은 특수문자 제외 1~8글자로 입력해 주세요.');
         }
     };
 
     return (
         <Stack direction="column" spacing={1}>
             <Stack direction="row" spacing={2}>
-                <Input placeholder="닉네임" medium onChange={debounceHandleChange} />
+                <Input placeholder="닉네임" medium onChange={handleChange} />
                 <AuthButton
                     size="small"
                     sx={style.button}
                     variant="contained"
                     endIcon={<CheckIcon />}
-                    onClick={handleCheckNickName}
+                    onClick={handleCheckNickname}
                 >
                     중복확인
                 </AuthButton>
