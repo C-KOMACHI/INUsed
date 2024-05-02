@@ -63,6 +63,7 @@ export const Email = () => {
             }
         } else {
             setErrorMessage('이메일을 입력해 주세요.');
+            setShowInput(false);
         }
     };
 
