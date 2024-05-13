@@ -12,6 +12,7 @@ const style = {
         width: '100%',
         position: 'fixed',
         bottom: 0,
+        left: 0,
         height: '66px',
         overflow: 'hidden',
         zIndex: 1,
@@ -19,7 +20,6 @@ const style = {
         display: 'flex',
         alignItems: 'center',
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-        marginLeft: -1.9,
     },
     button: {
         background: COLOR.blue.fab,

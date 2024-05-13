@@ -4,51 +4,41 @@ import { Stack, Typography } from '@mui/material';
 import { Input } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
-interface PassCheck {
-    password: null | boolean;
-    length: null | boolean;
-}
-
-interface PassConfirmCheck {
-    passwordConfirm: null | boolean;
-}
-
 export const Password = () => {
-    const [password, setPassword] = useState<PassCheck>({ password: null, length: null });
-    const [passwordConfirm, setPasswordConfirm] = useState<PassConfirmCheck>({ passwordConfirm: null });
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [passConfirmErrorMessage, setPassConfirmErrorMessage] = useState('');
 
+    const validatePassword = (pw: string) => {
+        return /(?=.*[a-zA-Z0-9])(?=.*[\W_]).{12,}/.test(pw);
+    };
+
     const handleTopChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
+        setPassword(value);
 
-        setPassword((prev) => ({
-            ...prev,
-            password: /(?=.*[a-zA-Z0-9])(?=.*[\W_]).{8,}/.test(value),
-            length: value.length < 12,
-        }));
-
-        if (!password.password) {
-            setErrorMessage('비밀번호는 영문자,숫자,특수 문자 포함 12자 이상으로 설정해 주세요.');
-        } else if (!password.length) {
-            setErrorMessage('비밀번호는 영문자,숫자,특수 문자 포함 12자 이상으로 설정해 주세요.');
-        } else {
+        if (validatePassword(value)) {
             setErrorMessage('');
+        } else {
+            setErrorMessage('비밀번호는 영문자,숫자,특수 문자 포함 12자 이상으로 설정해 주세요.');
+        }
+
+        if (value !== passwordConfirm) {
+            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
+        } else {
+            setPassConfirmErrorMessage('');
         }
     };
 
     const handleBottomChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
+        setPasswordConfirm(value);
 
-        setPasswordConfirm((prev) => ({
-            ...prev,
-            passwordConfirm: value === '!minhyuk1103',
-        }));
-
-        if (passwordConfirm.passwordConfirm) {
-            setPassConfirmErrorMessage('');
-        } else {
+        if (value !== password) {
             setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
+        } else {
+            setPassConfirmErrorMessage('');
         }
     };
 

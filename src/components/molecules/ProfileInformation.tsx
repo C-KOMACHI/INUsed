@@ -28,7 +28,7 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, tempe
     return (
         <>
             {post && (
-                <Stack direction="row" alignItems="center" spacing={1} onClick={handleClick}>
+                <Stack direction="row" alignItems="center" spacing={1} sx={{ pl: '10px' }} onClick={handleClick}>
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Profile alt={alt} src={src} small />
                         <Text type="medium">{nickName}</Text>

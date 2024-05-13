@@ -31,12 +31,12 @@ export interface LoginResponse {
     accessTokenExpiresIn: 0;
 }
 
-export interface Token {
+export interface Reissue {
     accessToken: string;
     refreshToken: string;
 }
 
-export interface TokenResponse {
+export interface ReissueResponse {
     code: string;
     message: string;
     grantType: string;
@@ -45,12 +45,12 @@ export interface TokenResponse {
     accessTokenExpiresIn: 0;
 }
 
-export interface FindPassword {
+export interface PasswordFind {
     email: string;
     password: string;
 }
 
-export interface FindPasswordResponse {
+export interface PasswordFindResponse {
     code: string;
     message: string;
 }
@@ -58,4 +58,9 @@ export interface FindPasswordResponse {
 export interface Logout {
     accessToken: string;
     refreshToken: string;
+}
+
+export interface LogoutResponse {
+    code: string;
+    message: string;
 }
