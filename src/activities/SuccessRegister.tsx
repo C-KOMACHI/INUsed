@@ -5,7 +5,7 @@ import { SuccessTemplate } from '@/components/templates';
 export const SuccessRegister: ActivityComponentType = () => {
     return (
         <Suspense>
-            <SuccessTemplate msg='회원가입이 완료되었습니다.' />
+            <SuccessTemplate msg="회원가입이 완료되었습니다." />
         </Suspense>
     );
 };

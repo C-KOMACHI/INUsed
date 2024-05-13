@@ -14,3 +14,5 @@ export * from './MyPost';
 export * from './Inquiry';
 export * from './Keyword';
 export * from './SuccessRegister';
+export * from './TermsOfService';
+export * from './PrivacyPolicy';
