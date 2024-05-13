@@ -14,7 +14,7 @@ export const MyPageTemplate: FC = () => {
     const { push } = useFlow();
     const { replace } = useFlow();
 
-    const handleClick = (page: 'Notice' | 'Inquiry' | 'Keyword') => {
+    const handleClick = (page: 'Notice' | 'Inquiry' | 'Keyword' | 'TermsOfService' | 'PrivacyPolicy') => {
         push(page, {});
     };
 
@@ -60,11 +60,11 @@ export const MyPageTemplate: FC = () => {
                         <Text type="medium">운영자 문의</Text>
                     </ListItemButton>
 
-                    <ListItemButton sx={{ py: 1 }}>
+                    <ListItemButton sx={{ py: 1 }} onClick={() => handleClick('TermsOfService')}>
                         <Text type="medium">서비스 이용 약관</Text>
                     </ListItemButton>
 
-                    <ListItemButton sx={{ py: 1 }}>
+                    <ListItemButton sx={{ py: 1 }} onClick={() => handleClick('PrivacyPolicy')}>
                         <Text type="medium">개인정보 처리방침</Text>
                     </ListItemButton>
 
