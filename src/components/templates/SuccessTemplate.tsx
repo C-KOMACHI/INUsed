@@ -13,7 +13,7 @@ export const SuccessTemplate: FC<Props> = ({ msg }) => {
     return (
         <AppScreen header>
             <Text type="medium">{msg}</Text>
-            <Button onClick={() => replace('Main', {}, { animate: false })}>확인</Button>
+            <Button onClick={() => replace('Login', {}, { animate: false })}>확인</Button>
         </AppScreen>
     );
 };
