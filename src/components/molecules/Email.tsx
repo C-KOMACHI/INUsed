@@ -3,14 +3,7 @@ import { Stack, Button as AuthButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Input } from '@/components/atoms';
 import { COLOR } from '@/constants';
-
-interface Check {
-    blank: null | boolean;
-}
-
-interface Auth {
-    correct: null | boolean;
-}
+import { useSendEmail, useCheckAuthCode } from '@/hooks/apis/mail-query';
 
 const style = {
     button: {
@@ -25,52 +18,69 @@ const style = {
 };
 
 export const Email = () => {
-    const [email, setEmail] = useState<Check>({ blank: null });
+    const [email, setEmail] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const [showInput, setShowInput] = useState(false); // 인증 코드 입력칸
-    const [AuthNumber, setAuthNumber] = useState<Auth>({ correct: null });
-    const [numberErrorMessage, setNumberErrorMessage] = useState('');
+    const [showInput, setShowInput] = useState(false);
+    const [authCode, setAuthCode] = useState('');
+    const [codeErrorMessage, setCodeErrorMessage] = useState('');
 
-    const [AuthInputValue, setAuthInputValue] = useState('');
     const [InputDisabled, setInputDisabled] = useState(false);
+
+    const { mutate } = useSendEmail(email);
+    const { refetch } = useCheckAuthCode(email, authCode, false);
 
     const handleTopChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
-
-        setEmail((prev) => ({
-            ...prev,
-            blank: value.length !== 0,
-        }));
+        setEmail(value);
     };
 
     const handleBottomChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
+        setAuthCode(value);
+    };
 
-        setAuthInputValue(value);
-
-        setAuthNumber((prev) => ({
-            ...prev,
-            correct: value === '2V08tN2U',
-        }));
+    const validateEmail = (mail: string) => {
+        return /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]/.test(mail);
     };
 
     const handleCheckEmail = () => {
-        if (!email.blank) {
-            setErrorMessage('이메일을 입력해 주세요.');
+        setInputDisabled(false);
+        setShowInput(false);
+        setCodeErrorMessage('');
+        setErrorMessage('');
+        if (email.length > 0) {
+            if (validateEmail(email)) {
+                try {
+                    mutate();
+                    setShowInput(true);
+                } catch (error) {
+                    setErrorMessage('이미 가입된 이메일입니다.');
+                }
+            } else {
+                setErrorMessage('이메일 형식이 아닙니다.');
+                setShowInput(false);
+            }
         } else {
-            setErrorMessage('');
-            setShowInput(true);
+            setErrorMessage('이메일을 입력해 주세요.');
+            setShowInput(false);
         }
     };
 
-    const handleCheckNumber = () => {
-        if (AuthNumber.correct) {
-            setNumberErrorMessage('인증되었습니다.');
-            setInputDisabled(true);
+    const handleCheckCode = () => {
+        setCodeErrorMessage('');
+        if (authCode.length > 0) {
+            refetch()
+                .then(() => {
+                    setCodeErrorMessage('인증되었습니다.');
+                    setInputDisabled(true);
+                })
+                .catch(() => {
+                    setCodeErrorMessage('인증번호가 틀렸습니다.');
+                    setAuthCode('');
+                });
         } else {
-            setNumberErrorMessage('인증번호가 틀렸습니다.');
-            setAuthInputValue('');
+            setCodeErrorMessage('인증번호를 입력해 주세요.');
         }
     };
 
@@ -99,7 +109,7 @@ export const Email = () => {
                     <Input
                         placeholder="인증번호"
                         small
-                        value={AuthInputValue}
+                        value={authCode}
                         onChange={handleBottomChange}
                         disabled={InputDisabled}
                     />
@@ -107,15 +117,16 @@ export const Email = () => {
                         size="small"
                         sx={{ ...style.button, width: '20px' }}
                         variant="contained"
-                        onClick={handleCheckNumber}
+                        onClick={handleCheckCode}
+                        disabled={InputDisabled}
                     >
                         확인
                     </AuthButton>
                 </Stack>
             )}
-            {numberErrorMessage && (
+            {codeErrorMessage && (
                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                    {numberErrorMessage}
+                    {codeErrorMessage}
                 </Typography>
             )}
         </Stack>

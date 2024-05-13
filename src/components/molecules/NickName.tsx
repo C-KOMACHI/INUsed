@@ -18,31 +18,29 @@ const style = {
 };
 
 export const NickName = () => {
-    const [nickName, setNickName] = useState('');
+    const [nickname, setNickname] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { refetch, data } = useCheckNickname(nickName, false);
+    const { refetch } = useCheckNickname(nickname, false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
-        setNickName(value);
+        setNickname(value);
     };
 
-    const validateNickname = (nickname: string) => {
-        return /^[가-힣\d\w]{1,8}$/.test(nickname);
+    const validateNickname = (nickName: string) => {
+        return /^[가-힣\d\w]{1,8}$/.test(nickName);
     };
 
     const handleCheckNickname = () => {
         setErrorMessage('');
-        if (validateNickname(nickName)) {
+        if (validateNickname(nickname)) {
             refetch()
                 .then(() => {
-                    if (data && data.data.code === 'SU') {
-                        setErrorMessage('사용 가능한 닉네임입니다.');
-                    } else {
-                        setErrorMessage('이미 존재하는 닉네임입니다.');
-                    }
+                    setErrorMessage('사용 가능한 닉네임입니다.');
                 })
-                .catch(() => {});
+                .catch(() => {
+                    setErrorMessage('이미 존재하는 닉네임입니다.');
+                });
         } else {
             setErrorMessage('닉네임은 특수문자 제외 1~8글자로 입력해 주세요.');
         }
