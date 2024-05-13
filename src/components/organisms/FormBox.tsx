@@ -174,14 +174,14 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const debounceTopHandleChange = debounce(handlePassChange, 500);
     const debounceBottomHandleChange = debounce(handleConfirmChange, 500);
 
-    const { replace } = useFlow();
+    const { push } = useFlow();
     const { mutate: signIn } = useRegister(email, nickname, password);
 
-    const handleClick = (page: 'Main' | 'Login') => {
+    const RegisterHandleClick = () => {
         setErrorMessage('');
         try {
             signIn();
-            replace(page, {}, { animate: false });
+            push('SuccessRegister', {});
         } catch (error) {
             setErrorMessage('회원가입 실패');
         }
@@ -196,7 +196,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                     <>
                         <Input placeholder="학교 이메일" />
                         <Input placeholder="비밀번호" />
-                        <Button onClick={() => handleClick('Main')}>로그인</Button>
+                        <Button>로그인</Button>
                     </>
                 )}
 
@@ -280,7 +280,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                                 </Typography>
                             )}
                         </Stack>
-                        <Button onClick={() => handleClick('Login')}>회원가입</Button>
+                        <Button onClick={RegisterHandleClick}>회원가입</Button>
                     </>
                 )}
 
@@ -288,7 +288,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                     <>
                         <Email />
                         <Password />
-                        <Button onClick={() => handleClick('Login')}>확인</Button>
+                        <Button>확인</Button>
                     </>
                 )}
 
