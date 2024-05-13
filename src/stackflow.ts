@@ -17,6 +17,7 @@ import {
     MyPost,
     Inquiry,
     Keyword,
+    SuccessRegister,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -43,6 +44,7 @@ export const { Stack, useFlow, activities } = stackflow({
         MyPost,
         Inquiry,
         Keyword,
+        SuccessRegister,
     },
     initialActivity: () => 'Login',
 });

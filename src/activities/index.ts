@@ -13,3 +13,4 @@ export * from './Heart';
 export * from './MyPost';
 export * from './Inquiry';
 export * from './Keyword';
+export * from './SuccessRegister';
