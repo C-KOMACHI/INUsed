@@ -1,17 +1,15 @@
-import type { Mail, MailResponse } from './type';
+import type { MailAuthCodeResponse, MailResponse } from './type';
 import { axios } from '@/utils';
 
 export class MailRepository {
     public static async sendEmail(email: string) {
         try {
-            const res = await axios.post<Mail>('/emails/verification-requests', {
-                params: {
-                    email,
-                },
+            const res = await axios.post<MailResponse>('/emails/verification-requests', {
+                email,
             });
 
             if (res.status === 200) {
-                return res.data;
+                return res;
             }
             throw new Error('서버 요청이 실패했습니다.');
         } catch (error) {
@@ -21,7 +19,7 @@ export class MailRepository {
 
     public static async checkAuthCode(email: string, authCode: string) {
         try {
-            const res = await axios.get<MailResponse>('/emails/verifications', {
+            const res = await axios.get<MailAuthCodeResponse>('/emails/verifications', {
                 params: {
                     email,
                     authCode,
