@@ -18,17 +18,17 @@ export const WriterTemplate: FC = () => {
 
                 <Box>
                     <Text type="medium">제목</Text>
-                    <Input placeholder="제목을 입력해주세요." />
+                    <Input id="title" placeholder="제목을 입력해주세요." />
                 </Box>
 
                 <Box>
                     <Text type="medium">가격</Text>
-                    <Input placeholder="가격을 입력해주세요." />
+                    <Input id="price" placeholder="가격을 입력해주세요." />
                 </Box>
 
                 <Box>
                     <Text type="medium">내용</Text>
-                    <Input big placeholder="상품의 상태 등 쾌적한 거래를 위해 상세히 작성해 주세요." />
+                    <Input id="text" big placeholder="상품의 상태 등 쾌적한 거래를 위해 상세히 작성해 주세요." />
                 </Box>
 
                 <Box>

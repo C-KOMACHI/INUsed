@@ -10,13 +10,11 @@ interface Props {
     text: string;
 }
 
-export const DocsTemplate: FC<Props> = ({header, title, subTitle1, text}) => {
+export const DocsTemplate: FC<Props> = ({ header, title, subTitle1, text }) => {
     return (
         <AppScreen header title={header} borderRadius backIcon>
-            {title && (<PostItem notice title={title} subTitle1={subTitle1} />)}
-            <Text type="medium">
-                {text}
-            </Text>
+            {title && <PostItem notice title={title} subTitle1={subTitle1} />}
+            <Text type="medium">{text}</Text>
         </AppScreen>
     );
 };
