@@ -1,19 +1,70 @@
-import type { FC } from 'react';
+import { type FC, useEffect, useState } from 'react';
+import axios from 'axios';
 import { AppScreen } from '@/components/organisms';
 import { PostItem, PostBottomMenubar } from '@/components/molecules';
 
-export const PostTemplate: FC = () => {
+interface Props {
+    id: number;
+}
+
+type Post = {
+    id: number;
+    title: string;
+    price: number;
+    content: string;
+    imageUrl: string;
+    wishCount: number;
+    viewCount: number;
+    createdAt: string;
+    user: {
+        id: number;
+        nickname: string;
+        profileImage: string;
+        fireTemperature: number;
+    }
+    category: {
+        id: number;
+        name: string;
+    };
+}
+
+interface ApiResponse {
+    code: string;
+    message: string;
+    post: Post;
+}
+
+export const PostTemplate: FC<Props> = ({id}) => {
+    const [post, setPost] = useState<Post>();
+
+    useEffect(() => {
+        const fetchPosts = () => {
+            const accessToken = localStorage.getItem('accessToken');
+
+            axios
+                .get<ApiResponse>(`https://api.inused.store/api/v1/posts/${id}`, {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                })
+                .then((response) => {
+                    setPost(response.data.post);
+                })
+                .catch(() => {});
+        };
+
+        fetchPosts();
+    }, [id]);
     return (
         <AppScreen>
             <PostItem
-                src="/image.jpg"
-                title="진유리 양말 팝니다"
-                createdAt="의류/끌올 25분 전"
-                body="이제 갓 벗은 따끈따끈한 양말입니다.
-                오늘 내로 구매시 20% 할인해드려요~"
+                src={post?.imageUrl}
+                title={post?.title}
+                createdAt={post?.createdAt}
+                body={post?.content}
                 post
             />
-            <PostBottomMenubar subTitle2="5,000원" />
+            <PostBottomMenubar price={post?.price ?? 0} />
         </AppScreen>
     );
 };

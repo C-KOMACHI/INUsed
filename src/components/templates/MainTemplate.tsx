@@ -2,7 +2,7 @@ import { type FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AppScreen, PostList } from '@/components/organisms';
 
-interface Post {
+type Post = {
     id: number;
     title: string;
     price: number;

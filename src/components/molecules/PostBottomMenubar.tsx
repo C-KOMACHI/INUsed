@@ -4,7 +4,7 @@ import { COLOR } from '@/constants';
 import { HeartIcon, Text } from '@/components/atoms';
 
 interface Props {
-    subTitle2: string;
+    price: number;
 }
 
 const style = {
@@ -31,7 +31,7 @@ const style = {
     },
 };
 
-export const PostBottomMenubar: FC<Props> = ({ subTitle2 }) => {
+export const PostBottomMenubar: FC<Props> = ({ price }) => {
     return (
         <Box sx={style.container}>
             <HeartIcon
@@ -41,7 +41,7 @@ export const PostBottomMenubar: FC<Props> = ({ subTitle2 }) => {
                 textStyle={{ position: 'static', paddingLeft: '6.6px' }}
             />
             <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
-            <Text type="large">{subTitle2}</Text>
+            <Text type="large">{price}원</Text>
 
             <Button size="medium" variant="contained" sx={style.button}>
                 채팅하기
