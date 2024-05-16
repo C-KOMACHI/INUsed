@@ -6,14 +6,14 @@ import { AppScreen } from '@/components/organisms';
 interface Props {
     header?: string;
     title?: string;
-    subTitle1?: string;
+    createdAt?: string;
     text: string;
 }
 
-export const DocsTemplate: FC<Props> = ({ header, title, subTitle1, text }) => {
+export const DocsTemplate: FC<Props> = ({ header, title, createdAt, text }) => {
     return (
         <AppScreen header title={header} borderRadius backIcon>
-            {title && <PostItem notice title={title} subTitle1={subTitle1} />}
+            {title && <PostItem notice title={title} createdAt={createdAt} />}
             <Text type="medium">{text}</Text>
         </AppScreen>
     );

@@ -43,9 +43,9 @@ interface Props {
 interface LoginResponse {
     accessToken: string;
     // 다른 필요한 속성들이 있다면 여기에 추가
-  }
+}
 
-export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry}) => {
+export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) => {
     const { push } = useFlow();
     const { replace } = useFlow();
 
@@ -200,18 +200,18 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry}) =>
     const [, setLoginError] = useState('');
 
     const handleLogin = () => {
-        axios.post<LoginResponse>('https://api.inused.store/api/v1/auth/login', {
-        email: id,
-        password: pw
-        })
-        .then(response => {
-            localStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
-            replace('Main', {}, { animate:false });
-
-        })
-        .catch(() => {
-            setLoginError('로그인에 실패했습니다. 다시 시도해주세요.');
-        });
+        axios
+            .post<LoginResponse>('https://api.inused.store/api/v1/auth/login', {
+                email: id,
+                password: pw,
+            })
+            .then((response) => {
+                localStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
+                replace('Main', {}, { animate: false });
+            })
+            .catch(() => {
+                setLoginError('로그인에 실패했습니다. 다시 시도해주세요.');
+            });
     };
 
     return (
@@ -220,9 +220,14 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry}) =>
                 {!inquiry && <Logo src="Logo.png" alt="logo" />}
 
                 {login && (
-                    <>  
+                    <>
                         <Input placeholder="학교 이메일" value={id} onChange={(e) => setId(e.target.value)} />
-                        <Input placeholder="비밀번호" type="password" value={pw} onChange={(e) => setPw(e.target.value)} />
+                        <Input
+                            placeholder="비밀번호"
+                            type="password"
+                            value={pw}
+                            onChange={(e) => setPw(e.target.value)}
+                        />
                         <Button onClick={handleLogin}>로그인</Button>
                     </>
                 )}

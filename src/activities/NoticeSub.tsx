@@ -8,7 +8,7 @@ export const NoticeSub: ActivityComponentType = () => {
             <DocsTemplate
                 header="공지사항"
                 title="슈퍼긴급공지"
-                subTitle1="2024.05.10"
+                createdAt="2024.05.10"
                 text="졸작 마감이 코앞이라는 소식입니다!!!"
             />
         </Suspense>

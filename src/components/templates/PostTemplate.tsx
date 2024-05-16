@@ -8,7 +8,7 @@ export const PostTemplate: FC = () => {
             <PostItem
                 src="/image.jpg"
                 title="진유리 양말 팝니다"
-                subTitle1="의류/끌올 25분 전"
+                createdAt="의류/끌올 25분 전"
                 body="이제 갓 벗은 따끈따끈한 양말입니다.
                 오늘 내로 구매시 20% 할인해드려요~"
                 post
