@@ -60,7 +60,7 @@ export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, 
                             <Text type="smallGray">{createdAt}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>
-                            <HeartIcon wishCount={wishCount}/>
+                            <HeartIcon wishCount={wishCount} />
                         </Grid>
                     </Grid>
                     <Divider sx={{ pt: '20px' }} />
