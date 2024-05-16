@@ -8,6 +8,7 @@ interface Props {
     spacing?: '0.5' | '0';
     containerStyle?: CSSProperties;
     textStyle?: CSSProperties;
+    wishCount?: number;
 }
 
 const style = {
@@ -28,9 +29,9 @@ const style = {
     },
 };
 
-export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', containerStyle, textStyle }) => {
+export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', containerStyle, textStyle, wishCount }) => {
     const [isClicked, setIsClicked] = useState(false);
-    const [heart, setHeart] = useState(0);
+    const [heart, setHeart] = useState(wishCount ?? 0);
 
     const handleClick = () => {
         setIsClicked(!isClicked);

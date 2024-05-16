@@ -16,6 +16,7 @@ interface Props {
     main?: boolean;
     notice?: boolean;
     report?: boolean;
+    wishCount?: number;
 }
 
 const style = {
@@ -32,7 +33,7 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report }) => {
+export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report, wishCount }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
@@ -59,7 +60,7 @@ export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, 
                             <Text type="smallGray">{createdAt}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>
-                            <HeartIcon />
+                            <HeartIcon wishCount={wishCount}/>
                         </Grid>
                     </Grid>
                     <Divider sx={{ pt: '20px' }} />

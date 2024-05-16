@@ -5,18 +5,11 @@ import { AppScreen, PostList } from '@/components/organisms';
 interface Post {
     id: number;
     title: string;
-    content: string;
     price: number;
     imageUrl: string;
     wishCount: number;
     viewCount: number;
     createdAt: string;
-    user: {
-        id: number;
-        nickname: string;
-        profileImage: string;
-        fireTemperature: number;
-    };
     category: {
         id: number;
         name: string;
@@ -38,27 +31,24 @@ interface Props {
 export const MainTemplate: FC<Props> = ({ main, title, pop }) => {
     const [posts, setPosts] = useState<Post[]>([]);
 
-    
     useEffect(() => {
         const fetchPosts = () => {
             const accessToken = localStorage.getItem('accessToken');
 
             axios
                 .get<ApiResponse>('https://api.inused.store/api/v1/posts', {
-                headers: {
-                    Authorization: accessToken,
-                },
-            })
-                .then(response => {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                })
+                .then((response) => {
                     setPosts(response.data.posts);
                 })
-                .catch(() => {
-                });
+                .catch(() => {});
         };
-    
+
         fetchPosts();
     }, []);
-    
 
     return (
         <AppScreen
