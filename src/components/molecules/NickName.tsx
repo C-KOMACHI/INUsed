@@ -19,31 +19,26 @@ const style = {
 
 export const NickName = () => {
     const [nickname, setNickname] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    const { refetch } = useCheckNickname(nickname, false);
+    const [call, setCall] = useState(false);
+    const { data, isError } = useCheckNickname(nickname, call);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setNickname(value);
     };
 
-    const validateNickname = (nickName: string) => {
-        return /^[가-힣\d\w]{1,8}$/.test(nickName);
+    const handleCheckNickname = () => {
+        setCall(true);
     };
 
-    const handleCheckNickname = () => {
-        setErrorMessage('');
-        if (validateNickname(nickname)) {
-            refetch()
-                .then(() => {
-                    setErrorMessage('사용 가능한 닉네임입니다.');
-                })
-                .catch(() => {
-                    setErrorMessage('이미 존재하는 닉네임입니다.');
-                });
-        } else {
-            setErrorMessage('닉네임은 특수문자 제외 1~8글자로 입력해 주세요.');
+    const getErrorMessage = (value: string) => {
+        if (/^[가-힣\d\w]{1,8}$/.test(value)) {
+            if (isError) {
+                return '이미 존재하는 닉네임입니다.';
+            }
+            return '사용 가능한 닉네임입니다.';
         }
+        return '닉네임은 특수문자 제외 1~8글자로 입력해 주세요.';
     };
 
     return (
@@ -60,9 +55,9 @@ export const NickName = () => {
                     중복확인
                 </AuthButton>
             </Stack>
-            {errorMessage && (
+            {data && (
                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                    {errorMessage}
+                    {getErrorMessage(nickname)}
                 </Typography>
             )}
         </Stack>

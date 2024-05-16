@@ -46,20 +46,15 @@ interface LoginResponse {
 }
 
 export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) => {
-    const { push } = useFlow();
     const { replace } = useFlow();
 
     const [email, setEmail] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [showInput, setShowInput] = useState(false);
     const [authCode, setAuthCode] = useState('');
-    const [codeErrorMessage, setCodeErrorMessage] = useState('');
-
-    const [InputDisabled, setInputDisabled] = useState(false);
-
-    const { mutate: sendEmail } = useSendEmail(email);
-    const { refetch: checkAuthCode } = useCheckAuthCode(email, authCode, false);
+    const { isError: emailError, mutate: sendEmail } = useSendEmail(email);
+    const [authCodeCall, setAuthCodeCall] = useState(false);
+    const { data: codeData, error: authCodeError } = useCheckAuthCode(email, authCode, authCodeCall);
 
     const handleTopChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -71,82 +66,67 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
         setAuthCode(value);
     };
 
-    const validateEmail = (mail: string) => {
-        return /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]/.test(mail);
-    };
-
     const handleCheckEmail = () => {
-        setInputDisabled(false);
-        setShowInput(false);
-        setCodeErrorMessage('');
-        setErrorMessage('');
+        setEmailErrorMessage('');
         if (email.length > 0) {
-            if (validateEmail(email)) {
-                try {
-                    sendEmail();
+            if (/^[a-zA-Z0-9._%+-]{2,}$/.test(email)) {
+                sendEmail();
+                if (emailError) {
+                    setEmailErrorMessage('이미 가입된 이메일입니다.');
+                } else {
                     setShowInput(true);
-                } catch (error) {
-                    setErrorMessage('이미 가입된 이메일입니다.');
                 }
             } else {
-                setErrorMessage('이메일 형식이 아닙니다.');
-                setShowInput(false);
+                setEmailErrorMessage('이메일 형식이 아닙니다.');
             }
         } else {
-            setErrorMessage('이메일을 입력해 주세요.');
-            setShowInput(false);
+            setEmailErrorMessage('이메일을 입력해 주세요.');
         }
     };
 
     const handleCheckCode = () => {
-        setCodeErrorMessage('');
-        if (authCode.length > 0) {
-            checkAuthCode()
-                .then(() => {
-                    setCodeErrorMessage('인증되었습니다.');
-                    setInputDisabled(true);
-                })
-                .catch(() => {
-                    setCodeErrorMessage('인증번호가 틀렸습니다.');
-                    setAuthCode('');
-                });
-        } else {
-            setCodeErrorMessage('인증번호를 입력해 주세요.');
+        setAuthCodeCall(true);
+    };
+
+    const getCodeErrorMessage = (value: string) => {
+        if (value.length > 0) {
+            if (authCodeError) {
+                return '인증번호가 틀렸습니다.';
+            }
+            return '인증되었습니다.';
         }
+        return '인증번호를 입력해 주세요.';
     };
 
     const [nickname, setNickname] = useState('');
-    const [nicknameErrorMessage, setNicknameErrorMessage] = useState('');
-    const { refetch: checkNickname } = useCheckNickname(nickname, false);
+    const [nicknameCall, setNicknameCall] = useState(false);
+    const { data: nicknameData, isError: nicknameError } = useCheckNickname(nickname, nicknameCall);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setNickname(value);
     };
 
-    const validateNickname = (nickName: string) => {
-        return /^[가-힣\d\w]{1,8}$/.test(nickName);
+    const handleCheckNickname = () => {
+        setNicknameCall(true);
     };
 
-    const handleCheckNickname = () => {
-        setNicknameErrorMessage('');
-        if (validateNickname(nickname)) {
-            checkNickname()
-                .then(() => {
-                    setNicknameErrorMessage('사용 가능한 닉네임입니다.');
-                })
-                .catch(() => {
-                    setNicknameErrorMessage('이미 존재하는 닉네임입니다.');
-                });
-        } else {
-            setNicknameErrorMessage('닉네임은 특수문자 제외 1~8글자로 입력해 주세요.');
+    const getNicknameErrorMessage = (value: string) => {
+        if (/^[가-힣\d\w]{1,8}$/.test(value)) {
+            if (nicknameError) {
+                return '이미 존재하는 닉네임입니다.';
+            }
+            return '사용 가능한 닉네임입니다.';
         }
+        return '닉네임은 특수문자 제외 1~8글자로 입력해 주세요.';
     };
 
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [passConfirmErrorMessage, setPassConfirmErrorMessage] = useState('');
+
+    const { push } = useFlow();
 
     const validatePassword = (pw: string) => {
         return /(?=.*[a-zA-Z0-9])(?=.*[\W_]).{12,}/.test(pw);
@@ -161,19 +141,13 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
         } else {
             setPasswordErrorMessage('비밀번호는 영문자,숫자,특수 문자 포함 12자 이상으로 설정해 주세요.');
         }
-
-        if (value !== passwordConfirm) {
-            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
-        } else {
-            setPassConfirmErrorMessage('');
-        }
     };
 
     const handleConfirmChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setPasswordConfirm(value);
 
-        if (value !== password) {
+        if (passwordConfirm !== password) {
             setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
         } else {
             setPassConfirmErrorMessage('');
@@ -183,16 +157,20 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const debounceTopHandleChange = debounce(handlePassChange, 500);
     const debounceBottomHandleChange = debounce(handleConfirmChange, 500);
 
-    const { mutate: signIn } = useRegister(email, nickname, password);
+    const [registerCall, setRegisterCall] = useState(false);
+    const { data: registerData, isError: registerError } = useRegister(email, nickname, password);
 
     const RegisterHandleClick = () => {
-        setErrorMessage('');
-        try {
-            signIn();
-            push('SuccessRegister', {});
-        } catch (error) {
-            setErrorMessage('회원가입 실패');
+        setRegisterCall(true);
+    };
+
+    const getRegisterErrorMessage = () => {
+        if (!registerData || registerError) {
+            return '입력된 정보를 확인해 주세요.';
         }
+
+        push('SuccessRegister', {});
+        return '회원가입 성공!';
     };
 
     const [id, setId] = useState('');
@@ -247,9 +225,9 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                                     중복확인
                                 </AuthButton>
                             </Stack>
-                            {nicknameErrorMessage && (
+                            {nicknameData && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {nicknameErrorMessage}
+                                    {getNicknameErrorMessage(nickname)}
                                 </Typography>
                             )}
                         </Stack>
@@ -267,9 +245,9 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                                     인증하기
                                 </AuthButton>
                             </Stack>
-                            {errorMessage && (
+                            {emailErrorMessage && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {errorMessage}
+                                    {emailErrorMessage}
                                 </Typography>
                             )}
                             {showInput && (
@@ -279,22 +257,20 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                                         small
                                         value={authCode}
                                         onChange={handleBottomChange}
-                                        disabled={InputDisabled}
                                     />
                                     <AuthButton
                                         size="small"
                                         sx={{ ...style.button, width: '20px' }}
                                         variant="contained"
                                         onClick={handleCheckCode}
-                                        disabled={InputDisabled}
                                     >
                                         확인
                                     </AuthButton>
                                 </Stack>
                             )}
-                            {codeErrorMessage && (
+                            {codeData && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {codeErrorMessage}
+                                    {getCodeErrorMessage(authCode)}
                                 </Typography>
                             )}
                         </Stack>
@@ -313,6 +289,11 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                             )}
                         </Stack>
                         <Button onClick={RegisterHandleClick}>회원가입</Button>
+                        {registerCall && (
+                            <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
+                                {getRegisterErrorMessage()}
+                            </Typography>
+                        )}
                     </>
                 )}
 

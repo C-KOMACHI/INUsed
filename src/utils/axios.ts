@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 export const axios = Axios.create({
-    baseURL: 'https://api.inused.store/api/v1',
+    baseURL: import.meta.env.MODE === 'development' ? window.location.origin : 'https://api.inused.store',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
