@@ -17,7 +17,10 @@ interface Props {
     notice?: boolean;
     report?: boolean;
     wishCount?: number;
+    id?: number;
 }
+
+
 
 const style = {
     container: {
@@ -33,9 +36,15 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report, wishCount }) => {
+export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report, wishCount, id }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
+
+    const pushPost = () => {
+        if (id !== undefined) {
+            push('Post',{id});
+        }
+    };
 
     const pushHandleClick = (s: 'Post' | 'NoticeSub') => {
         push(s === 'Post' ? 'Post' : 'NoticeSub', { title });
@@ -51,12 +60,12 @@ export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, 
             {main && (
                 <Box sx={style.container}>
                     <Grid container spacing={2}>
-                        <Grid item xs={4} onClick={() => pushHandleClick('Post')}>
+                        <Grid item xs={4} onClick={pushPost}>
                             <Image src={src} alt={title} />
                         </Grid>
-                        <Grid item xs={7} onClick={() => pushHandleClick('Post')}>
+                        <Grid item xs={7} onClick={pushPost}>
                             <Text type="large">{title}</Text>
-                            <Text type="medium">{price}</Text>
+                            <Text type="medium">{price}원</Text>
                             <Text type="smallGray">{createdAt}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>

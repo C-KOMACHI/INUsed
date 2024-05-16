@@ -21,7 +21,7 @@ export const PostList: FC<Props> = ({ posts }) => {
             {posts.map(({ id, imageUrl, title, price, createdAt, wishCount }) => {
                 return (
                     <PostItem
-                        key={id}
+                        id={id}
                         src={imageUrl}
                         title={title}
                         createdAt={createdAt}
