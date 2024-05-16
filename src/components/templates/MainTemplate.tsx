@@ -1,17 +1,26 @@
-import type { FC } from 'react';
+import { type FC, useEffect, useState } from 'react';
+import axios from 'axios';
 import { AppScreen, PostList } from '@/components/organisms';
 
-const posts = [
-    { id: 1, src: '/image.jpg', title: '양말1', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 2, src: '/image.jpg', title: '양말2', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 3, src: '/image.jpg', title: '양말3', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 4, src: '/image.jpg', title: '양말4', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 5, src: '/image.jpg', title: '양말5', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 6, src: '/image.jpg', title: '양말6', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 7, src: '/image.jpg', title: '양말7', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 8, src: '/image.jpg', title: '양말8', subTitle1: '5000원', subTitle2: '2일 전' },
-    { id: 9, src: '/image.jpg', title: '양말9', subTitle1: '5000원', subTitle2: '2일 전' },
-];
+interface Post {
+    id: number;
+    title: string;
+    price: number;
+    imageUrl: string;
+    wishCount: number;
+    viewCount: number;
+    createdAt: string;
+    category: {
+        id: number;
+        name: string;
+    };
+}
+
+interface ApiResponse {
+    code: string;
+    message: string;
+    posts: Post[];
+}
 
 interface Props {
     main?: boolean;
@@ -20,6 +29,27 @@ interface Props {
 }
 
 export const MainTemplate: FC<Props> = ({ main, title, pop }) => {
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    useEffect(() => {
+        const fetchPosts = () => {
+            const accessToken = localStorage.getItem('accessToken');
+
+            axios
+                .get<ApiResponse>('https://api.inused.store/api/v1/posts', {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                })
+                .then((response) => {
+                    setPosts(response.data.posts);
+                })
+                .catch(() => {});
+        };
+
+        fetchPosts();
+    }, []);
+
     return (
         <AppScreen
             bottomNavigation={!pop}

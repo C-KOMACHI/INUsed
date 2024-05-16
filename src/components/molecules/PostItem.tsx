@@ -9,13 +9,14 @@ import { useFlow } from '@/stackflow';
 interface Props {
     src?: string;
     title?: string;
-    subTitle1?: string;
-    subTitle2?: string;
+    createdAt?: string;
+    price?: number;
     body?: string;
     post?: boolean;
     main?: boolean;
     notice?: boolean;
     report?: boolean;
+    wishCount?: number;
 }
 
 const style = {
@@ -32,7 +33,7 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, post, main, notice, report }) => {
+export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report, wishCount }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
@@ -55,11 +56,11 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                         </Grid>
                         <Grid item xs={7} onClick={() => pushHandleClick('Post')}>
                             <Text type="large">{title}</Text>
-                            <Text type="medium">{subTitle1}</Text>
-                            <Text type="smallGray">{subTitle2}</Text>
+                            <Text type="medium">{price}</Text>
+                            <Text type="smallGray">{createdAt}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>
-                            <HeartIcon />
+                            <HeartIcon wishCount={wishCount} />
                         </Grid>
                     </Grid>
                     <Divider sx={{ pt: '20px' }} />
@@ -88,7 +89,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                             <Divider />
                             <Box sx={{ position: 'relative', pb: '15px' }}>
                                 <Text type="large">{title}</Text>
-                                <Text type="smallGray">{subTitle1}</Text>
+                                <Text type="smallGray">{createdAt}</Text>
                             </Box>
                             <Text type="mediumGray">{body}</Text>
                         </Stack>
@@ -101,7 +102,7 @@ export const PostItem: FC<Props> = ({ src, title, subTitle1, subTitle2, body, po
                 <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
                     <Box onClick={() => pushHandleClick('NoticeSub')}>
                         <Text type="large">{title}</Text>
-                        <Text type="smallGray">{subTitle1}</Text>
+                        <Text type="smallGray">{createdAt}</Text>
                     </Box>
                     <Divider />
                 </Stack>
