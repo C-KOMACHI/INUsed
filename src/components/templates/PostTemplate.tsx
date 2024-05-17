@@ -5,6 +5,8 @@ import { PostItem, PostBottomMenubar } from '@/components/molecules';
 
 interface Props {
     id: number;
+    wishCount?: number;
+    checkLiked?: boolean;
 }
 
 type Post = {
@@ -26,6 +28,7 @@ type Post = {
         id: number;
         name: string;
     };
+    checkLiked: boolean;
 }
 
 interface ApiResponse {
@@ -34,7 +37,7 @@ interface ApiResponse {
     post: Post;
 }
 
-export const PostTemplate: FC<Props> = ({id}) => {
+export const PostTemplate: FC<Props> = ({id, wishCount, checkLiked}) => {
     const [post, setPost] = useState<Post>();
 
     useEffect(() => {
@@ -52,9 +55,9 @@ export const PostTemplate: FC<Props> = ({id}) => {
                 })
                 .catch(() => {});
         };
-
         fetchPosts();
     }, [id]);
+    
     return (
         <AppScreen>
             <PostItem
@@ -64,7 +67,7 @@ export const PostTemplate: FC<Props> = ({id}) => {
                 body={post?.content}
                 post
             />
-            <PostBottomMenubar price={post?.price ?? 0} />
+            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount}/>
         </AppScreen>
     );
 };

@@ -1,5 +1,4 @@
-import { type FC, useEffect, useState } from 'react';
-import axios from 'axios';
+import { type FC } from 'react';
 import { AppScreen, PostList } from '@/components/organisms';
 
 type Post = {
@@ -14,41 +13,16 @@ type Post = {
         id: number;
         name: string;
     };
+    checkLiked: boolean;
 }
-
-interface ApiResponse {
-    code: string;
-    message: string;
-    posts: Post[];
-}
-
 interface Props {
     main?: boolean;
     title?: string;
     pop?: boolean;
+    posts: Post[];
 }
 
-export const MainTemplate: FC<Props> = ({ main, title, pop }) => {
-    const [posts, setPosts] = useState<Post[]>([]);
-
-    useEffect(() => {
-        const fetchPosts = () => {
-            const accessToken = localStorage.getItem('accessToken');
-
-            axios
-                .get<ApiResponse>('https://api.inused.store/api/v1/posts', {
-                    headers: {
-                        Authorization: accessToken,
-                    },
-                })
-                .then((response) => {
-                    setPosts(response.data.posts);
-                })
-                .catch(() => {});
-        };
-
-        fetchPosts();
-    }, []);
+export const MainTemplate: FC<Props> = ({ main, title, pop, posts }) => {
 
     return (
         <AppScreen

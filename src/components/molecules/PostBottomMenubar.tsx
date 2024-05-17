@@ -4,7 +4,10 @@ import { COLOR } from '@/constants';
 import { HeartIcon, Text } from '@/components/atoms';
 
 interface Props {
-    price: number;
+    price?: number;
+    id?: number;
+    checkLiked?: boolean;
+    wishCount?: number;
 }
 
 const style = {
@@ -31,7 +34,7 @@ const style = {
     },
 };
 
-export const PostBottomMenubar: FC<Props> = ({ price }) => {
+export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount }) => {
     return (
         <Box sx={style.container}>
             <HeartIcon
@@ -39,6 +42,9 @@ export const PostBottomMenubar: FC<Props> = ({ price }) => {
                 spacing="0"
                 containerStyle={{ left: '1.3rem', top: '13px' }}
                 textStyle={{ position: 'static', paddingLeft: '6.6px' }}
+                id={id}
+                checkLiked={checkLiked}
+                wishCount={wishCount}
             />
             <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
             <Text type="large">{price}원</Text>
