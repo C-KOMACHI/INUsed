@@ -1,4 +1,5 @@
 import { type FC, type CSSProperties, useState } from 'react';
+import axios from 'axios';
 import { Stack, Typography } from '@mui/material';
 import { FavoriteBorder as EmptyIcon, Favorite as FilledIcon } from '@mui/icons-material';
 import { COLOR } from '@/constants';
@@ -9,6 +10,8 @@ interface Props {
     containerStyle?: CSSProperties;
     textStyle?: CSSProperties;
     wishCount?: number;
+    checkLiked?: boolean;
+    id?: number;
 }
 
 const style = {
@@ -29,13 +32,26 @@ const style = {
     },
 };
 
-export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', containerStyle, textStyle, wishCount }) => {
-    const [isClicked, setIsClicked] = useState(false);
+export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', containerStyle, textStyle, wishCount, checkLiked, id }) => {
+    const [isClicked, setIsClicked] = useState(checkLiked);
     const [heart, setHeart] = useState(wishCount ?? 0);
+
+    const changeClicked = () => {
+        const accessToken = localStorage.getItem('accessToken');
+
+        axios
+            .post('https://api.inused.store/api/v1/wishes/click', { postId: id}, {headers: {Authorization: accessToken},
+            })
+            .then(() => {
+            })
+            .catch(() => {
+            });
+    };
 
     const handleClick = () => {
         setIsClicked(!isClicked);
         setHeart(heart + (isClicked ? -1 : 1));
+        changeClicked();
     };
 
     return (
