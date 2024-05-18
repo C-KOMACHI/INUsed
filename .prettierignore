@@ -2,3 +2,5 @@ dist
 .yarn
 .pnp.cjs
 .pnp.loader.mjs
+.eslintrc
+package.json

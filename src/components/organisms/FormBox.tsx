@@ -1,4 +1,4 @@
-import { type FC, useState, type ChangeEvent } from 'react';
+import { type FC, useState, type ChangeEvent, useRef } from 'react';
 import axios from 'axios';
 import { debounce } from 'lodash';
 import { Stack, Box, Button as AuthButton, Typography } from '@mui/material';
@@ -52,9 +52,10 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [showInput, setShowInput] = useState(false);
     const [authCode, setAuthCode] = useState('');
-    const { isError: emailError, mutate: sendEmail } = useSendEmail(email);
+    const { data: emailData, isError: emailError, mutate: sendEmail } = useSendEmail(email);
     const [authCodeCall, setAuthCodeCall] = useState(false);
     const { data: codeData, error: authCodeError } = useCheckAuthCode(email, authCode, authCodeCall);
+    const nicknameRef = useRef<HTMLInputElement>(null);
 
     const handleTopChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
@@ -98,17 +99,14 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
         return '인증번호를 입력해 주세요.';
     };
 
-    const [nickname, setNickname] = useState('');
-    const [nicknameCall, setNicknameCall] = useState(false);
-    const { data: nicknameData, isError: nicknameError } = useCheckNickname(nickname, nicknameCall);
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setNickname(value);
-    };
+    const {
+        data: nicknameData,
+        isError: nicknameError,
+        refetch: nicknameRefetch,
+    } = useCheckNickname(nicknameRef.current?.value ?? '', false);
 
     const handleCheckNickname = () => {
-        setNicknameCall(true);
+        void nicknameRefetch();
     };
 
     const getNicknameErrorMessage = (value: string) => {
@@ -157,11 +155,10 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const debounceTopHandleChange = debounce(handlePassChange, 500);
     const debounceBottomHandleChange = debounce(handleConfirmChange, 500);
 
-    const [registerCall, setRegisterCall] = useState(false);
-    const { data: registerData, isError: registerError } = useRegister(email, nickname, password);
+    const { mutate: registerMutate, data: registerData, isError: registerError } = useRegister();
 
     const RegisterHandleClick = () => {
-        setRegisterCall(true);
+        registerMutate({ email, nickname: nicknameRef.current?.value ?? '', password });
     };
 
     const getRegisterErrorMessage = () => {
@@ -214,7 +211,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                     <>
                         <Stack direction="column" spacing={1}>
                             <Stack direction="row" spacing={2}>
-                                <Input placeholder="닉네임" medium onChange={handleChange} />
+                                <Input placeholder="닉네임" medium ref={nicknameRef} />
                                 <AuthButton
                                     size="small"
                                     sx={style.button}
@@ -227,7 +224,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                             </Stack>
                             {nicknameData && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {getNicknameErrorMessage(nickname)}
+                                    {getNicknameErrorMessage(nicknameRef.current?.value ?? '')}
                                 </Typography>
                             )}
                         </Stack>
@@ -245,7 +242,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                                     인증하기
                                 </AuthButton>
                             </Stack>
-                            {emailErrorMessage && (
+                            {emailData && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
                                     {emailErrorMessage}
                                 </Typography>
@@ -289,7 +286,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                             )}
                         </Stack>
                         <Button onClick={RegisterHandleClick}>회원가입</Button>
-                        {registerCall && (
+                        {registerData && (
                             <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
                                 {getRegisterErrorMessage()}
                             </Typography>

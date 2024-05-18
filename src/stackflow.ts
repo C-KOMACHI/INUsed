@@ -50,7 +50,7 @@ export const { Stack, useFlow, activities } = stackflow({
         TermsOfService,
         PrivacyPolicy,
     },
-    initialActivity: () => 'Main',
+    initialActivity: () => 'Register',
 });
 
 export type TypeActivities = typeof activities;

@@ -1,3 +1,4 @@
+import type { Register } from './type';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { QUERY_OPTIONS } from '@/constants';
 import { AuthRepository } from './repository';
@@ -6,9 +7,6 @@ const queryKeys = {
     all: ['nickname'],
     checkNickname(nickname: string) {
         return [...this.all, nickname];
-    },
-    register(email: string, nickname: string, password: string) {
-        return [...this.all, email, nickname, password];
     },
 };
 
@@ -21,10 +19,10 @@ export const useCheckNickname = (nickname: string, enabled: boolean) => {
     });
 };
 
-export const useRegister = (email: string, nickname: string, password: string) => {
+export const useRegister = () => {
     return useMutation({
-        mutationKey: queryKeys.register(email, nickname, password),
-        mutationFn: () => AuthRepository.register(email, nickname, password),
+        mutationKey: queryKeys.all,
+        mutationFn: ({ email, nickname, password }: Register) => AuthRepository.register(email, nickname, password),
         ...QUERY_OPTIONS,
     });
 };
