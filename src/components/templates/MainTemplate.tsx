@@ -14,7 +14,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
-}
+};
 interface Props {
     main?: boolean;
     title?: string;
@@ -23,7 +23,6 @@ interface Props {
 }
 
 export const MainTemplate: FC<Props> = ({ main, title, pop, posts }) => {
-
     return (
         <AppScreen
             bottomNavigation={!pop}

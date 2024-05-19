@@ -19,9 +19,8 @@ interface Props {
     wishCount?: number;
     id?: number;
     checkLiked?: boolean;
+    content?: string;
 }
-
-
 
 const style = {
     container: {
@@ -37,18 +36,28 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report, wishCount, id, checkLiked }) => {
+export const PostItem: FC<Props> = ({
+    src,
+    title,
+    createdAt,
+    price,
+    body,
+    post,
+    main,
+    notice,
+    report,
+    wishCount,
+    id,
+    checkLiked,
+    content,
+}) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
     const pushPost = () => {
         if (id !== undefined) {
-            push('Post',{id, wishCount, checkLiked});
+            push('Post', { id, wishCount, checkLiked });
         }
-    };
-
-    const pushHandleClick = (s: 'Post' | 'NoticeSub') => {
-        push(s === 'Post' ? 'Post' : 'NoticeSub', { title });
     };
 
     const popHandleClick = () => {
@@ -70,7 +79,7 @@ export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, 
                             <Text type="smallGray">{createdAt}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>
-                            <HeartIcon wishCount={wishCount} checkLiked={checkLiked} id={id}/>
+                            <HeartIcon wishCount={wishCount} checkLiked={checkLiked} id={id} />
                         </Grid>
                     </Grid>
                     <Divider sx={{ pt: '20px' }} />
@@ -110,7 +119,7 @@ export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, 
             {/* 공지사항 */}
             {notice && (
                 <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
-                    <Box onClick={() => pushHandleClick('NoticeSub')}>
+                    <Box onClick={() => push('NoticeSub',{id, title, createdAt, content})}>
                         <Text type="large">{title}</Text>
                         <Text type="smallGray">{createdAt}</Text>
                     </Box>

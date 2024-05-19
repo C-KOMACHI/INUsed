@@ -5,6 +5,7 @@ type Notice = {
     id: number;
     title: string;
     createdAt: string;
+    content: string;
 }
 
 interface Props {

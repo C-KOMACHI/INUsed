@@ -16,7 +16,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
-}
+};
 
 interface ApiResponse {
     code: string;
@@ -25,7 +25,7 @@ interface ApiResponse {
 }
 export const Heart: ActivityComponentType = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    
+
     useEffect(() => {
         const fetchPosts = () => {
             const accessToken = localStorage.getItem('accessToken');
@@ -46,7 +46,7 @@ export const Heart: ActivityComponentType = () => {
     }, []);
     return (
         <Suspense>
-            <MainTemplate title="관심" posts={posts}/>
+            <MainTemplate title="관심" posts={posts} />
         </Suspense>
     );
 };

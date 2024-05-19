@@ -7,7 +7,7 @@ export const TermsOfService: ActivityComponentType = () => {
         <Suspense>
             <DocsTemplate
                 header="서비스 이용 약관"
-                text="응애응애응애응애응애으 ㅇ앵으애응으애응애ㅡㅇㅇ앵응애응애응애응애응애응애으 ㅇ앵으애응으애응애ㅡㅇㅇ앵응애"
+                content="응애"
             />
         </Suspense>
     );

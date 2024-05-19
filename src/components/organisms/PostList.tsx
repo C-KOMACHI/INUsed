@@ -10,6 +10,7 @@ export interface Post {
     createdAt?: string;
     wishCount?: number;
     checkLiked?: boolean;
+    content?: string;
 }
 
 interface Props {
@@ -19,7 +20,7 @@ interface Props {
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Stack sx={{ pl: '10px' }}>
-            {posts.map(({ id, imageUrl, title, price, createdAt, wishCount, checkLiked }) => {
+            {posts.map(({ id, imageUrl, title, price, createdAt, wishCount, checkLiked, content }) => {
                 return (
                     <PostItem
                         id={id}
@@ -31,6 +32,7 @@ export const PostList: FC<Props> = ({ posts }) => {
                         notice={!price}
                         wishCount={wishCount}
                         checkLiked={checkLiked}
+                        content={content}
                     />
                 );
             })}
