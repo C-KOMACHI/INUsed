@@ -59,6 +59,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
 
     const handleCheckEmail = () => {
         void emailMutate({ email: emailRef.current?.value ?? '' });
+        setShowInput(true);
     };
 
     const getEmailErrorMessage = (value: string) => {
@@ -67,16 +68,11 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                 if (emailError) {
                     return '이미 가입된 이메일입니다.';
                 }
+                return '';
             }
             return '이메일 형식이 아닙니다.';
         }
         return '이메일을 입력해 주세요.';
-    };
-
-    const getAuthCodeInput = () => {
-        if (!emailError) {
-            setShowInput(true);
-        }
     };
 
     const {
@@ -124,8 +120,6 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [passConfirmErrorMessage, setPassConfirmErrorMessage] = useState('');
 
-    const { push } = useFlow();
-
     const validatePassword = (pw: string) => {
         return /(?=.*[a-zA-Z0-9])(?=.*[\W_]).{12,}/.test(pw);
     };
@@ -170,12 +164,6 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
             return '입력된 정보를 확인해 주세요.';
         }
         return '';
-    };
-
-    const getSuccessPage = () => {
-        if (!registerError) {
-            push('SuccessRegister', {});
-        }
     };
 
     const [id, setId] = useState('');
@@ -251,12 +239,9 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                                 </AuthButton>
                             </Stack>
                             {emailData && (
-                                <>
-                                    <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                        {getEmailErrorMessage(emailRef.current?.value ?? '')}
-                                    </Typography>
-                                    {getAuthCodeInput}
-                                </>
+                                <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
+                                    {getEmailErrorMessage(emailRef.current?.value ?? '')}
+                                </Typography>
                             )}
 
                             {showInput && (
@@ -294,12 +279,9 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                         </Stack>
                         <Button onClick={RegisterHandleClick}>회원가입</Button>
                         {registerData && (
-                            <>
-                                <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {getRegisterErrorMessage()}
-                                </Typography>
-                                {getSuccessPage}
-                            </>
+                            <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
+                                {getRegisterErrorMessage()}
+                            </Typography>
                         )}
                     </>
                 )}

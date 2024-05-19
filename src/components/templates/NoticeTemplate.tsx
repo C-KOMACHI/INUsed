@@ -5,13 +5,13 @@ type Notice = {
     id: number;
     title: string;
     createdAt: string;
-}
+};
 
 interface Props {
     notices: Notice[];
 }
 
-export const NoticeTemplate: FC<Props> = ({notices}) => {
+export const NoticeTemplate: FC<Props> = ({ notices }) => {
     return (
         <AppScreen backIcon header borderRadius title="공지사항">
             <PostList posts={notices} />

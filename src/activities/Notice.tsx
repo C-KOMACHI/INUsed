@@ -7,7 +7,7 @@ type Notice = {
     id: number;
     title: string;
     createdAt: string;
-}
+};
 
 interface ApiResponse {
     code: string;
@@ -17,7 +17,7 @@ interface ApiResponse {
 
 export const Notice: ActivityComponentType = () => {
     const [notices, setNotices] = useState<Notice[]>([]);
-    
+
     useEffect(() => {
         const fetchPosts = () => {
             const accessToken = localStorage.getItem('accessToken');
@@ -38,7 +38,7 @@ export const Notice: ActivityComponentType = () => {
 
     return (
         <Suspense>
-            <NoticeTemplate notices={notices}/>
+            <NoticeTemplate notices={notices} />
         </Suspense>
     );
 };
