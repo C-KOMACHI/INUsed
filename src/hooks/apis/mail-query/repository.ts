@@ -6,7 +6,6 @@ export class MailRepository {
         const result = await axios.post<MailResponse>('/api/v1/emails/verification-requests', {
             email,
         });
-
         return result;
     }
 
