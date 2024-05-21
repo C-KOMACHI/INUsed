@@ -6,16 +6,19 @@ interface Props {
     medium?: boolean;
     big?: boolean;
     search?: boolean;
+    disabledBorderRadius?: boolean;
+    disabledBorder?: boolean;
+    bigFont?: boolean;
 }
 
 export const Input = styled.input<Props>`
-    border: 1.6px solid ${COLOR.gray.main};
-    border-radius: 25px;
+    border: ${(props) => (props.disabledBorder ? 'none' : `1.6px solid ${COLOR.gray.main}`)};
+    border-radius: ${(props) => (props.disabledBorderRadius ? '10px' : '25px')};
     height: ${(props) => {
         if (props.big) return '200px';
         return '50px';
     }};
-    font-size: 0.9rem;
+    font-size: ${(props) => (props.bigFont ? '1rem' : '0.9rem')};
     width: ${(props) => {
         if (props.small) return '50%';
         if (props.medium) return '80%';

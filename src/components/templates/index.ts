@@ -10,3 +10,4 @@ export * from './KategorieTemplate';
 export * from './FormTemplate';
 export * from './KeywordTemplate';
 export * from './SuccessTemplate';
+export * from './ChatTemplate';
