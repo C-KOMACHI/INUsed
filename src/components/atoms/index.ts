@@ -12,3 +12,4 @@ export * from './SearchBar';
 export * from './MenuIcon';
 export * from './Icon';
 export * from './BackIcon';
+export * from './ChatBubble';
