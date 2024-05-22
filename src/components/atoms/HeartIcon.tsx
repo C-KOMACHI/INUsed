@@ -32,7 +32,15 @@ const style = {
     },
 };
 
-export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', containerStyle, textStyle, wishCount, checkLiked, id }) => {
+export const HeartIcon: FC<Props> = ({
+    direction = 'row',
+    spacing = '0.5',
+    containerStyle,
+    textStyle,
+    wishCount,
+    checkLiked,
+    id,
+}) => {
     const [isClicked, setIsClicked] = useState(checkLiked);
     const [heart, setHeart] = useState(wishCount ?? 0);
 
@@ -40,12 +48,13 @@ export const HeartIcon: FC<Props> = ({ direction = 'row', spacing = '0.5', conta
         const accessToken = localStorage.getItem('accessToken');
 
         axios
-            .post('https://api.inused.store/api/v1/wishes/click', { postId: id}, {headers: {Authorization: accessToken},
-            })
-            .then(() => {
-            })
-            .catch(() => {
-            });
+            .post(
+                'https://api.inused.store/api/v1/wishes/click',
+                { postId: id },
+                { headers: { Authorization: accessToken } },
+            )
+            .then(() => {})
+            .catch(() => {});
     };
 
     const handleClick = () => {

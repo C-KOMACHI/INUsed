@@ -21,8 +21,6 @@ interface Props {
     checkLiked?: boolean;
 }
 
-
-
 const style = {
     container: {
         paddingTop: '20px',
@@ -37,13 +35,26 @@ const style = {
     },
 };
 
-export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, main, notice, report, wishCount, id, checkLiked }) => {
+export const PostItem: FC<Props> = ({
+    src,
+    title,
+    createdAt,
+    price,
+    body,
+    post,
+    main,
+    notice,
+    report,
+    wishCount,
+    id,
+    checkLiked,
+}) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
     const pushPost = () => {
         if (id !== undefined) {
-            push('Post',{id, wishCount, checkLiked});
+            push('Post', { id, wishCount, checkLiked });
         }
     };
 
@@ -70,7 +81,7 @@ export const PostItem: FC<Props> = ({ src, title, createdAt, price, body, post, 
                             <Text type="smallGray">{createdAt}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>
-                            <HeartIcon wishCount={wishCount} checkLiked={checkLiked} id={id}/>
+                            <HeartIcon wishCount={wishCount} checkLiked={checkLiked} id={id} />
                         </Grid>
                     </Grid>
                     <Divider sx={{ pt: '20px' }} />

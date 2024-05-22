@@ -47,19 +47,22 @@ interface LoginResponse {
 
 export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) => {
     const { replace } = useFlow();
+    const { push } = useFlow();
 
     const [showInput, setShowInput] = useState(false);
 
     const nicknameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
     const authCodeRef = useRef<HTMLInputElement>(null);
-    const passwordRef = useRef<HTMLInputElement>(null);
 
     const { data: emailData, isError: emailError, mutate: emailMutate } = useSendEmail();
 
     const handleCheckEmail = () => {
         void emailMutate({ email: emailRef.current?.value ?? '' });
-        setShowInput(true);
+
+        if (!emailError) {
+            setShowInput(true);
+        }
     };
 
     const getEmailErrorMessage = (value: string) => {
@@ -133,16 +136,22 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
         } else {
             setPasswordErrorMessage('비밀번호는 영문자,숫자,특수 문자 포함 12자 이상으로 설정해 주세요.');
         }
+
+        if (value === passwordConfirm) {
+            setPassConfirmErrorMessage('');
+        } else {
+            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
+        }
     };
 
     const handleConfirmChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setPasswordConfirm(value);
 
-        if (passwordConfirm !== password) {
-            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
-        } else {
+        if (password === value) {
             setPassConfirmErrorMessage('');
+        } else {
+            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
         }
     };
 
@@ -153,10 +162,14 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
 
     const RegisterHandleClick = () => {
         registerMutate({
-            email: emailRef.current?.value ?? '',
+            email: `${emailRef.current?.value ?? ''}@inu.ac.kr`,
             nickname: nicknameRef.current?.value ?? '',
-            password: passwordRef.current?.value ?? '',
+            password,
         });
+
+        if (!registerError) {
+            push('SuccessRegister', {});
+        }
     };
 
     const getRegisterErrorMessage = () => {
@@ -246,7 +259,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
 
                             {showInput && (
                                 <Stack direction="row" spacing={1}>
-                                    <Input placeholder="인증번호" small />
+                                    <Input placeholder="인증번호" small ref={authCodeRef} />
                                     <AuthButton
                                         size="small"
                                         sx={{ ...style.button, width: '20px' }}

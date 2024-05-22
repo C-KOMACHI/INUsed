@@ -16,7 +16,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
-}
+};
 
 interface ApiResponse {
     code: string;
@@ -26,7 +26,7 @@ interface ApiResponse {
 
 export const MyPost: ActivityComponentType = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    
+
     useEffect(() => {
         const fetchPosts = () => {
             const accessToken = localStorage.getItem('accessToken');
