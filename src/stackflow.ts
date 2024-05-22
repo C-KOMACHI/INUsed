@@ -20,6 +20,7 @@ import {
     SuccessRegister,
     TermsOfService,
     PrivacyPolicy,
+    Chat,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -49,8 +50,9 @@ export const { Stack, useFlow, activities } = stackflow({
         SuccessRegister,
         TermsOfService,
         PrivacyPolicy,
+        Chat,
     },
-    initialActivity: () => 'Main',
+    initialActivity: () => 'Register',
 });
 
 export type TypeActivities = typeof activities;

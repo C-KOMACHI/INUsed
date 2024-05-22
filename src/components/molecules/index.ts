@@ -6,3 +6,4 @@ export * from './NickName';
 export * from './Email';
 export * from './Password';
 export * from './FormInput';
+export * from './ChatBar';

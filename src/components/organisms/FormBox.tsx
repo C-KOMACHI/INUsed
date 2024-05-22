@@ -47,46 +47,45 @@ interface LoginResponse {
 
 export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) => {
     const { replace } = useFlow();
+    const { push } = useFlow();
 
-    const [email, setEmail] = useState('');
-    const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [showInput, setShowInput] = useState(false);
-    const [authCode, setAuthCode] = useState('');
-    const { data: emailData, isError: emailError, mutate: sendEmail } = useSendEmail(email);
-    const [authCodeCall, setAuthCodeCall] = useState(false);
-    const { data: codeData, error: authCodeError } = useCheckAuthCode(email, authCode, authCodeCall);
+
     const nicknameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const authCodeRef = useRef<HTMLInputElement>(null);
 
-    const handleTopChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setEmail(value);
-    };
-
-    const handleBottomChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setAuthCode(value);
-    };
+    const { data: emailData, isError: emailError, mutate: emailMutate } = useSendEmail();
 
     const handleCheckEmail = () => {
-        setEmailErrorMessage('');
-        if (email.length > 0) {
-            if (/^[a-zA-Z0-9._%+-]{2,}$/.test(email)) {
-                sendEmail();
-                if (emailError) {
-                    setEmailErrorMessage('이미 가입된 이메일입니다.');
-                } else {
-                    setShowInput(true);
-                }
-            } else {
-                setEmailErrorMessage('이메일 형식이 아닙니다.');
-            }
-        } else {
-            setEmailErrorMessage('이메일을 입력해 주세요.');
+        void emailMutate({ email: emailRef.current?.value ?? '' });
+
+        if (!emailError) {
+            setShowInput(true);
         }
     };
 
+    const getEmailErrorMessage = (value: string) => {
+        if (value.length > 0) {
+            if (/^[a-zA-Z0-9._%+-]{2,}$/.test(value)) {
+                if (emailError) {
+                    return '이미 가입된 이메일입니다.';
+                }
+                return '';
+            }
+            return '이메일 형식이 아닙니다.';
+        }
+        return '이메일을 입력해 주세요.';
+    };
+
+    const {
+        data: codeData,
+        error: authCodeError,
+        refetch: authCodeRefetch,
+    } = useCheckAuthCode(emailRef.current?.value ?? '', authCodeRef.current?.value ?? '', false);
+
     const handleCheckCode = () => {
-        setAuthCodeCall(true);
+        void authCodeRefetch();
     };
 
     const getCodeErrorMessage = (value: string) => {
@@ -124,8 +123,6 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [passConfirmErrorMessage, setPassConfirmErrorMessage] = useState('');
 
-    const { push } = useFlow();
-
     const validatePassword = (pw: string) => {
         return /(?=.*[a-zA-Z0-9])(?=.*[\W_]).{12,}/.test(pw);
     };
@@ -139,16 +136,22 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
         } else {
             setPasswordErrorMessage('비밀번호는 영문자,숫자,특수 문자 포함 12자 이상으로 설정해 주세요.');
         }
+
+        if (value === passwordConfirm) {
+            setPassConfirmErrorMessage('');
+        } else {
+            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
+        }
     };
 
     const handleConfirmChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setPasswordConfirm(value);
 
-        if (passwordConfirm !== password) {
-            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
-        } else {
+        if (password === value) {
             setPassConfirmErrorMessage('');
+        } else {
+            setPassConfirmErrorMessage('비밀번호가 일치하지 않습니다.');
         }
     };
 
@@ -158,16 +161,22 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
     const { mutate: registerMutate, data: registerData, isError: registerError } = useRegister();
 
     const RegisterHandleClick = () => {
-        registerMutate({ email, nickname: nicknameRef.current?.value ?? '', password });
+        registerMutate({
+            email: `${emailRef.current?.value ?? ''}@inu.ac.kr`,
+            nickname: nicknameRef.current?.value ?? '',
+            password,
+        });
+
+        if (!registerError) {
+            push('SuccessRegister', {});
+        }
     };
 
     const getRegisterErrorMessage = () => {
-        if (!registerData || registerError) {
+        if (registerError) {
             return '입력된 정보를 확인해 주세요.';
         }
-
-        push('SuccessRegister', {});
-        return '회원가입 성공!';
+        return '';
     };
 
     const [id, setId] = useState('');
@@ -230,7 +239,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                         </Stack>
                         <Stack direction="column" spacing={1}>
                             <Stack direction="row" spacing={1.3} alignItems="center">
-                                <Input placeholder="학교 이메일" small onChange={handleTopChange} />
+                                <Input placeholder="학교 이메일" small ref={emailRef} />
                                 <Typography sx={{ fontFamily: 'Jua', color: COLOR.gray.main }}>@inu.ac.kr</Typography>
                                 <AuthButton
                                     size="small"
@@ -244,17 +253,13 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                             </Stack>
                             {emailData && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {emailErrorMessage}
+                                    {getEmailErrorMessage(emailRef.current?.value ?? '')}
                                 </Typography>
                             )}
+
                             {showInput && (
                                 <Stack direction="row" spacing={1}>
-                                    <Input
-                                        placeholder="인증번호"
-                                        small
-                                        value={authCode}
-                                        onChange={handleBottomChange}
-                                    />
+                                    <Input placeholder="인증번호" small ref={authCodeRef} />
                                     <AuthButton
                                         size="small"
                                         sx={{ ...style.button, width: '20px' }}
@@ -267,7 +272,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
                             )}
                             {codeData && (
                                 <Typography variant="body2" color={COLOR.pink.footer} sx={{ pl: '10px' }}>
-                                    {getCodeErrorMessage(authCode)}
+                                    {getCodeErrorMessage(authCodeRef.current?.value ?? '')}
                                 </Typography>
                             )}
                         </Stack>

@@ -1,21 +1,19 @@
+import type { Mail } from './type';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { QUERY_OPTIONS } from '@/constants';
 import { MailRepository } from './repository';
 
 const queryKeys = {
     all: ['email'],
-    sendEmail(email: string) {
-        return [...this.all, email];
-    },
     checkAuthCode(email: string, authCode: string) {
         return [...this.all, email, authCode];
     },
 };
 
-export const useSendEmail = (email: string) => {
+export const useSendEmail = () => {
     return useMutation({
-        mutationKey: queryKeys.sendEmail(email),
-        mutationFn: () => MailRepository.sendEmail(email),
+        mutationKey: queryKeys.all,
+        mutationFn: ({ email }: Mail) => MailRepository.sendEmail(email),
         ...QUERY_OPTIONS,
     });
 };
