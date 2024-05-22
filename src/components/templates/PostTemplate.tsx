@@ -23,13 +23,13 @@ type Post = {
         nickname: string;
         profileImage: string;
         fireTemperature: number;
-    }
+    };
     category: {
         id: number;
         name: string;
     };
     checkLiked: boolean;
-}
+};
 
 interface ApiResponse {
     code: string;
@@ -37,7 +37,7 @@ interface ApiResponse {
     post: Post;
 }
 
-export const PostTemplate: FC<Props> = ({id, wishCount, checkLiked}) => {
+export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
     const [post, setPost] = useState<Post>();
 
     useEffect(() => {
@@ -57,17 +57,11 @@ export const PostTemplate: FC<Props> = ({id, wishCount, checkLiked}) => {
         };
         fetchPosts();
     }, [id]);
-    
+
     return (
         <AppScreen>
-            <PostItem
-                src={post?.imageUrl}
-                title={post?.title}
-                createdAt={post?.createdAt}
-                body={post?.content}
-                post
-            />
-            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount}/>
+            <PostItem src={post?.imageUrl} title={post?.title} createdAt={post?.createdAt} body={post?.content} post />
+            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} />
         </AppScreen>
     );
 };
