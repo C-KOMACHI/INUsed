@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Grid, Stack, Divider, Box } from '@mui/material';
+import { Grid, Stack, Divider, Box, Typography } from '@mui/material';
 import { ArrowBackIosNewRounded as BackIcon, ChevronRight as RightIcon } from '@mui/icons-material';
 import { Image, HeartIcon, MenuIcon, Text } from '@/components/atoms';
 import { ProfileInformation } from '@/components/molecules';
@@ -26,6 +26,8 @@ interface Props {
     profileImage?: string;
     ago?: string;
     heart?: boolean;
+    alarm?: boolean;
+    keyword?: string;
 }
 
 const style = {
@@ -62,6 +64,8 @@ export const PostItem: FC<Props> = ({
     profileImage,
     ago,
     heart,
+    alarm,
+    keyword,
 }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
@@ -99,6 +103,11 @@ export const PostItem: FC<Props> = ({
                             <Text type="large">{title}</Text>
                             <Text type="medium">{price}원</Text>
                             <Text type="smallGray">{ago}</Text>
+                            {alarm && (
+                                <Typography sx={{ position: 'absolute', right: 20, fontSize: '10px', color: 'gray' }}>
+                                    `&apos;{keyword}&apos;` 키워드 알림
+                                </Typography>
+                            )}
                         </Grid>
                         {heart && (
                             <Grid item xs={1} sx={{ position: 'relative' }}>

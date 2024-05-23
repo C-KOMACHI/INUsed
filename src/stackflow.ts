@@ -22,6 +22,7 @@ import {
     PrivacyPolicy,
     Chat,
     KategorieSub,
+    Alarm,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -53,6 +54,7 @@ export const { Stack, useFlow, activities } = stackflow({
         PrivacyPolicy,
         Chat,
         KategorieSub,
+        Alarm,
     },
     initialActivity: () => 'Login',
 });

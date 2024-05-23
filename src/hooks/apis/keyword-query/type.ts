@@ -18,13 +18,13 @@ interface User {
 interface KeywordInfos {
     keywordId: number;
     keyword: string;
-    user: User;
+    user: User[];
 }
 
 export interface KeywordResponse {
     code: string;
     message: string;
-    keywordInfos: KeywordInfos;
+    keywordInfos: KeywordInfos[];
 }
 
 export interface KeywordGetpost {

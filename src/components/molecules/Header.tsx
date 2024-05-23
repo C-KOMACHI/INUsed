@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { Box, Stack } from '@mui/material';
+import { useFlow } from '@/stackflow';
 import { SearchBar, Icon } from '@/components/atoms';
 import { COLOR } from '@/constants';
 
@@ -20,11 +21,16 @@ const style = {
 };
 
 export const Header: FC = () => {
+    const { push } = useFlow();
+
+    const handleClick = () => {
+        push('Alarm', {});
+    };
     return (
         <Box sx={style.container}>
             <Stack direction="row" alignItems="center" spacing={1}>
                 <SearchBar />
-                <Icon gray src="/icons/Alarm.png" />
+                <Icon gray src="/icons/Alarm.png" onClick={handleClick} />
             </Stack>
         </Box>
     );

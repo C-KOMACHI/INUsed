@@ -11,3 +11,4 @@ export * from './FormTemplate';
 export * from './KeywordTemplate';
 export * from './SuccessTemplate';
 export * from './ChatTemplate';
+export * from './AlarmTemplate';

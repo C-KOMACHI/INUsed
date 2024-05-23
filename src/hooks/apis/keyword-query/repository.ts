@@ -1,4 +1,4 @@
-import type { KeywordCreateResponse } from './type';
+import type { KeywordGetpost, KeywordCreateResponse } from './type';
 import { axios } from '@/utils';
 
 export class KeywordRepository {
@@ -6,6 +6,11 @@ export class KeywordRepository {
         const result = await axios.post<KeywordCreateResponse>('/api/v1/keyword/create', {
             keyword,
         });
+        return result;
+    }
+
+    public static async getKeywordPost() {
+        const result = await axios.get<KeywordGetpost>('/api/vi/keyword/get-post');
         return result;
     }
 }
