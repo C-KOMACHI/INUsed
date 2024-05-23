@@ -86,7 +86,6 @@ export const AppScreen: FC<Props> = ({
                     id={id}
                     checkLiked={checkLiked}
                     wishCount={wishCount}
-                    postId={id}
                     checkMyPost={checkMyPost}
                 />
                 )}
