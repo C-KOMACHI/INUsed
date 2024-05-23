@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { Box, Button, Divider } from '@mui/material';
 import { useFlow } from '@/stackflow';
-import { useChat } from '@/hooks/apis/chat-query';
 import { COLOR } from '@/constants';
 import { HeartIcon, Text } from '@/components/atoms';
 
@@ -10,8 +9,6 @@ interface Props {
     id?: number;
     checkLiked?: boolean;
     wishCount?: number;
-    userId?: number;
-    postId?: number;
 }
 
 const style = {
@@ -38,16 +35,11 @@ const style = {
     },
 };
 
-export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount, userId, postId }) => {
+export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount }) => {
     const { push } = useFlow();
-    const { mutate: chatMutate, isError: chatError } = useChat();
 
-    const chatHandleClick = () => {
-        chatMutate({ userId: userId ?? 0, postId: postId ?? 0 });
-
-        if (!chatError) {
-            push('Chat', {});
-        }
+    const handleClick = () => {
+        push('Chat', {});
     };
 
     return (
@@ -64,7 +56,7 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
             <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
             <Text type="large">{price}원</Text>
 
-            <Button size="medium" variant="contained" sx={style.button} onClick={chatHandleClick}>
+            <Button size="medium" variant="contained" sx={style.button} onClick={handleClick}>
                 채팅하기
             </Button>
         </Box>

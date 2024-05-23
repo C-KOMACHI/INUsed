@@ -73,7 +73,7 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
                 profileImage={post?.user.profileImage}
                 post
             />
-            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} postId={id} />
+            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} />
         </AppScreen>
     );
 };
