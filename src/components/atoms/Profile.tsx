@@ -6,7 +6,7 @@ interface Props {
     small?: boolean;
 }
 
-export const Profile: FC<Props> = ({src, small }) => {
+export const Profile: FC<Props> = ({ src, small }) => {
     return (
         <ProfileImage
             src={src}

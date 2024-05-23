@@ -17,7 +17,7 @@ type User = {
     nickname: string;
     profileImage: string;
     fireTemperature: number;
-}
+};
 interface ApiResponse {
     code: string;
     message: string;

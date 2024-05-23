@@ -18,7 +18,7 @@ const style = {
     },
 };
 
-export const ProfileInformation: FC<Props> = ({src, nickName, email, temperature, post, myProfile }) => {
+export const ProfileInformation: FC<Props> = ({ src, nickName, email, temperature, post, myProfile }) => {
     const { push } = useFlow();
 
     const handleClick = () => {
