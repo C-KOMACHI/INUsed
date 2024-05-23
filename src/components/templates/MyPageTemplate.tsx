@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+import { type FC, useEffect, useState } from 'react';
+import axios from 'axios';
 import { Grid, Stack, Divider, List, ListItemButton, Container } from '@mui/material';
 import { useFlow } from '@/stackflow';
 import { Text, Icon } from '@/components/atoms';
@@ -10,6 +11,19 @@ const style = {
     maxHeight: '100%',
 };
 
+type User = {
+    id: number;
+    email: string;
+    nickname: string;
+    profileImage: string;
+    fireTemperature: number;
+};
+interface ApiResponse {
+    code: string;
+    message: string;
+    user: User;
+}
+
 export const MyPageTemplate: FC = () => {
     const { push } = useFlow();
     const { replace } = useFlow();
@@ -18,15 +32,34 @@ export const MyPageTemplate: FC = () => {
         push(page, {});
     };
 
+    const [user, setUser] = useState<User>();
+
+    useEffect(() => {
+        const fetchPosts = () => {
+            const accessToken = localStorage.getItem('accessToken');
+
+            axios
+                .get<ApiResponse>(`https://api.inused.store/api/v1/user/get`, {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                })
+                .then((response) => {
+                    setUser(response.data.user);
+                })
+                .catch(() => {});
+        };
+        fetchPosts();
+    }, []);
+
     return (
         <AppScreen bottomNavigation header title="내 프로필" borderRadius>
             <Container sx={style}>
                 <ProfileInformation
-                    alt="프로필 사진"
-                    src="/profile.png"
-                    nickName="유잼잼"
-                    email="jin03021425@inu.ac.kr"
-                    temperature={1300}
+                    src={user?.profileImage}
+                    nickName={user?.nickname}
+                    email={user?.email}
+                    temperature={user?.fireTemperature}
                     myProfile
                 />
 

@@ -4,11 +4,10 @@ import { Profile, Text, Temperature } from '@/components/atoms';
 import { useFlow } from '@/stackflow';
 
 interface Props {
-    alt: string;
     src?: string;
-    nickName: string;
-    email: string;
-    temperature: number;
+    nickName?: string;
+    email?: string;
+    temperature?: number;
     post?: boolean;
     myProfile?: boolean;
 }
@@ -19,7 +18,7 @@ const style = {
     },
 };
 
-export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, temperature, post, myProfile }) => {
+export const ProfileInformation: FC<Props> = ({ src, nickName, email, temperature, post, myProfile }) => {
     const { push } = useFlow();
 
     const handleClick = () => {
@@ -30,20 +29,20 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, tempe
             {post && (
                 <Stack direction="row" alignItems="center" spacing={1} sx={{ pl: '10px' }} onClick={handleClick}>
                     <Stack direction="row" alignItems="center" spacing={2}>
-                        <Profile alt={alt} src={src} small />
+                        <Profile src={src} small />
                         <Text type="medium">{nickName}</Text>
                     </Stack>
-                    <Temperature temperature={temperature} post />
+                    <Temperature temperature={temperature ?? 0} post />
                 </Stack>
             )}
             {myProfile && (
                 <Stack spacing={2} sx={{ px: 1, pt: 2.5 }}>
                     <Stack sx={style.container}>
-                        <Profile alt={alt} src={src} />
+                        <Profile src={src} />
                         <Text type="large">{nickName}</Text>
                         <Text type="mediumGray">{email}</Text>
                     </Stack>
-                    <Temperature temperature={temperature} myProfile />
+                    <Temperature temperature={temperature ?? 0} myProfile />
                 </Stack>
             )}
         </>

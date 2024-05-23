@@ -2,15 +2,13 @@ import type { FC } from 'react';
 import { Avatar as ProfileImage } from '@mui/material';
 
 interface Props {
-    alt: string;
     src?: string;
     small?: boolean;
 }
 
-export const Profile: FC<Props> = ({ alt, src, small }) => {
+export const Profile: FC<Props> = ({ src, small }) => {
     return (
         <ProfileImage
-            alt={alt}
             src={src}
             sx={{
                 width: small ? 50 : 110,

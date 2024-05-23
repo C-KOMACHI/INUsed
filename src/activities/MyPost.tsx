@@ -11,6 +11,7 @@ type Post = {
     wishCount: number;
     viewCount: number;
     createdAt: string;
+    ago: string;
     category: {
         id: number;
         name: string;
@@ -32,7 +33,7 @@ export const MyPost: ActivityComponentType = () => {
             const accessToken = localStorage.getItem('accessToken');
 
             axios
-                .get<ApiResponse>('https://api.inused.store/api/v1/posts', {
+                .get<ApiResponse>('https://api.inused.store/api/v1/posts/my-post', {
                     headers: {
                         Authorization: accessToken,
                     },

@@ -19,6 +19,11 @@ interface Props {
     wishCount?: number;
     id?: number;
     checkLiked?: boolean;
+    content?: string;
+    nickname?: string;
+    email?: string;
+    temperature?: number;
+    profileImage?: string;
 }
 
 const style = {
@@ -48,6 +53,11 @@ export const PostItem: FC<Props> = ({
     wishCount,
     id,
     checkLiked,
+    content,
+    nickname,
+    email,
+    temperature,
+    profileImage,
 }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
@@ -56,10 +66,6 @@ export const PostItem: FC<Props> = ({
         if (id !== undefined) {
             push('Post', { id, wishCount, checkLiked });
         }
-    };
-
-    const pushHandleClick = (s: 'Post' | 'NoticeSub') => {
-        push(s === 'Post' ? 'Post' : 'NoticeSub', { title });
     };
 
     const popHandleClick = () => {
@@ -100,11 +106,10 @@ export const PostItem: FC<Props> = ({
                         <Image src={src} alt={title} disabledBorderRadius />
                         <Stack spacing={2}>
                             <ProfileInformation
-                                alt="프로필 사진"
-                                src="/profile.png"
-                                nickName="유잼잼"
-                                email="jin03021425@inu.ac.kr"
-                                temperature={1300}
+                                src={profileImage}
+                                nickName={nickname}
+                                email={email}
+                                temperature={temperature ?? 0}
                                 post
                             />
                             <Divider />
@@ -121,7 +126,7 @@ export const PostItem: FC<Props> = ({
             {/* 공지사항 */}
             {notice && (
                 <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
-                    <Box onClick={() => pushHandleClick('NoticeSub')}>
+                    <Box onClick={() => push('NoticeSub', { id, title, createdAt, content })}>
                         <Text type="large">{title}</Text>
                         <Text type="smallGray">{createdAt}</Text>
                     </Box>
