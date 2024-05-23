@@ -12,7 +12,12 @@ type ArticleParams = {
 export const Post: ActivityComponentType<ArticleParams> = ({ params }) => {
     return (
         <Suspense>
-            <PostTemplate id={params.id} wishCount={params.wishCount} checkLiked={params.checkLiked} checkMyPost={params.checkMyPost}/>
+            <PostTemplate
+                id={params.id}
+                wishCount={params.wishCount}
+                checkLiked={params.checkLiked}
+                checkMyPost={params.checkMyPost}
+            />
         </Suspense>
     );
 };

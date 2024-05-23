@@ -21,7 +21,7 @@ type ArticleParams = {
     id: number;
 };
 
-export const UserPage: ActivityComponentType<ArticleParams> = ({params}) => {
+export const UserPage: ActivityComponentType<ArticleParams> = ({ params }) => {
     const [user, setUser] = useState<User>();
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const UserPage: ActivityComponentType<ArticleParams> = ({params}) => {
     }, [params.id]);
     return (
         <Suspense>
-            <MyPageTemplate id={params.id} user={user} title={`${user?.nickname} 프로필`}/>
+            <MyPageTemplate id={params.id} user={user} title={`${user?.nickname} 프로필`} />
         </Suspense>
     );
 };

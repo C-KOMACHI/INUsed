@@ -65,7 +65,7 @@ export const PostItem: FC<Props> = ({
     ago,
     chat,
     kategorie,
-    checkMyPost
+    checkMyPost,
 }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
@@ -119,7 +119,7 @@ export const PostItem: FC<Props> = ({
                 <>
                     <Stack direction="row" spacing={5}>
                         <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
-                        <MenuIcon checkMyPost={checkMyPost}/>
+                        <MenuIcon checkMyPost={checkMyPost} />
                     </Stack>
 
                     <Stack direction="column" spacing={2}>
@@ -137,7 +137,9 @@ export const PostItem: FC<Props> = ({
                             <Divider />
                             <Box sx={{ position: 'relative' }}>
                                 <Text type="large">{title}</Text>
-                                <Text type="smallGray">{kategorie} / {ago}</Text>
+                                <Text type="smallGray">
+                                    {kategorie} / {ago}
+                                </Text>
                             </Box>
                             <Text type="mediumGray">{replaceNewlinesWithBr(body)}</Text>
                         </Stack>

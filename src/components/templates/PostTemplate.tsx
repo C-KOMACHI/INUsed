@@ -78,7 +78,14 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked, checkMyPost
                 checkMyPost={checkMyPost}
                 post
             />
-            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} postId={id} checkMyPost={checkMyPost}/>
+            <PostBottomMenubar
+                price={post?.price}
+                id={id}
+                checkLiked={checkLiked}
+                wishCount={wishCount}
+                postId={id}
+                checkMyPost={checkMyPost}
+            />
         </AppScreen>
     );
 };

@@ -40,7 +40,7 @@ export const MyPage: ActivityComponentType = () => {
 
     return (
         <Suspense>
-            <MyPageTemplate user={user} title='내 프로필'/>
+            <MyPageTemplate user={user} title="내 프로필" />
         </Suspense>
     );
 };

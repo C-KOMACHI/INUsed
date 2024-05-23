@@ -66,12 +66,12 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
             <Text type="large">{price}원</Text>
             {!checkMyPost && (
                 <Button size="medium" variant="contained" sx={style.button} onClick={chatHandleClick}>
-                채팅하기
+                    채팅하기
                 </Button>
             )}
             {!!checkMyPost && (
                 <Button size="medium" variant="contained" sx={style.button}>
-                상태 변경
+                    상태 변경
                 </Button>
             )}
         </Box>

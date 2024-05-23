@@ -20,10 +20,19 @@ const style = {
     },
 };
 
-export const ProfileInformation: FC<Props> = ({ src, nickName, email, temperature, post, myProfile, id, checkMyPost }) => {
+export const ProfileInformation: FC<Props> = ({
+    src,
+    nickName,
+    email,
+    temperature,
+    post,
+    myProfile,
+    id,
+    checkMyPost,
+}) => {
     const { push } = useFlow();
 
-    const handleClick = (isMine : boolean | undefined) => {
+    const handleClick = (isMine: boolean | undefined) => {
         if (isMine) {
             push('MyPage', {});
         } else {
@@ -33,7 +42,13 @@ export const ProfileInformation: FC<Props> = ({ src, nickName, email, temperatur
     return (
         <>
             {post && (
-                <Stack direction="row" alignItems="center" spacing={1} sx={{ pl: '10px' }} onClick={() => handleClick(checkMyPost)}>
+                <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                    sx={{ pl: '10px' }}
+                    onClick={() => handleClick(checkMyPost)}
+                >
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Profile src={src} small />
                         <Text type="medium">{nickName}</Text>

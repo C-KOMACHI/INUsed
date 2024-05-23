@@ -22,24 +22,26 @@ interface Props {
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Stack sx={{ pl: '10px' }}>
-            {posts.map(({ id, imageUrl, title, price, ago, createdAt, wishCount, checkLiked, content, checkMyPost }) => {
-                return (
-                    <PostItem
-                        id={id}
-                        src={imageUrl}
-                        title={title}
-                        ago={ago}
-                        createdAt={createdAt}
-                        price={price}
-                        main={!!price}
-                        notice={!price}
-                        wishCount={wishCount}
-                        checkLiked={checkLiked}
-                        content={content}
-                        checkMyPost={checkMyPost}
-                    />
-                );
-            })}
+            {posts.map(
+                ({ id, imageUrl, title, price, ago, createdAt, wishCount, checkLiked, content, checkMyPost }) => {
+                    return (
+                        <PostItem
+                            id={id}
+                            src={imageUrl}
+                            title={title}
+                            ago={ago}
+                            createdAt={createdAt}
+                            price={price}
+                            main={!!price}
+                            notice={!price}
+                            wishCount={wishCount}
+                            checkLiked={checkLiked}
+                            content={content}
+                            checkMyPost={checkMyPost}
+                        />
+                    );
+                },
+            )}
         </Stack>
     );
 };
