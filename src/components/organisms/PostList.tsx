@@ -35,6 +35,7 @@ export const PostList: FC<Props> = ({ posts }) => {
                         wishCount={wishCount}
                         checkLiked={checkLiked}
                         content={content}
+                        heart
                     />
                 );
             })}
