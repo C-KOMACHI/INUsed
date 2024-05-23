@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { DocsTemplate } from '@/components/templates';
 
 export const TermsOfService: ActivityComponentType = () => {
-    const content=`제1조 목적
+    const content = `제1조 목적
 
     본 이용약관은 “INUsed”의 서비스의 이용조건과 운영에 관한 제반 사항 규정을 목적으로 합니다.
     
@@ -125,7 +125,7 @@ export const TermsOfService: ActivityComponentType = () => {
     
     부칙
     
-    이 약관은 <2024.05.24>부터 시행합니다.`
+    이 약관은 <2024.05.24>부터 시행합니다.`;
     return (
         <Suspense>
             <DocsTemplate header="서비스 이용 약관" content={content} />
