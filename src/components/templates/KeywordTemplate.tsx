@@ -3,6 +3,7 @@ import { Stack, Button, Typography, Chip } from '@mui/material';
 import { Input } from '@/components/atoms';
 import { AppScreen } from '@/components/organisms';
 import { COLOR } from '@/constants';
+import { useCreateKeyword } from '@/hooks/apis/keyword-query';
 
 const style = {
     button: {
@@ -30,7 +31,13 @@ export const KeywordTemplate: FC = () => {
     const [keywords, setKeywords] = useState<Keyword[]>([]);
     const [keywordNumber, setKeywordNumber] = useState(0);
 
+    const { mutate: keywordMutate } = useCreateKeyword();
+
     const keywordHandleClick = () => {
+        keywordMutate({
+            keyword: keywordRef.current?.value ?? '',
+        });
+
         if (keywordRef.current && keywordRef.current.value.trim() !== '') {
             const newKeyword: Keyword = { id: generateId(), text: keywordRef.current.value.trim() };
             setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);

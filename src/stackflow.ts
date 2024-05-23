@@ -54,7 +54,7 @@ export const { Stack, useFlow, activities } = stackflow({
         Chat,
         KategorieSub,
     },
-    initialActivity: () => 'Keyword',
+    initialActivity: () => 'Login',
 });
 
 export type TypeActivities = typeof activities;
