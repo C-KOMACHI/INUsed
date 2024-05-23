@@ -17,3 +17,4 @@ export * from './SuccessRegister';
 export * from './TermsOfService';
 export * from './PrivacyPolicy';
 export * from './Chat';
+export * from './KategorieSub';

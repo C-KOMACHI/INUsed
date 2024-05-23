@@ -37,6 +37,7 @@ export const Notice: ActivityComponentType = () => {
         fetchPosts();
     }, []);
 
+
     return (
         <Suspense>
             <NoticeTemplate notices={notices} />
