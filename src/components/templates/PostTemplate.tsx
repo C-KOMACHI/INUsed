@@ -7,6 +7,7 @@ interface Props {
     id: number;
     wishCount?: number;
     checkLiked?: boolean;
+    checkMyPost?: boolean;
 }
 
 type Post = {
@@ -31,6 +32,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
+    checkMyPost?: boolean;
 };
 
 interface ApiResponse {
@@ -39,7 +41,7 @@ interface ApiResponse {
     post: Post;
 }
 
-export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
+export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked, checkMyPost }) => {
     const [post, setPost] = useState<Post>();
 
     useEffect(() => {
@@ -65,15 +67,18 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
             <PostItem
                 src={post?.imageUrl}
                 title={post?.title}
-                createdAt={post?.ago}
+                ago={post?.ago}
                 body={post?.content}
                 temperature={post?.user.fireTemperature}
                 nickname={post?.user.nickname}
                 email={post?.user.email}
                 profileImage={post?.user.profileImage}
+                kategorie={post?.category.name}
+                id={post?.user.id}
+                checkMyPost={checkMyPost}
                 post
             />
-            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} postId={id} />
+            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} postId={id} checkMyPost={checkMyPost}/>
         </AppScreen>
     );
 };

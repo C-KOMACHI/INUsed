@@ -15,6 +15,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
+    checkMyPost?: boolean;
 };
 interface Props {
     main?: boolean;

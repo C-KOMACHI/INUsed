@@ -18,3 +18,4 @@ export * from './TermsOfService';
 export * from './PrivacyPolicy';
 export * from './Chat';
 export * from './KategorieSub';
+export * from './UserPage';

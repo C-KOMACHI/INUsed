@@ -1,54 +1,49 @@
 import type { ActivityComponentType } from '@stackflow/react';
 import { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
-import { MainTemplate } from '@/components/templates';
+import { MyPageTemplate } from '@/components/templates';
 
-type Post = {
+type User = {
     id: number;
-    title: string;
-    price: number;
-    imageUrl: string;
-    wishCount: number;
-    viewCount: number;
-    createdAt: string;
-    ago: string;
-    category: {
-        id: number;
-        name: string;
-    };
-    checkLiked: boolean;
-    checkMyPost: boolean;
+    email: string;
+    nickname: string;
+    profileImage: string;
+    fireTemperature: number;
 };
 
 interface ApiResponse {
     code: string;
     message: string;
-    mainPostInfos: Post[];
+    user: User;
 }
-export const Heart: ActivityComponentType = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
+
+type ArticleParams = {
+    id: number;
+};
+
+export const UserPage: ActivityComponentType<ArticleParams> = ({params}) => {
+    const [user, setUser] = useState<User>();
 
     useEffect(() => {
         const fetchPosts = () => {
             const accessToken = localStorage.getItem('accessToken');
 
             axios
-                .get<ApiResponse>('https://api.inused.store/api/v1/wishes', {
+                .get<ApiResponse>(`https://api.inused.store/api/v1/user/get/${params.id}`, {
                     headers: {
                         Authorization: accessToken,
                     },
                 })
                 .then((response) => {
-                    setPosts(response.data.mainPostInfos);
+                    setUser(response.data.user);
                 })
                 .catch(() => {});
         };
-
         fetchPosts();
-    }, []);
+    }, [params.id]);
     return (
         <Suspense>
-            <MainTemplate title="관심" posts={posts} />
+            <MyPageTemplate id={params.id} user={user} title={`${user?.nickname} 프로필`}/>
         </Suspense>
     );
 };

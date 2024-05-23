@@ -12,6 +12,7 @@ interface Props {
     wishCount?: number;
     userId?: number;
     postId?: number;
+    checkMyPost?: boolean;
 }
 
 const style = {
@@ -38,7 +39,7 @@ const style = {
     },
 };
 
-export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount, userId, postId }) => {
+export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount, userId, postId, checkMyPost }) => {
     const { push } = useFlow();
     const { mutate: chatMutate, isError: chatError } = useChat();
 
@@ -63,10 +64,16 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
             />
             <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
             <Text type="large">{price}원</Text>
-
-            <Button size="medium" variant="contained" sx={style.button} onClick={chatHandleClick}>
+            {!checkMyPost && (
+                <Button size="medium" variant="contained" sx={style.button} onClick={chatHandleClick}>
                 채팅하기
-            </Button>
+                </Button>
+            )}
+            {!!checkMyPost && (
+                <Button size="medium" variant="contained" sx={style.button}>
+                상태 변경
+                </Button>
+            )}
         </Box>
     );
 };

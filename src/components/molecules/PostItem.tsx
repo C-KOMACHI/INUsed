@@ -26,6 +26,8 @@ interface Props {
     profileImage?: string;
     ago?: string;
     chat?: boolean;
+    kategorie?: string;
+    checkMyPost?: boolean;
 }
 
 const style = {
@@ -62,13 +64,15 @@ export const PostItem: FC<Props> = ({
     profileImage,
     ago,
     chat,
+    kategorie,
+    checkMyPost
 }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
 
     const pushPost = () => {
         if (id !== undefined) {
-            push('Post', { id, wishCount, checkLiked });
+            push('Post', { id, wishCount, checkLiked, checkMyPost });
         }
     };
 
@@ -100,7 +104,7 @@ export const PostItem: FC<Props> = ({
                             <Text type="medium">{price}원</Text>
                             <Text type="smallGray">{ago}</Text>
                         </Grid>
-                        {chat && (
+                        {!chat && (
                             <Grid item xs={1} sx={{ position: 'relative' }}>
                                 <HeartIcon wishCount={wishCount} checkLiked={checkLiked} id={id} />
                             </Grid>
@@ -115,7 +119,7 @@ export const PostItem: FC<Props> = ({
                 <>
                     <Stack direction="row" spacing={5}>
                         <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
-                        <MenuIcon />
+                        <MenuIcon checkMyPost={checkMyPost}/>
                     </Stack>
 
                     <Stack direction="column" spacing={2}>
@@ -126,12 +130,14 @@ export const PostItem: FC<Props> = ({
                                 nickName={nickname}
                                 email={email}
                                 temperature={temperature ?? 0}
+                                id={id ?? 0}
+                                checkMyPost={checkMyPost}
                                 post
                             />
                             <Divider />
-                            <Box sx={{ position: 'relative'}}>
+                            <Box sx={{ position: 'relative' }}>
                                 <Text type="large">{title}</Text>
-                                <Text type="smallGray">{ago}</Text>
+                                <Text type="smallGray">{kategorie} / {ago}</Text>
                             </Box>
                             <Text type="mediumGray">{replaceNewlinesWithBr(body)}</Text>
                         </Stack>
