@@ -23,6 +23,7 @@ import {
     Chat,
     KategorieSub,
     UserPage,
+    Alarm,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -55,8 +56,9 @@ export const { Stack, useFlow, activities } = stackflow({
         Chat,
         KategorieSub,
         UserPage,
+        Alarm,
     },
-    initialActivity: () => 'Main',
+    initialActivity: () => 'Login',
 });
 
 export type TypeActivities = typeof activities;

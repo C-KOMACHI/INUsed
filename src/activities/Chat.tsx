@@ -10,7 +10,12 @@ interface Prop {
 export const Chat: ActivityComponentType<Prop> = () => {
     return (
         <Suspense>
-            <ChatTemplate nickname="라미르뮨" src="image.png" title="에어포스 팝니다" price={150000} />
+            <ChatTemplate
+                nickname="잼잼이"
+                src="air_force.png"
+                title="나이키 에어포스 올화이트 235 팝니다."
+                price={120000}
+            />
         </Suspense>
     );
 };

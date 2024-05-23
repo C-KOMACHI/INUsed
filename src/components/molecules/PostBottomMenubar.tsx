@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { Box, Button, Divider } from '@mui/material';
 import { useFlow } from '@/stackflow';
-import { useChat } from '@/hooks/apis/chat-query';
 import { COLOR } from '@/constants';
 import { HeartIcon, Text } from '@/components/atoms';
 
@@ -39,14 +38,9 @@ const style = {
 
 export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount, userId, postId, checkMyPost }) => {
     const { push } = useFlow();
-    const { mutate: chatMutate, isError: chatError } = useChat();
 
-    const chatHandleClick = () => {
-        chatMutate({ userId: userId ?? 0, postId: postId ?? 0 });
-
-        if (!chatError) {
-            push('Chat', {});
-        }
+    const handleClick = () => {
+        push('Chat', {});
     };
 
     return (
