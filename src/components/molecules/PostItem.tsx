@@ -20,6 +20,10 @@ interface Props {
     id?: number;
     checkLiked?: boolean;
     content?: string;
+    nickname?: string;
+    email?: string;
+    temperature?: number;
+    profileImage?: string;
 }
 
 const style = {
@@ -50,6 +54,10 @@ export const PostItem: FC<Props> = ({
     id,
     checkLiked,
     content,
+    nickname,
+    email,
+    temperature,
+    profileImage,
 }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
@@ -99,10 +107,10 @@ export const PostItem: FC<Props> = ({
                         <Stack spacing={2}>
                             <ProfileInformation
                                 alt="프로필 사진"
-                                src="/profile.png"
-                                nickName="유잼잼"
-                                email="jin03021425@inu.ac.kr"
-                                temperature={1300}
+                                src={profileImage}
+                                nickName={nickname}
+                                email={email}
+                                temperature={temperature ?? 0}
                                 post
                             />
                             <Divider />

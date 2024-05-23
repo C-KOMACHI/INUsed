@@ -18,9 +18,11 @@ type Post = {
     wishCount: number;
     viewCount: number;
     createdAt: string;
+    ago: string;
     user: {
         id: number;
         nickname: string;
+        email: string;
         profileImage: string;
         fireTemperature: number;
     };
@@ -58,9 +60,13 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
         fetchPosts();
     }, [id]);
 
+    if (!post) {
+        return <div>Loading...</div>;  // 로딩 상태를 표시합니다.
+    }
+
     return (
         <AppScreen>
-            <PostItem src={post?.imageUrl} title={post?.title} createdAt={post?.createdAt} body={post?.content} post />
+            <PostItem src={post?.imageUrl} title={post?.title} createdAt={post?.ago} body={post?.content} temperature={post?.user.fireTemperature} nickname={post.user.nickname} email={post.user.email} profileImage={post.user.profileImage} post />
             <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} />
         </AppScreen>
     );

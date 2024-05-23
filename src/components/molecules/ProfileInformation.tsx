@@ -6,9 +6,9 @@ import { useFlow } from '@/stackflow';
 interface Props {
     alt: string;
     src?: string;
-    nickName: string;
-    email: string;
-    temperature: number;
+    nickName?: string;
+    email?: string;
+    temperature?: number;
     post?: boolean;
     myProfile?: boolean;
 }
@@ -33,7 +33,7 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, tempe
                         <Profile alt={alt} src={src} small />
                         <Text type="medium">{nickName}</Text>
                     </Stack>
-                    <Temperature temperature={temperature} post />
+                    <Temperature temperature={temperature ?? 0} post />
                 </Stack>
             )}
             {myProfile && (
@@ -43,7 +43,7 @@ export const ProfileInformation: FC<Props> = ({ alt, src, nickName, email, tempe
                         <Text type="large">{nickName}</Text>
                         <Text type="mediumGray">{email}</Text>
                     </Stack>
-                    <Temperature temperature={temperature} myProfile />
+                    <Temperature temperature={temperature ?? 0} myProfile />
                 </Stack>
             )}
         </>

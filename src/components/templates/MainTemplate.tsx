@@ -9,6 +9,7 @@ type Post = {
     wishCount: number;
     viewCount: number;
     createdAt: string;
+    ago: string;
     category: {
         id: number;
         name: string;
