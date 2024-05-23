@@ -9,6 +9,7 @@ interface Props {
     disabledBorderRadius?: boolean;
     disabledBorder?: boolean;
     bigFont?: boolean;
+    keyword?: boolean;
 }
 
 export const Input = styled.input<Props>`
@@ -22,6 +23,7 @@ export const Input = styled.input<Props>`
     width: ${(props) => {
         if (props.small) return '50%';
         if (props.medium) return '80%';
+        if (props.keyword) return '70%';
         return '100%';
     }};
     padding-bottom: ${(props) => (props.big ? '145px' : 'initial')};
