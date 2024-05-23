@@ -24,6 +24,7 @@ interface Props {
     email?: string;
     temperature?: number;
     profileImage?: string;
+    ago?: string;
 }
 
 const style = {
@@ -58,6 +59,7 @@ export const PostItem: FC<Props> = ({
     email,
     temperature,
     profileImage,
+    ago,
 }) => {
     const { push } = useFlow();
     const { pop } = useFlow();
@@ -84,7 +86,7 @@ export const PostItem: FC<Props> = ({
                         <Grid item xs={7} onClick={pushPost}>
                             <Text type="large">{title}</Text>
                             <Text type="medium">{price}원</Text>
-                            <Text type="smallGray">{createdAt}</Text>
+                            <Text type="smallGray">{ago}</Text>
                         </Grid>
                         <Grid item xs={1} sx={{ position: 'relative' }}>
                             <HeartIcon wishCount={wishCount} checkLiked={checkLiked} id={id} />
@@ -115,7 +117,7 @@ export const PostItem: FC<Props> = ({
                             <Divider />
                             <Box sx={{ position: 'relative', pb: '15px' }}>
                                 <Text type="large">{title}</Text>
-                                <Text type="smallGray">{createdAt}</Text>
+                                <Text type="smallGray">{ago}</Text>
                             </Box>
                             <Text type="mediumGray">{body}</Text>
                         </Stack>
