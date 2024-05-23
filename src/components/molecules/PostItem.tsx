@@ -97,7 +97,7 @@ export const PostItem: FC<Props> = ({
                 <Box sx={style.container}>
                     <Grid container spacing={2}>
                         <Grid item xs={4} onClick={pushPost}>
-                            <Image src={src} alt={title} />
+                            <Image src={src} alt={title}/>
                         </Grid>
                         <Grid item xs={7} onClick={pushPost}>
                             <Text type="large">{title}</Text>
@@ -117,14 +117,8 @@ export const PostItem: FC<Props> = ({
             {/* 포스트 게시물 */}
             {post && (
                 <>
-                    <Stack direction="row" spacing={5}>
-                        <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
-                        <MenuIcon checkMyPost={checkMyPost} />
-                    </Stack>
-
-                    <Stack direction="column" spacing={2}>
-                        <Image src={src} alt={title} disabledBorderRadius />
-                        <Stack spacing={2}>
+                    <Stack direction="column">
+                        <Stack spacing={1.5} mt={-5}>
                             <ProfileInformation
                                 src={profileImage}
                                 nickName={nickname}
@@ -134,7 +128,7 @@ export const PostItem: FC<Props> = ({
                                 checkMyPost={checkMyPost}
                                 post
                             />
-                            <Divider />
+                            <Divider/>
                             <Box sx={{ position: 'relative' }}>
                                 <Text type="large">{title}</Text>
                                 <Text type="smallGray">
@@ -143,6 +137,10 @@ export const PostItem: FC<Props> = ({
                             </Box>
                             <Text type="mediumGray">{replaceNewlinesWithBr(body)}</Text>
                         </Stack>
+                    </Stack>
+                    <Stack direction="row" spacing={5}>
+                        <BackIcon sx={{ ...style.button, left: 20 }} onClick={popHandleClick} />
+                        <MenuIcon checkMyPost={checkMyPost} />
                     </Stack>
                 </>
             )}

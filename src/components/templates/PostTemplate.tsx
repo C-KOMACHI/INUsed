@@ -1,7 +1,7 @@
 import { type FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AppScreen } from '@/components/organisms';
-import { PostItem, PostBottomMenubar } from '@/components/molecules';
+import { PostItem } from '@/components/molecules';
 
 interface Props {
     id: number;
@@ -63,7 +63,11 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked, checkMyPost
     }, [id]);
 
     return (
-        <AppScreen>
+        <AppScreen postImg={post?.imageUrl} price={post?.price}
+        id={id}
+        checkLiked={checkLiked}
+        wishCount={wishCount}
+        checkMyPost={checkMyPost}>
             <PostItem
                 src={post?.imageUrl}
                 title={post?.title}
@@ -77,14 +81,6 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked, checkMyPost
                 id={post?.user.id}
                 checkMyPost={checkMyPost}
                 post
-            />
-            <PostBottomMenubar
-                price={post?.price}
-                id={id}
-                checkLiked={checkLiked}
-                wishCount={wishCount}
-                postId={id}
-                checkMyPost={checkMyPost}
             />
         </AppScreen>
     );

@@ -17,15 +17,14 @@ interface Props {
 
 const style = {
     container: {
-        width: '100%',
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        height: '66px',
         overflow: 'hidden',
-        minHeight: '66px',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'space-between',
+        width: 1,
+        height: '66px',
+        position: 'sticky',
+        bottom: '0',
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
         background: 'white',
     },
@@ -33,8 +32,7 @@ const style = {
         background: COLOR.blue.fab,
         fontFamily: 'Jua',
         borderRadius: '15px',
-        right: 10,
-        position: 'fixed',
+        mr:'20px',
         fontSize: '1.1rem',
     },
 };
@@ -53,17 +51,19 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
 
     return (
         <Box sx={style.container}>
-            <HeartIcon
-                direction="column"
-                spacing="0"
-                containerStyle={{ left: '1.3rem', top: '13px' }}
-                textStyle={{ position: 'static', paddingLeft: '6.6px' }}
-                id={id}
-                checkLiked={checkLiked}
-                wishCount={wishCount}
-            />
-            <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
-            <Text type="large">{price}원</Text>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}> {/* 추가 */}
+                <HeartIcon
+                    direction="column"
+                    spacing="0"
+                    containerStyle={{ left: '1.3rem', top: '13px' }}
+                    textStyle={{ position: 'static', paddingLeft: '6.6px' }}
+                    id={id}
+                    checkLiked={checkLiked}
+                    wishCount={wishCount}
+                />
+                <Divider orientation="vertical" sx={{ marginLeft: '3.9rem', marginRight: '1.5rem', height: '40px' }} />
+                <Text type="large">{price}원</Text>
+            </Box>
             {!checkMyPost && (
                 <Button size="medium" variant="contained" sx={style.button} onClick={chatHandleClick}>
                     채팅하기
@@ -77,3 +77,4 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
         </Box>
     );
 };
+
