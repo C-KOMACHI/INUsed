@@ -21,13 +21,14 @@ interface Props {
 export const PostList: FC<Props> = ({ posts }) => {
     return (
         <Stack sx={{ pl: '10px' }}>
-            {posts.map(({ id, imageUrl, title, price, ago, wishCount, checkLiked, content }) => {
+            {posts.map(({ id, imageUrl, title, price, ago, createdAt, wishCount, checkLiked, content }) => {
                 return (
                     <PostItem
                         id={id}
                         src={imageUrl}
                         title={title}
-                        createdAt={ago}
+                        ago={ago}
+                        createdAt={createdAt}
                         price={price}
                         main={!!price}
                         notice={!price}
