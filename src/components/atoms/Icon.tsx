@@ -5,6 +5,7 @@ interface Props {
     white?: boolean;
     big?: boolean;
     small?: boolean;
+    medium?: boolean;
 }
 
 export const Icon = styled.img<Props>`
@@ -13,6 +14,13 @@ export const Icon = styled.img<Props>`
             return `
                 width: 60px;
                 height: 60px;
+            `;
+        }
+        if (props.medium) {
+            return `
+                width: 57px;
+                height: 57px;
+                border-radius: 15px;           
             `;
         }
         if (props.small) {
