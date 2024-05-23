@@ -17,6 +17,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
+    checkMyPost: boolean;
 };
 
 interface ApiResponse {

@@ -5,7 +5,7 @@ import { COLOR } from '@/constants';
 import { useFlow } from '@/stackflow';
 
 interface Props {
-    myPost?: boolean;
+    checkMyPost?: boolean;
 }
 
 const style = {
@@ -21,7 +21,7 @@ const style = {
     },
 };
 
-export const MenuIcon: FC<Props> = ({ myPost }) => {
+export const MenuIcon: FC<Props> = ({ checkMyPost }) => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const [open, setOpen] = useState<boolean>(false);
     const { push } = useFlow();
@@ -63,7 +63,7 @@ export const MenuIcon: FC<Props> = ({ myPost }) => {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {myPost
+                {checkMyPost
                     ? [
                           <MenuItem key="edit" onClick={handleClose}>
                               수정

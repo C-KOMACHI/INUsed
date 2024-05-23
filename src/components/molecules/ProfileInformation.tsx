@@ -10,6 +10,8 @@ interface Props {
     temperature?: number;
     post?: boolean;
     myProfile?: boolean;
+    id: number;
+    checkMyPost?: boolean;
 }
 
 const style = {
@@ -18,16 +20,35 @@ const style = {
     },
 };
 
-export const ProfileInformation: FC<Props> = ({ src, nickName, email, temperature, post, myProfile }) => {
+export const ProfileInformation: FC<Props> = ({
+    src,
+    nickName,
+    email,
+    temperature,
+    post,
+    myProfile,
+    id,
+    checkMyPost,
+}) => {
     const { push } = useFlow();
 
-    const handleClick = () => {
-        push('MyPage', {});
+    const handleClick = (isMine: boolean | undefined) => {
+        if (isMine) {
+            push('MyPage', {});
+        } else {
+            push('UserPage', { id });
+        }
     };
     return (
         <>
             {post && (
-                <Stack direction="row" alignItems="center" spacing={1} sx={{ pl: '10px' }} onClick={handleClick}>
+                <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                    sx={{ pl: '10px' }}
+                    onClick={() => handleClick(checkMyPost)}
+                >
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Profile src={src} small />
                         <Text type="medium">{nickName}</Text>
