@@ -6,7 +6,7 @@ type Notice = {
     title: string;
     createdAt: string;
     content: string;
-}
+};
 
 interface Props {
     notices: Notice[];

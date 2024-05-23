@@ -106,7 +106,6 @@ export const PostItem: FC<Props> = ({
                         <Image src={src} alt={title} disabledBorderRadius />
                         <Stack spacing={2}>
                             <ProfileInformation
-                                alt="프로필 사진"
                                 src={profileImage}
                                 nickName={nickname}
                                 email={email}
@@ -127,7 +126,7 @@ export const PostItem: FC<Props> = ({
             {/* 공지사항 */}
             {notice && (
                 <Stack sx={{ pt: '10px', position: 'relative' }} spacing={1.5}>
-                    <Box onClick={() => push('NoticeSub',{id, title, createdAt, content})}>
+                    <Box onClick={() => push('NoticeSub', { id, title, createdAt, content })}>
                         <Text type="large">{title}</Text>
                         <Text type="smallGray">{createdAt}</Text>
                     </Box>

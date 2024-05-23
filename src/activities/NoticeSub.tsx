@@ -9,7 +9,7 @@ type ArticleParams = {
     content?: string;
 };
 
-export const NoticeSub: ActivityComponentType<ArticleParams> = ({params}) => {
+export const NoticeSub: ActivityComponentType<ArticleParams> = ({ params }) => {
     return (
         <Suspense>
             <DocsTemplate

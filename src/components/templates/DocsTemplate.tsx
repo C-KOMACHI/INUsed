@@ -15,7 +15,7 @@ export const DocsTemplate: FC<Props> = ({ header, title, createdAt, content }) =
     return (
         <AppScreen header title={header} borderRadius backIcon>
             <Stack pt={2} spacing={2}>
-                {title &&<PostItem notice title={title} createdAt={createdAt} />}
+                {title && <PostItem notice title={title} createdAt={createdAt} />}
                 <Text type="medium">{content}</Text>
             </Stack>
         </AppScreen>
