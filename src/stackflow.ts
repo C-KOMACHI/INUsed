@@ -52,7 +52,7 @@ export const { Stack, useFlow, activities } = stackflow({
         PrivacyPolicy,
         Chat,
     },
-    initialActivity: () => 'Main',
+    initialActivity: () => 'Login',
 });
 
 export type TypeActivities = typeof activities;

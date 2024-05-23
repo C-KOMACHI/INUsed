@@ -162,7 +162,7 @@ export const FormBox: FC<Props> = ({ login, register, findPassword, inquiry }) =
 
     const RegisterHandleClick = () => {
         registerMutate({
-            email: `${emailRef.current?.value ?? ''}@inu.ac.kr`,
+            email: emailRef.current?.value ?? '',
             nickname: nicknameRef.current?.value ?? '',
             password,
         });
