@@ -30,7 +30,7 @@ interface ApiResponse {
     posts: Post[];
 }
 
-export const KategorieSub: ActivityComponentType<ArticleParams> = ({params}) => {
+export const KategorieSub: ActivityComponentType<ArticleParams> = ({ params }) => {
     const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export const KategorieSub: ActivityComponentType<ArticleParams> = ({params}) => 
 
     return (
         <Suspense>
-            <MainTemplate title={params.title} pop posts={posts}/>
+            <MainTemplate title={params.title} pop posts={posts} />
         </Suspense>
     );
 };

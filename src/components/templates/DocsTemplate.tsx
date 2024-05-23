@@ -20,14 +20,12 @@ export const DocsTemplate: FC<Props> = ({ header, title, createdAt, content = ''
             </span>
         ));
     };
-    
+
     return (
         <AppScreen header title={header} borderRadius backIcon>
             <Stack pt={2} spacing={2}>
                 {title && <PostItem notice title={title} createdAt={createdAt} />}
-                <Text type="medium">
-                    {replaceNewlinesWithBr(content)}
-                </Text>
+                <Text type="medium">{replaceNewlinesWithBr(content)}</Text>
             </Stack>
         </AppScreen>
     );
