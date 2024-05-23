@@ -22,6 +22,7 @@ import {
     PrivacyPolicy,
     Chat,
     KategorieSub,
+    UserPage,
     Alarm,
 } from '@/activities';
 
@@ -54,9 +55,10 @@ export const { Stack, useFlow, activities } = stackflow({
         PrivacyPolicy,
         Chat,
         KategorieSub,
+        UserPage,
         Alarm,
     },
-    initialActivity: () => 'Login',
+    initialActivity: () => 'Main',
 });
 
 export type TypeActivities = typeof activities;

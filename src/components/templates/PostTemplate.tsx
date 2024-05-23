@@ -1,12 +1,13 @@
 import { type FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AppScreen } from '@/components/organisms';
-import { PostItem, PostBottomMenubar } from '@/components/molecules';
+import { PostItem } from '@/components/molecules';
 
 interface Props {
     id: number;
     wishCount?: number;
     checkLiked?: boolean;
+    checkMyPost?: boolean;
 }
 
 type Post = {
@@ -31,6 +32,7 @@ type Post = {
         name: string;
     };
     checkLiked: boolean;
+    checkMyPost?: boolean;
 };
 
 interface ApiResponse {
@@ -39,7 +41,7 @@ interface ApiResponse {
     post: Post;
 }
 
-export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
+export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked, checkMyPost }) => {
     const [post, setPost] = useState<Post>();
 
     useEffect(() => {
@@ -61,19 +63,25 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked }) => {
     }, [id]);
 
     return (
-        <AppScreen>
+        <AppScreen postImg={post?.imageUrl} price={post?.price}
+        id={id}
+        checkLiked={checkLiked}
+        wishCount={wishCount}
+        checkMyPost={checkMyPost}>
             <PostItem
                 src={post?.imageUrl}
                 title={post?.title}
-                createdAt={post?.ago}
+                ago={post?.ago}
                 body={post?.content}
                 temperature={post?.user.fireTemperature}
                 nickname={post?.user.nickname}
                 email={post?.user.email}
                 profileImage={post?.user.profileImage}
+                kategorie={post?.category.name}
+                id={post?.user.id}
+                checkMyPost={checkMyPost}
                 post
             />
-            <PostBottomMenubar price={post?.price} id={id} checkLiked={checkLiked} wishCount={wishCount} />
         </AppScreen>
     );
 };
