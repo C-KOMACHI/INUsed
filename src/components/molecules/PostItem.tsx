@@ -76,6 +76,16 @@ export const PostItem: FC<Props> = ({
         pop();
     };
 
+    const replaceNewlinesWithBr = (text: string | undefined) => {
+        if (!text) return text;
+        return text.split('\n').map((item) => (
+            <span>
+                {item}
+                <br />
+            </span>
+        ));
+    };
+
     return (
         <>
             {/* 메인 게시물 */}
@@ -119,11 +129,11 @@ export const PostItem: FC<Props> = ({
                                 post
                             />
                             <Divider />
-                            <Box sx={{ position: 'relative', pb: '15px' }}>
+                            <Box sx={{ position: 'relative'}}>
                                 <Text type="large">{title}</Text>
                                 <Text type="smallGray">{ago}</Text>
                             </Box>
-                            <Text type="mediumGray">{body}</Text>
+                            <Text type="mediumGray">{replaceNewlinesWithBr(body)}</Text>
                         </Stack>
                     </Stack>
                 </>
