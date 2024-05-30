@@ -20,3 +20,4 @@ export * from './Chat';
 export * from './KategorieSub';
 export * from './UserPage';
 export * from './Alarm';
+export * from './Search';

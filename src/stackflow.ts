@@ -24,6 +24,7 @@ import {
     KategorieSub,
     UserPage,
     Alarm,
+    Search,
 } from '@/activities';
 
 export const { Stack, useFlow, activities } = stackflow({
@@ -57,6 +58,7 @@ export const { Stack, useFlow, activities } = stackflow({
         KategorieSub,
         UserPage,
         Alarm,
+        Search,
     },
     initialActivity: () => 'Main',
 });

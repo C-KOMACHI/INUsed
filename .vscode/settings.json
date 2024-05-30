@@ -7,5 +7,16 @@
     "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
     "typescript.tsdk": ".yarn/sdks/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
-    "cSpell.words": ["commitlint", "Getpost", "inused", "Parens", "Reposting", "stackflow", "tanstack", "yarnpkg"]
+    "cSpell.words": [
+        "commitlint",
+        "fontsource",
+        "Getpost",
+        "inused",
+        "Parens",
+        "Reposting",
+        "roboto",
+        "stackflow",
+        "tanstack",
+        "yarnpkg"
+    ]
 }
