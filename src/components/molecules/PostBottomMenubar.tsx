@@ -29,7 +29,7 @@ const style = {
         background: COLOR.blue.fab,
         fontFamily: 'Jua',
         borderRadius: '15px',
-        mr:'20px',
+        mr: '20px',
         fontSize: '1.1rem',
     },
 };
@@ -43,7 +43,9 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
 
     return (
         <Box sx={style.container}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}> {/* 추가 */}
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                {' '}
+                {/* 추가 */}
                 <HeartIcon
                     direction="column"
                     spacing="0"
@@ -69,4 +71,3 @@ export const PostBottomMenubar: FC<Props> = ({ price, id, checkLiked, wishCount,
         </Box>
     );
 };
-

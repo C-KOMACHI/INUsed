@@ -66,7 +66,7 @@ export const AppScreen: FC<Props> = ({
         <StackFlowAppScreen>
             {header && <AppBar title={title} backIcon={backIcon} />}
             {searchBar && <Header />}
-            {postImg && <Image src={postImg} alt={title} post disabledBorderRadius/>}
+            {postImg && <Image src={postImg} alt={title} post disabledBorderRadius />}
             <Stack sx={style.wrapper}>
                 {borderRadius && (
                     <Box sx={style.box1}>
@@ -74,20 +74,29 @@ export const AppScreen: FC<Props> = ({
                     </Box>
                 )}
                 {postImg && (
-                    <Box sx={{height: '40px', mt: '-35px', backgroundColor: 'white', borderRadius: '30px 30px 0 0',}}/>
+                    <Box
+                        sx={{ height: '40px', mt: '-35px', backgroundColor: 'white', borderRadius: '30px 30px 0 0' }}
+                    />
                 )}
-                <Container component="main" sx={{ ...style.container, ...(borderRadius && { mt: -2.5 }), ...(postImg && {minHeight: 'calc(100vh - 341px)',})}}>
+                <Container
+                    component="main"
+                    sx={{
+                        ...style.container,
+                        ...(borderRadius && { mt: -2.5 }),
+                        ...(postImg && { minHeight: 'calc(100vh - 341px)' }),
+                    }}
+                >
                     {children}
                 </Container>
                 {bottomNavigation && <BottomMenubar writeButton={writeButton} />}
                 {postImg && (
                     <PostBottomMenubar
-                    price={price}
-                    id={id}
-                    checkLiked={checkLiked}
-                    wishCount={wishCount}
-                    checkMyPost={checkMyPost}
-                />
+                        price={price}
+                        id={id}
+                        checkLiked={checkLiked}
+                        wishCount={wishCount}
+                        checkMyPost={checkMyPost}
+                    />
                 )}
             </Stack>
         </StackFlowAppScreen>
