@@ -1,4 +1,4 @@
-import type { PostCreateResponse } from './type';
+import type { PostCreateResponse, ResourceResponse } from './type';
 import { axios } from '@/utils';
 
 export class PostRepository {
@@ -17,6 +17,13 @@ export class PostRepository {
             tag,
             price,
             categoryId,
+        });
+        return result;
+    }
+
+    public static async uploadImage(file: string) {
+        const result = await axios.post<ResourceResponse>('/api/v1/s3/resource', {
+            file,
         });
         return result;
     }
