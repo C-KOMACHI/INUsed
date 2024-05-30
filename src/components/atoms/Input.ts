@@ -3,33 +3,31 @@ import { COLOR } from '@/constants';
 
 interface Props {
     small?: boolean;
+    medium?: boolean;
+    big?: boolean;
     search?: boolean;
+    disabledBorderRadius?: boolean;
+    disabledBorder?: boolean;
+    bigFont?: boolean;
+    keyword?: boolean;
 }
 
 export const Input = styled.input<Props>`
-    border: none;
-    border-radius: 20px;
-    height: 45px;
-    font-size: 0.9rem;
-    width: ${(props) => (props.small ? '60%' : '100%')};
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: 10px center;
-    padding-left: 1rem;
+    border: ${(props) => (props.disabledBorder ? 'none' : `1.6px solid ${COLOR.gray.main}`)};
+    border-radius: ${(props) => (props.disabledBorderRadius ? '10px' : '25px')};
+    height: ${(props) => {
+        if (props.big) return '200px';
+        return '50px';
+    }};
+    font-size: ${(props) => (props.bigFont ? '1rem' : '0.9rem')};
+    width: ${(props) => {
+        if (props.small) return '50%';
+        if (props.medium) return '80%';
+        if (props.keyword) return '70%';
+        return '100%';
+    }};
+    padding-bottom: ${(props) => (props.big ? '145px' : 'initial')};
+    padding-left: 20px;
     font-family: 'Jua';
     outline: none;
-
-    //검색 아이콘
-    ${(props) =>
-        props.search &&
-        `
-            background: url('https://api.iconify.design/ion/search.svg?color=%23aaa') no-repeat;
-            background-size: 20px 20px;
-            background-position: 13px center;
-            background-color: white;
-            padding-left: 2.5rem;
-          `}
-
-    &::placeholder {
-        color: ${COLOR.gray.main};
-    }
 `;
