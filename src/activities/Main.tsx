@@ -1,12 +1,55 @@
 import type { ActivityComponentType } from '@stackflow/react';
-import { Suspense } from 'react';
-import { BottomMenubar, Input } from '@/components/atoms';
+import { useEffect, useState, Suspense } from 'react';
+import axios from 'axios';
+import { MainTemplate } from '@/components/templates';
+
+type Post = {
+    id: number;
+    title: string;
+    price: number;
+    imageUrl: string;
+    wishCount: number;
+    viewCount: number;
+    createdAt: string;
+    ago: string;
+    category: {
+        id: number;
+        name: string;
+    };
+    checkLiked: boolean;
+    checkMyPost: boolean;
+};
+
+interface ApiResponse {
+    code: string;
+    message: string;
+    posts: Post[];
+}
 
 export const Main: ActivityComponentType = () => {
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    useEffect(() => {
+        const fetchPosts = () => {
+            const accessToken = localStorage.getItem('accessToken');
+
+            axios
+                .get<ApiResponse>('https://api.inused.store/api/v1/posts', {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                })
+                .then((response) => {
+                    setPosts(response.data.posts);
+                })
+                .catch(() => {});
+        };
+        fetchPosts();
+    }, []);
+
     return (
         <Suspense>
-            <Input search />
-            <BottomMenubar />
+            <MainTemplate main posts={posts} />
         </Suspense>
     );
 };

@@ -1,11 +1,13 @@
 export const COLOR = {
     blue: {
-        main: 'linear-gradient(135deg, #e7f0fd 0%,#accbee 100%)',
-        button: '#ACCBEE',
+        main: '#E7F0FD',
+        button: '#80B0E6',
         hover: '#80B0E6',
+        fab: '#CBDDF5',
+        temp: '#418DFF',
     },
     pink: {
-        main: 'linear-gradient(135deg, #dad4ec 0%,#f3e7e9 100%)',
+        main: 'linear-gradient(135deg, #dad4ec 70%, #f3e7e9 90%)',
         footer: '#FF8DED',
     },
     white: {
@@ -15,5 +17,15 @@ export const COLOR = {
         main: '#AAAAAA',
         footer: 'rgba(0, 0, 0, 0.75)',
         hover: 'rgba(0, 0, 0, 0.62)',
+        temp: '#D9D9D9',
+    },
+    red: {
+        temp: '#E65757',
+    },
+    green: {
+        temp: '#5BD522',
+    },
+    yellow: {
+        temp: '#FFD643',
     },
 };
