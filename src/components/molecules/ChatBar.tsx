@@ -20,14 +20,15 @@ const style = {
 
 export const ChatBar: FC = () => {
     const chatRef = useRef<HTMLInputElement>(null);
-    const [bubbles, setBubbles] = useState<{ id: number; message: string }[]>([]);
+    const [bubbles, setBubbles] = useState<{ id: number; message: string; myChat: boolean }[]>([]);
     const [clickCount, setClickCount] = useState<number>(0);
 
     const handleSendClick = () => {
         if (chatRef.current && chatRef.current.value.trim() !== '') {
             const newBubble = {
-                id: Date.now(), // 새로운 ID 생성
+                id: Date.now(),
                 message: chatRef.current.value,
+                myChat: true,
             };
             chatRef.current.value = '';
 
@@ -44,7 +45,7 @@ export const ChatBar: FC = () => {
                 } else {
                     message = '가능합니다';
                 }
-                setBubbles((prevBubbles) => [...prevBubbles, { id: Date.now(), message }]);
+                setBubbles((prevBubbles) => [...prevBubbles, { id: Date.now(), message, myChat: false }]);
             }, 5000);
 
             // 클릭 횟수 증가
@@ -62,7 +63,7 @@ export const ChatBar: FC = () => {
             </Box>
             <Box sx={{ padding: '10px' }}>
                 {bubbles.map((bubble) => (
-                    <ChatBubble key={bubble.id} text={bubble.message} myChat={bubble.id % 2 === 0} />
+                    <ChatBubble key={bubble.id} text={bubble.message} myChat={bubble.myChat} />
                 ))}
             </Box>
         </>

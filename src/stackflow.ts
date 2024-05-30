@@ -60,7 +60,7 @@ export const { Stack, useFlow, activities } = stackflow({
         Alarm,
         Search,
     },
-    initialActivity: () => 'Main',
+    initialActivity: () => 'Login',
 });
 
 export type TypeActivities = typeof activities;

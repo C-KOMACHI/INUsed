@@ -63,11 +63,14 @@ export const PostTemplate: FC<Props> = ({ id, wishCount, checkLiked, checkMyPost
     }, [id]);
 
     return (
-        <AppScreen postImg={post?.imageUrl} price={post?.price}
-        id={id}
-        checkLiked={checkLiked}
-        wishCount={wishCount}
-        checkMyPost={checkMyPost}>
+        <AppScreen
+            postImg={post?.imageUrl}
+            price={post?.price}
+            id={id}
+            checkLiked={checkLiked}
+            wishCount={wishCount}
+            checkMyPost={checkMyPost}
+        >
             <PostItem
                 src={post?.imageUrl}
                 title={post?.title}

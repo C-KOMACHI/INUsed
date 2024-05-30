@@ -101,7 +101,7 @@ export const PostItem: FC<Props> = ({
                 <Box sx={style.container}>
                     <Grid container spacing={2}>
                         <Grid item xs={4} onClick={pushPost}>
-                            <Image src={src} alt={title}/>
+                            <Image src={src} alt={title} />
                         </Grid>
                         <Grid item xs={7} onClick={pushPost}>
                             <Text type="large">{title}</Text>
