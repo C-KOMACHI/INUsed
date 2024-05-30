@@ -1,5 +1,8 @@
-import type { FC } from 'react';
+import { useRef } from 'react';
+import type { FC, KeyboardEvent } from 'react';
+import { debounce } from 'lodash';
 import styled from '@emotion/styled';
+import { useFlow } from '@/stackflow';
 
 const StyledInput = styled.input`
     border: none;
@@ -19,5 +22,17 @@ const StyledInput = styled.input`
 `;
 
 export const SearchBar: FC = () => {
-    return <StyledInput placeholder="물품을 검색해 보세요" />;
+    const searchRef = useRef<HTMLInputElement>(null);
+    const { push } = useFlow();
+    
+
+    const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter' && searchRef.current?.value) {
+            push('Search', { text: searchRef.current?.value });
+        }
+    };
+
+    const debounceHandleKeyPress = debounce(handleKeyPress, 500);
+
+    return <StyledInput id="search" placeholder="물품을 검색해 보세요" ref={searchRef} onKeyUp={debounceHandleKeyPress} />;
 };
